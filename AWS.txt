@@ -1,0 +1,128 @@
+AWS 
+
+CLIENT SERVER ARCHITECTURE :-
+----------------------------
+
+Client :- Which requests a resource from server.(ASKING)
+
+Server :- Which responds to the request from client.(GIVING)
+
+
+Types of client server architecture :-
+
+1. 1-Tier 
+2. 2-Tier
+3. 3-Tier
+
+
+1-Tier Architecture :-
+---------------------
+
+---> In 1-tier architecture there is only one component.
+
+---> In 1-tier architecture client and server in same component.
+
+
+2-Tier Architecture :-
+----------------------
+
+---> There is two layers
+
+1. Client Layer
+2. Server Layer
+
+---> In 2-Tier architecture we keep application and database in the same system.
+
+---> If application and database are in the same machine then, It became slow,crash,hang and bad performance.
+
+---> It is less secure.
+
+
+3-Tier Architecture :-
+----------------------
+
+---> There is three layers
+
+1. Client Layer (Presentation Layer)
+2. Application Layer (Business Logic layer)
+3. Database Layer (Data Layer)
+
+
+---> Application Server :- The server which has application hosted is called application server.
+
+---> Database Server :- The Server which has databases installed, The server which stored the data is called database server.
+
+
+Qus - How the application server and database server are communicate ?
+Ans - Devices communicate with each other in the network with IP ADDRESS and HOSTNAME.
+
+---> IP :- Internet protocol - IP is a unique identifier for device in the network.
+
+---> Hostname :- It is nothing but name of the server.
+
+---> Application Layer and Database layer should be in private.
+
+
+---> Webserver :- It takes the request from client and redirects to the application server.
+
+
+
+Networking :-
+-------------
+
+---> Whenever you open a browser and search for google.com, Firstly browser needs two things IP address and hostname. If you give the hostname but you dont know the ip address then it search in Local DNS.
+
+
+---> DNS (Domain Name Server) - It Keeps Track of all hostnames and IP addresses.
+
+---> DNS will convert host to ip and ip to host.
+
+---> Every device has local DNS (ETC/hosts).
+
+
+Point - 1 ---> Open broswer and search for anything, It requries both IP and Hostname.
+
+Point - 2 ---> If you know the IP then It's fine. If not then it searches in local DNS.
+
+Point - 3 ---> If local DNS have IP then it gives to browser. If not then local DNS reaches to RNS (Root Name Server).
+
+Point - 4 ---> RNS always identifies the domains like .com, .org, .in, .edu, So on...
+
+Point - 5 ---> Then RNS reaches to Top level Domain
+
+Top level Domain - .com, .org, .in, .edu, So on...
+
+Point - 6 ---> Then Top level domain reaches the NAME SERVER.
+
+Name Server ---> Which identify the domain request.
+
+Point - 7 ---> Then Name Server reaches the SOA.
+
+SOA - Start of Authority ---> Which has IP Address. 
+
+Point - 8 ---> Then SOA sends backs to where it came from.
+
+---> Now we get IP address. After getting IP address now sending request to google server.
+
+---> When request reaches to google server than googles firewall stops request and checks the protocols.
+
+---> Firewall :- Which stops the unauthorized access to network.
+
+---> The request is send in the form of data packets. The data packets contains information like Sorce, destination,port,protocol,hostname. 
+
+Protocols ---> HTTP, HTTPS, SSH, RDP
+
+---> For every protocol there will be a port number.
+
+Port Number ---> HTTP  - 80
+	    ---> HTTPS - 443
+	    ---> SSH   - 22
+	    ---> RDP   - 3389
+
+---> If google firewall accecpts your request then your request goes to load balancer.
+
+---> Load Balancer :- It distributes the traffic across multiple servers.
+
+---> Load balancer follows the round robin method.
+
+---> Command to find IP address - nslookup
