@@ -126,3 +126,63 @@ Port Number ---> HTTP  - 80
 ---> Load balancer follows the round robin method.
 
 ---> Command to find IP address - nslookup
+
+
+---> Whole process :-
+---------------------
+
+1. Browser ---> Local DNS ---> RNS ---> Top level domain ---> Name server ---> SOA
+(Feteching the IP from SOA and it comes back to browser)
+
+2. Browser ---> Firewall ---> Load balancer ---> web Server ---> Application Server ---> Database Server.
+(From Db Server to It came back to browser)
+
+
+Protocols :-
+------------
+
+1. HTTP  - Hyper text transfer protocol(80)
+2. HTTPS - Hyper text transfer protocol secure(443)
+3. SSH   - Secure Shell(22)
+
+Eg :- http://google.com ---> Protocol://domainname:port
+
+1. http ---> Protocol
+2. Google.com ---> Domain Name
+
+
+HTTP :- It transfer the data to and fro from the browser to server.
+
+---> It is not secure.
+
+---> HTTPS is more secure than HTTP
+
+Status Codes :-
+---------------
+
+1. 404 - Page not found
+2. 503 - Service unavailable
+3. 401 - Unauthorized
+4. 500 - Interal server error
+5. 200 - Success code
+
+TCP :- Transmission Control Protocol
+
+---> TCP - It establish the connection between the hosts.
+
+---> It acts like a bridge.
+
+
+OSI Layers :-
+-------------
+
+---> There are 7 layers
+
+1. Physical Layer
+2. Data Link Layer
+3. Network Layer
+4. Transport Layer
+5. Session Layer
+6. Presentation Layer
+7. Application Layer
+
