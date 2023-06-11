@@ -186,3 +186,32 @@ OSI Layers :-
 6. Presentation Layer
 7. Application Layer
 
+AWS :- Amazon web services. It is a public cloud provider,which provides the infrastructure as a service.
+
+---> AWS uses the XEN Technology
+
+---> AWS has global infrastructure.
+
+---> AWS provides the infrastructure as service.
+
+---> AWS has data centres in USA,mumbai etc...
+
+---> Cloud is present in remote location (Remote location ---> Data Centre)
+
+---> We need internet to connect with cloud.
+
+Evolve ---> Physical Data centres ---> Virtualization ---> Cloud [AWS--->Remote location---> Data centres]
+
+Deployment Models(Types of cloud) :-
+------------------------------------
+1. Public Cloud :- The services which are accessed by everyone. Some public cloud providers are AWS,Azure,GCP.
+2. Private Cloud :- The services which are accessed within the organizations. Eg:- IBM
+3. hybrid Cloud :- The ombination of public and private cloud.
+4. Community Cloud :- It is same a private cloud, but it can be accessable from few organizations.
+
+Service models :-
+----------------
+
+1. Infrastructure as a service (IAAS)
+2. Platform as a service (PAAS)
+3. Software as a service (SAAS)
