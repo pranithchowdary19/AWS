@@ -215,3 +215,42 @@ Service models :-
 1. Infrastructure as a service (IAAS)
 2. Platform as a service (PAAS)
 3. Software as a service (SAAS)
+
+
+1. Infrastructure as a service (IAAS)
+-------------------------------------
+
+---> In IAAS provider is responisble for Network, data centres and virtualization.
+
+---> In IAAS customers are responisble for OS,Data,Application.
+
+---> AWS does'nt have any access inside your virtual machines.
+
+* Virtual Machine = Server.
+
+---> To create a vitual machine in AWS we use EC2 Service.
+
+---> EC2 ---> Elastic compute cloud. EC2 Instances.
+
+---> EC2 Instances :- It is a service to create a virtual machines.
+
+---> In AWS there is a service which acts as PAAS, That service is called ELASTIC BEAN STALK.
+
+---> ELASTICBEANSTALK ---> Easy and quick deployment of application in AWS.
+
+2. Platform as a service (PAAS)
+-------------------------------
+
+---> In PAAS provider is responisble for Network,data centres,virtualization and OS.
+
+---> In PAAS customers are responisble for data and application.
+
+---> In PAAS no need to worry about the servers, No control on the servers.
+
+3. Software as a service (SAAS)
+-------------------------------
+
+---> In SAAS every thing is providers responsibility.
+
+---> Some Eg of SAAS are gmail,whatsapp,zoom.
+
