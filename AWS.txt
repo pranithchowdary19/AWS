@@ -206,7 +206,7 @@ Deployment Models(Types of cloud) :-
 ------------------------------------
 1. Public Cloud :- The services which are accessed by everyone. Some public cloud providers are AWS,Azure,GCP.
 2. Private Cloud :- The services which are accessed within the organizations. Eg:- IBM
-3. hybrid Cloud :- The ombination of public and private cloud.
+3. hybrid Cloud :- The combination of public and private cloud.
 4. Community Cloud :- It is same a private cloud, but it can be accessable from few organizations.
 
 Service models :-
@@ -220,7 +220,7 @@ Service models :-
 1. Infrastructure as a service (IAAS)
 -------------------------------------
 
----> In IAAS provider is responisble for Network, data centres and virtualization.
+---> In IAAS, Provider is responisble for Network, data centres and virtualization.
 
 ---> In IAAS customers are responisble for OS,Data,Application.
 
@@ -253,4 +253,56 @@ Service models :-
 ---> In SAAS every thing is providers responsibility.
 
 ---> Some Eg of SAAS are gmail,whatsapp,zoom.
+
+
+
+3T's ---> Elasticity,Scalability,High Availability
+--------------------------------------------------
+
+1. Elasticity :-
+---------------
+
+---> Increasing and decreasing the number of servers based on work load.
+
+---> Elasticity is short term.
+
+---> Elasticity is achieved in aws using Auto-Scaling.
+
+---> Auto-Scaling = Scale out (Adding or increasing) and Scale In (Removing or Decreasing).
+
+---> Elasticity is also called as horizontal scaling.
+
+
+2. Scalability :- 
+-----------------
+
+---> Increasing the capacity of instances is called scalability.
+
+---> Scalability is long term.
+
+---> Scalablity = Scale Up (Increasing) and Scale Down (Decreasing).
+
+---> Scalablity is also called as vertical scaling.
+
+
+3. High Availability :-
+-----------------------
+
+---> The period of time the service is available to the customer is called high availability. If it is not available then it is called downtime.
+
+
+Redundancy ---> Keeping the same application on mutiple servers.
+
+Monitoring ---> Load balancer is monitoring the application which has health checks.
+
+---> Lb always monitor the application not server.
+
+Failover ---> It transfer the workload from primary server to secondary server in the event of failure on primary server.
+
+---> High Availablity is combination of redundancy,monitoring and failover(RMF).
+
+
+
+Regions and Availability Zone :-
+--------------------------------
 
