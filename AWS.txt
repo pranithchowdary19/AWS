@@ -262,7 +262,7 @@ Service models :-
 1. Elasticity :-
 ---------------
 
----> Increasing and decreasing the number of servers based on work load.
+---> Increasing and decreasing the number of servers(Instances) based on work load.
 
 ---> Elasticity is short term.
 
@@ -306,3 +306,44 @@ Failover ---> It transfer the workload from primary server to secondary server i
 Regions and Availability Zone :-
 --------------------------------
 
+
+
+Virtual Private Cloud (VPC) :-
+------------------------------
+---> It gives you full control over your virtual networking environment, including resource placement, connectivity, and security.
+
+---> One region can have multiple vpc's.
+
+---> Maximum we can have 5 vpc's.
+
+---> AWS ---> region ---> VPC ---> Availability zones ---> EC2 Instances.
+
+---> VPC is regional.
+
+* Every services in AWS is regional or global.
+
+
+AWS Services :-
+---------------
+
+1. EC2 - Elastic compute colud.
+
+---> In EC2 Service, We can launch EC2 Instances.
+
+---> Server = Instances(EC2 instances(VM's)).
+
+* Any service which available throughout all the regions is called global.
+
+* The service which is available only in particular region is called region.
+
+---> EC2 is regional.
+
+
+2. Elastic Load balancer(ELB) :- 
+--------------------------------
+
+---> It distributes the traffic across the multiple EC2 instances across multiple Az's (Availability Zones).
+
+---> ELB is completely managed by AWS.
+
+---> ELB is not a server it is a service.
