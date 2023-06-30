@@ -306,10 +306,48 @@ Failover ---> It transfer the workload from primary server to secondary server i
 Regions and Availability Zone :-
 --------------------------------
 
+Region :- It is geo-graphical area. Eg :- AWS ---> Region ---> Mumbai
+
+---> Region is a place where AWS has its own infrastructure(data centre).
+
+---> A region has multiple data centres.
+
+Availablity Zone :- It is simply a data center.
+
+* Availability Zone = Data center.
+
+---> A region has multiple availablity zones.
+
+---> infrastructure is placed inside the Az's.
+
+---> For each and every region and availability zone has a code.
+
+---> Mumbai ---> AP-south-1 (AP - Asia Pacific)
+
+---> There are three AZ's in mumbai.
+
+1. AP-south-1a
+2. AP-south-1b
+3. AP-south-1c
+
+---> Regions and Availability zones are managed by AWS.
+
+---> The Three Az's can communicate with each other by default.
+
+---> Az's are in sync with eachother(network), but not with data.
+
+---> Az's = Group of Data centers.
+
+---> Low Latency ---> Good
+
+---> High Latency ---> Bad
+
+---> Regions cannot communicate with eachother by default, If require yes.
 
 
 Virtual Private Cloud (VPC) :-
 ------------------------------
+
 ---> It gives you full control over your virtual networking environment, including resource placement, connectivity, and security.
 
 ---> One region can have multiple vpc's.
@@ -347,3 +385,33 @@ AWS Services :-
 ---> ELB is completely managed by AWS.
 
 ---> ELB is not a server it is a service.
+
+---> ELB doesnt have AZ's, It is created at regional level.
+
+
+3. Elastic Bean Stalk :-
+------------------------
+
+---> Easy and quick deployment of application in AWS.
+
+---> In AWS Beanstalk you have full control on the EC2 Instances launched by beanstalk.
+
+---> BeanStalk handles the EC2 instances(OS) behalf of us.
+
+
+4. Light Sail :-
+----------------
+
+---> If you want to setup and create a virtual private server which already has everything installed. Eg:- Git ;ab,node.js,Django Etc.
+
+
+5. Lambda :-
+------------
+
+---> Lambda is service which works on a function.
+
+---> Lambda is Serverless.
+
+---> It is for automation purpose
+
+Function - Set of instruction and reuse multiple times.
