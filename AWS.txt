@@ -462,3 +462,94 @@ Function - Set of instruction and reuse multiple times.
 ---> S3 is global, Bucket is regional.
 
 ---> S3 supports static website hosting(HTML Files)[Create a bucket, upload all files, enable static website hosting].
+
+
+7. Elastic Block Stroage (EBS) :-
+---------------------------------
+
+---> In AWS, we call hard disk as EBS Volume.
+
+---> EBS is a block based storage.
+
+---> In AWS, First we have to create a volume in EBS and then attach to EC2 instance.
+
+---> Volumes can be attached and detached.
+
+---> We can attach multiple volumes to EC2 instances.
+
+---> EC2 instance have default volume and that volume is called ROOT VOLUME.
+
+---> The Root volume always contains OS (Windows,Linux,MAC).
+
+---> EC2 supports only sever side OS not client side OS.
+
+---> EC2 instance can only have 1 Root volume.
+
+---> EC2 instance can have multiple additional volumes.
+
+---> What is the name of Root Volume ? ---> /dev/sda1 or /dev/xvda (Root volume always attached or mounted to /dev/sda1)
+
+---> What is the name of additional volumes ? ---> /dev/sdb,d,e,etc or /dev/xvdf,g,h and ETC.
+
+---> Maximum size of each EBS volume is 16TB
+
+---> We cannot attach a one volume to multiple EC2 instances at same time.
+
+---> Volume size can be increased on FLY (No need to stop the EC2 Instance).
+
+---> Volume size cannot be decreased.(We can only increase the size of volume but it is not possiable to decrease).
+
+QUS :- Is it possible to detach the ROOT volume while EC2 instance is running ?
+
+ANS :- No. First stop the EC2 Instance and detach the ROOT volume.
+
+Qus :- Is it possible to detach the additional volume while EC2 instance is running ?
+
+Ans :- Yes. But it is not recommended to detach while EC2 is running. Stop first and than detach.
+
+---> EC2 instance and volume should be in same AZ's.
+
+---> We cannot attach 1a volume to 1b EC2 instance.
+
+---> We can attach 1a volume to 1a EC2 instance.
+
+Elastic File System (EFS) :-
+---------------------------------
+
+---> If we have multiple EC2 instance and we want to share same file to all instances then we use this service.
+
+---> EFS is unlimited storage.
+
+---> EFS is completely managed by AWS.
+
+---> EFS is only for linux EC2 instances.
+
+---> FSX is for windows EC2 instances.
+
+---> EFS works with NFSv4 protocol.
+
+---> EFS is file based storage.
+
+---> EFS can be mounted to multiple EC2 instances at the same time across Az's.
+
+Qus :- Is it possible to attach single volume to multiple EC2 instances at the same time ?
+
+Ans :- No, but we can use EFS.
+
+Snow Family :-
+-------------------
+
+---> Snow Family is used to transfer the huge data from On-premises to AWS and vice versa.
+
+1. SnowCone ---> 8TB
+2. SnowEdge ---> 100TB
+3. SnowMobile ---> PB's (Truck)
+
+---> Snow Family is physical transfer.
+
+Glacier :-
+----------
+
+---> Glacier is only for archive purpose.
+
+---> It is cheaper than S3.
