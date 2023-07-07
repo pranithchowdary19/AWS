@@ -372,7 +372,7 @@ AWS Services :-
 
 * Any service which available throughout all the regions is called global.
 
-* The service which is available only in particular region is called region.
+* The service which is available only in particular regions is called regional.
 
 ---> EC2 is regional.
 
@@ -402,7 +402,7 @@ AWS Services :-
 4. Light Sail :-
 ----------------
 
----> If you want to setup and create a virtual private server which already has everything installed. Eg:- Git ;ab,node.js,Django Etc.
+---> If you want to setup and create a virtual private server which already has everything installed. Eg:- Git Lab,node.js,Django Etc.
 
 
 5. Lambda :-
@@ -420,7 +420,7 @@ Function - Set of instruction and reuse multiple times.
 6. S3 - Simple Storage Service :-
 ---------------------------------
 
----> S3 is unlimited storage by AWS.
+---> S3 provides the unlimited storage by AWS.
 
 ---> S3 is used to just to store the files.
 
@@ -428,9 +428,9 @@ Function - Set of instruction and reuse multiple times.
 
 ---> With S3, you can upload,dowload and access files,but cannot execute files.
 
----> Is it possible to install OS in SS3 ? ---> NO
+---> Is it possible to install OS in S3 ? ---> NO
 
----> Is it possible to install DB in SS3 ? ---> NO
+---> Is it possible to install DB in S3 ? ---> NO
 
 ---> Is it possible to run java, python in S3 ? ---> No
 
