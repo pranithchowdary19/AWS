@@ -526,7 +526,7 @@ Elastic File System (EFS) :-
 
 ---> FSX is for windows EC2 instances.
 
----> EFS works with NFSv4 protocol.
+---> EFS works with NFSv4 protocol.(NFS - Network File System, V4 - Version 4).
 
 ---> EFS is file based storage.
 
@@ -553,3 +553,63 @@ Glacier :-
 ---> Glacier is only for archive purpose.
 
 ---> It is cheaper than S3.
+
+
+8. Relational Database Service (RDS) :-
+---------------------------------------
+
+---> It is a service where we go and setup a databases.
+
+---> RDS supports only RDBMS Databases.
+
+---> RDS is not a database, It is a database service.
+
+---> RDS provides 6 database engines.
+
+1. MySql ---> Open Source
+2. Oracle ---> Oracle
+3. MSSQL ---> Microsoft
+4. PostGreSql ---> Open Source
+5. MariaDB ---> Community
+6. Aurora ---> AWS
+
+* Short cut MOMPMA
+
+---> DynamoDB - NoSql Database Service (It is used by developers).
+
+---> Database :- It is used to store the data.
+
+---> Data warehouse :- It is used to store huge data.
+
+---> Red Shift = data warehouse in AWS.
+
+---> Elastic Cache :- The frequently accessed data is stored in cache memory.
+
+---> It is database service.
+
+---> Elastic Cache has two engines.
+
+1. Redis
+2. MemCacheD
+
+
+---> Route 53 (R53) :- R53 is DNS Service in AWS.
+
+---> DNS port Number is 53.
+
+---> Direct Connect :- It is a network service that provides an alternative to using the internet to utilize AWS services.
+
+---> it enables customers to have low latency, secure and private connections.
+
+
+9. CloudFront :-
+----------------
+
+---> It is a web service that speeds up distribution of your static and dynamic web content.
+
+---> CloudFront shares your content through a worldwide network of data centres called edge locations.
+
+---> Edge Locations :-
+----------------------
+
+---> Edge locations are AWS data centers designed to deliver services with the lowest latency.
