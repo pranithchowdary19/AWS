@@ -609,7 +609,53 @@ Glacier :-
 
 ---> CloudFront shares your content through a worldwide network of data centres called edge locations.
 
+---> We need to configure edge locations using CloudFront.
+
+---> CloudFront has edge locations and EL's are connected with CDN.
+
+---> Go cloudfront and create distribution.
+
 ---> Edge Locations :-
 ----------------------
 
 ---> Edge locations are AWS data centers designed to deliver services with the lowest latency.
+
+---> Edge locations are completely managed by AWS.
+
+---> It Cache the data.
+
+Qus. How many edge locations are there in india ?
+
+Ans. Banglore,Chennai,Delhi,Hyderabad,Mumbai.
+
+---> Content Delivery Network (CDN) :- It speed up the delivery of web content by bringing it closer to where users are.
+
+---> Time To Live (TTL) :- We have application and that presents in all edge locations, Now we did a change in application, is it updated in all edge locations ? No. It takes some time is called TTL.
+
+---> If we want to reflect the changes immediately in all edge locations we need to do invalidate the cache (Delete and reload from origin).
+
+
+Root Account :- It is a main account.(Super User - SU).
+
+---> In root account we have complete access to all AWS services and resources.
+
+---> Whenever we login with Email / Password it is root account.
+
+---> Whenever we login with UserName / Password it is IAM user.
+
+* The person who provides the card details to create account is called root user, The  users who are using from that root account they are called IAM users.
+
+---> In AWS there a service called organizations. It is used to create multiple Root accounts.
+
+---> The multiple root accounts can be managed by one main root account.
+
+---> All multiple root accounts are called member accounts.
+
+---> In organizations concept we can manage multiple root accounts and can control root account permissions by using Service Control Policy (SCP).
+
+---> Identity and Access Management (IAM) :- In this service we can go and create user. This users is called IAM users.
+
+---> IAM users has limited permissions.
+
+* You can control the entire AWS using IAM by giving proper permissions to IAM users.
+
