@@ -583,7 +583,7 @@ Glacier :-
 
 ---> Red Shift = data warehouse in AWS.
 
----> Elastic Cache :- The frequently accessed data is stored in cache memory.
+---> Elastic Cache :- The frequently accessed data is stored in cache memory (In Memory Database Caching Service).
 
 ---> It is database service.
 
@@ -613,7 +613,6 @@ Glacier :-
 
 ---> CloudFront has edge locations and EL's are connected with CDN.
 
----> Go cloudfront and create distribution.
 
 ---> Edge Locations :-
 ----------------------
@@ -653,9 +652,67 @@ Root Account :- It is a main account.(Super User - SU).
 
 ---> In organizations concept we can manage multiple root accounts and can control root account permissions by using Service Control Policy (SCP).
 
----> Identity and Access Management (IAM) :- In this service we can go and create user. This users is called IAM users.
+
+---> Identity and Access Management (IAM) :-
+-------------------------------------------
+
+---> In this service we can go and create user. This users is called IAM users.
 
 ---> IAM users has limited permissions.
 
 * You can control the entire AWS using IAM by giving proper permissions to IAM users.
 
+
+
+AWS INSPECTOR :-
+----------------
+
+---> AWS inspector enables you to analyze the behavior of your AWS resources and help you to identify potential security issues.
+
+
+AWS Trusted Advisor :-
+----------------------
+
+---> It reduces the cost, Increase the performance and improve security.
+
+
+Cloud Watch :-
+--------------
+
+---> Cloud watch is used to monitor AWS resources (EC2,ELB,RDs,S3, ETC).
+
+---> Cloud watch monitors only performance.
+
+---> It has alarms.
+
+---> We have two types of monitorings
+
+1. Basic Monitoring.
+
+2. Detailed Monitoring.
+
+
+---> Basic Monitoring :- You will get the data points for every 5 mins. It is free.(Default)
+
+Eg:- 10:00 - 10:05 - 10:10 - 10:15
+
+---> Detailed Monitoring :- You will gat the data points for every 1min. It is charged.
+
+Eg:- 10:01 - 10:02 - 10:03 - 10:04
+
+
+Cloud Trail :-
+---------------
+
+---> Cloud trail monitors entire AWS environment.(Records,Monitoe,Track,Audit,Logs).
+
+---> Config :- It monitors the changes in AWS resources.
+
+
+AWS Support :-
+--------------
+
+1. Basic Support ---> Free
+2. Devloper Support ---> 100 Dollars
+3. Business Support
+4. Enterprise Support ---> 15000 Dollars.
