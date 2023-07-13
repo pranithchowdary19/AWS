@@ -428,6 +428,8 @@ Function - Set of instruction and reuse multiple times.
 
 ---> With S3, you can upload,dowload and access files,but cannot execute files.
 
+---> S3 is a object based storage.
+
 ---> Is it possible to install OS in S3 ? ---> NO
 
 ---> Is it possible to install DB in S3 ? ---> NO
@@ -441,9 +443,6 @@ Function - Set of instruction and reuse multiple times.
 ---> SNS ---> Simple Notification Service.
 
 ---> SES ---> Simple Email Service.
-
----> S3 is a object based storage.
-
 
 ---> S3 (Storage --- hardisk)
 
@@ -607,7 +606,7 @@ Glacier :-
 
 ---> It is a web service that speeds up distribution of your static and dynamic web content.
 
----> CloudFront shares your content through a worldwide network of data centres called edge locations.
+---> CloudFront shares your content through a worldwide network of data centres is called edge locations.
 
 ---> We need to configure edge locations using CloudFront.
 
@@ -642,7 +641,7 @@ Root Account :- It is a main account.(Super User - SU).
 
 ---> Whenever we login with UserName / Password it is IAM user.
 
-* The person who provides the card details to create account is called root user, The  users who are using from that root account they are called IAM users.
+* The person who provides the card details to create account is called root user, The  users who are created from that root account they are called IAM users.
 
 ---> In AWS there a service called organizations. It is used to create multiple Root accounts.
 
@@ -704,7 +703,7 @@ Eg:- 10:01 - 10:02 - 10:03 - 10:04
 Cloud Trail :-
 ---------------
 
----> Cloud trail monitors entire AWS environment.(Records,Monitoe,Track,Audit,Logs).
+---> Cloud trail monitors entire AWS environment.(Records,Monitor,Track,Audit,Logs).
 
 ---> Config :- It monitors the changes in AWS resources.
 
@@ -716,3 +715,60 @@ AWS Support :-
 2. Devloper Support ---> 100 Dollars
 3. Business Support
 4. Enterprise Support ---> 15000 Dollars.
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+
+Identity and Access Management (IAM) :-
+---------------------------------------
+
+---> Root User ---> Full Permissions.
+
+---> IAM User ---> limited Permissions.
+
+---> Permissions ---> Policies.
+
+---> IAM is free and it is global.
+
+---> For IAM user, You can attach and detach the policies/permissions anytime.
+
+---> Dont share your email amd password to others anytime. we can share root account by creating the IAM user.
+
+--> It is not recommended to use root account for daily activities or work, Instead of that use IAM user.
+
+---> MFA ---> Multi Factor Authentication (Download Google Authenticator).[It is used for secure login].
+
+
+---> MFA is highly recommneded for RooT account and IAM users as well.
+
+---> We need to setup MFA for every idividual IAM user.
+
+---> Open AWS page ---> Login with email and password ---> MFA Code ---> Login to AWS Console.
+
+
+---> There is two ways to access AWS.
+
+1. Console Access (Website)
+
+2. Programmatical Access (CLI, SDK,s, Developer Tools)
+
+
+---> In console access we can login through Email and password(Root) or username and password(IAM).
+
+
+---> In programmatical access we can login by using keys. There are two keys.
+
+1. Access Key (UserName)
+
+2. Secret Key (Password)
+
+
+---> Keys are user Specific, Every idividual IAM user have thier own keys.
+
+---> It is not recommended to share keys with anyone.
+
+---> Every IAM user can have max 2 set of keys.
+
+---> Once keys are lost, It is lost. You cannot retrive the same keys back, But we can re-generate the new keys N number of times.
+
+---> For every re-generation we get new keys. We cannot get the old keys back.
