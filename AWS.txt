@@ -444,7 +444,7 @@ Function - Set of instruction and reuse multiple times.
 
 ---> SES ---> Simple Email Service.
 
----> S3 (Storage --- hardisk)
+---> S3 (Storage)
 
 ---> Bucket (Folder)
 
@@ -730,14 +730,13 @@ Identity and Access Management (IAM) :-
 
 ---> IAM is free and it is global.
 
----> For IAM user, You can attach and detach the policies/permissions anytime.
+---> For IAM user, You can attach and detach the policies/permissions at anytime.
 
 ---> Dont share your email amd password to others anytime. we can share root account by creating the IAM user.
 
 --> It is not recommended to use root account for daily activities or work, Instead of that use IAM user.
 
 ---> MFA ---> Multi Factor Authentication (Download Google Authenticator).[It is used for secure login].
-
 
 ---> MFA is highly recommneded for RooT account and IAM users as well.
 
@@ -772,3 +771,74 @@ Identity and Access Management (IAM) :-
 ---> Once keys are lost, It is lost. You cannot retrive the same keys back, But we can re-generate the new keys N number of times.
 
 ---> For every re-generation we get new keys. We cannot get the old keys back.
+
+
+IAM Groups :-
+-------------
+
+---> IAM group is collection of IAM users.
+
+---> IAM groups are used to assign policies to bunch of IAM users at the same time.
+
+---> One IAM user can be attached to multiple IAM groups at the same time.
+
+---> Group under groups are not possible to create.
+
+---> It is possible to attach multiple policies to IAM users and groups. MAX 10
+
+---> You can attach and detach the policies to IAM users and groups at anytime.
+
+---> If we attach any user to the group, The individual policies will remains same and new policies will be inherited to IAM users.
+
+---> Policies ---> Policy documents ---> Policy document contains Permissions.
+
+* Policies / Permissions are written in JSON format.
+
+---> There are two types of policies.
+
+1. Managed Policy
+
+2. Inline Policy
+
+
+---> Managed Policy :- It is created and managed by AWS (Default templates).
+
+---> In managed templates it provides two types of templates.
+
+1. Full Access
+2. Read only
+
+
+---> Inline policy :- It is created and managed by customer.
+
+* User based permissions - Managed policy
+
+* Resource level permission - Inline policy
+
+---> ARN - Amazon Resource Name.
+
+
+IAM Roles :-
+------------
+
+---> Temporary access without credentials.
+
+---> IAM is user is used to login/access to AWS console not server/EC2 instances.
+
+---> If you dont configure the keys on linux machine, you cannot access the AWS services.
+
+---> If you configure keys on linux machine, keys are stored locally on the machine, which is not safe.
+
+---> If we use roles, there is no need to configure keys on machine.
+
+---> 1 EC2 instances can have only 1 role attached at the same time.
+
+---> 1 role can be attached to multiple EC2 instances at the same time.
+
+
+Identity Provider / Federation :-
+---------------------------------
+
+---> Single Sign On (SSO)
+
+---> All user are created in Domain Controller , Active Directory,LDAP (Server).
