@@ -813,7 +813,7 @@ IAM Groups :-
 
 * User based permissions - Managed policy
 
-* Resource level permission - Inline policy
+* Resource level permission - Inline policy (Customized Permissions)
 
 ---> ARN - Amazon Resource Name.
 
@@ -823,7 +823,7 @@ IAM Roles :-
 
 ---> Temporary access without credentials.
 
----> IAM is user is used to login/access to AWS console not server/EC2 instances.
+---> IAM user is used to login/access to AWS console not server/EC2 instances.
 
 ---> If you dont configure the keys on linux machine, you cannot access the AWS services.
 
@@ -842,3 +842,21 @@ Identity Provider / Federation :-
 ---> Single Sign On (SSO)
 
 ---> All user are created in Domain Controller , Active Directory,LDAP (Server).
+
+
+
+IAM TAGS :-
+-----------
+
+---> Tags are key & Value pair, and it contains information.
+
+---> Tags are used for identification purpose.
+
+---> Tags used to manage AWS resources.
+
+---> Per Resource = 50 Tags
+
+---> Tags are optional.
+
+
+---> https://pranithcloud19.signin.aws.amazon.com/console ---> IAM user sign in link.
