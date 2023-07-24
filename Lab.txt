@@ -88,4 +88,61 @@ IAM Access Advisor :-
 
 3. How to Delete the IAM user completely ?
 
-Ans. Login to main IAM user and select the user to delete and we find delete option on top right side, Select that option and confirm the deletion and click delete. 
+Ans. Login to main IAM user and select the user and we find delete option on top right side, Select that option and confirm the deletion and click delete.
+
+
+Policies :-
+-----------
+
+---> There are two types of policies.
+
+1. Managed Policies
+2. Inline Policies
+
+
+---> Creating Inline Policies :-
+--------------------------------
+
+---> While creating Inline policies we have visual editor and JSON.
+
+---> Visual editor means all policies are visible we just select the policies based on requirement.
+
+---> JSON means we have write code in java.
+
+
+---> In visual editor 5 access levels.
+
+1. List
+2. Read
+3. write
+4. Permissions management
+5. Tagging
+
+---> All these 5 groups are policies, We can go and select the requried policies.
+
+---> Resources :- Specify the resource ARN's for actions.
+
+
+---> Open IAM Dashboard ---> Policies ---> Create Policy ---> Select the service(IAM) ---> Access Level (Select the requried policies) ---> Resources ---> Click next ---> Give the Policy Name ---> Click Create policy.
+
+
+Roles :-
+--------
+
+---> It is used for temporary access without credentials.
+
+* We need to attach the role to service.
+
+---> While creating the role we have 5 Trusted Entity Types.
+
+1. AWS Service ---> In this we attach the role to AWS service.
+2. AWS Account ---> In this we are giving the access to 3rd party person. It has time limit.
+
+3. Web Identity ---> It is for federation (SSO)
+4. SAML 2.0 federation ---> ---> It is for federation (SSO)
+5. Custom Trust policy ---> It is for federation (SSO)
+
+
+---> Open IAM Dashboard ---> Roles ---> Create role ---> Select the Trusted Entity ---> Click Next ---> Add permissions ---> Click Next ---> Give The Role Name ---> Click Create role.
+
+---> STS - Secure Token Service.
