@@ -860,3 +860,45 @@ IAM TAGS :-
 
 
 ---> https://pranithcloud19.signin.aws.amazon.com/console ---> IAM user sign in link.
+
+
+
+Overview On DevOps :-
+---------------------
+
+---> Git - Source code management(SCM) ---> In AWS, CodeCommit.
+
+---> Maven,Ant,Gradle jenkins - Build ---> In AWS, CodeBuild.
+
+---> Selenium,Junit - Testing
+
+---> Jfrog,Nexus - Artifacts (Zip,War) ---> In AWS, S3,CodeArtifacts.
+
+---> jenkins,Bamboo,Teamcity,Circle CI - Deployment ---> In, AWS, CodeDeploy
+
+Qus. Where we do the deployment ? In Ec2 Instances,Physical Server. without these we can deploy it in docker or K8's.
+
+---> Docker  ---> In AWS, ECS - Elastic Container Service.
+
+* Handling the multiple containers is called cluster.
+
+* Managing the multiple clusters we use DockerSwarn Service.(Micro services)
+
+
+---> Kubernetes or K8's ---> It is new tech, That can easily handles the multiple clusters. In AWS, EKS - Elastic Kubernetes Service.
+
+
+---> CI/CD (Continuous Intergration / Continuous Deployment)[Pipeline] ---> All the above process is CI/CD.
+
+
+---> IAAC (Infrastructure as a code) :- Here we use Teraform,Cloudformation.
+
+---> In IAAC, everything is through the code.
+
+
+---> Anisble,Chef,Puppet ---> Configuration Management
+
+* In Anisble we write the code in YAML that are called Playbooks.
+
+
+---> Nagios,Splunk,Datadog ---> Monitor.
