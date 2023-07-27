@@ -868,7 +868,7 @@ Overview On DevOps :-
 
 ---> Git - Source code management(SCM) ---> In AWS, CodeCommit.
 
----> Maven,Ant,Gradle jenkins - Build ---> In AWS, CodeBuild.
+---> Maven,Ant,Gradle,jenkins - Build ---> In AWS, CodeBuild.
 
 ---> Selenium,Junit - Testing
 
@@ -902,3 +902,134 @@ Qus. Where we do the deployment ? In Ec2 Instances,Physical Server. without thes
 
 
 ---> Nagios,Splunk,Datadog ---> Monitor.
+
+
+EC2 - Elastic Compute Cloud :-
+------------------------------
+
+---> EC2 is web service that provides resizable compute services in the cloud.
+
+---> Resizable-Scale Out/Scale In(Elasticity) or Scale up / Scale Down (Scalability).
+
+---> It is free for one year. 750 Hours/per month. 
+
+---> With EC2 instances we can
+
+1. Launch
+2. Running ---> Bill
+3. Stop ---> No Bill
+4. Start ---> Bill
+5. Reboot
+6. Terminate (Kill or Destroy) ---> No Bill
+
+
+Pricing Models In AWS :-
+-------------------------
+
+1. On-Demand Instances
+2. Reserved Instances
+3. Spot Instances
+4. Savings Plan
+
+On-Demand Instances :- 
+----------------------
+
+---> Pay as you use. (Fixed Price - Hourly)
+
+---> we have to pay for every 1 Hours.
+
+---> No Commitments.
+
+---> No Upfront Payment (No Advance Payment).
+
+---> No Predictable Usage.
+
+
+Reserved Instances :-
+---------------------
+
+---> Long Term Commitment. (1 to 3 years)
+
+---> Upfront Payment (We have to pay advance). we can pay full payment or partial(Half) payment.
+
+---> We can get 75% discount on hourly price.
+
+---> Predictable Usage.
+
+---> In reserved instance there are 3 types.
+
+1. Standard reserved instance  --- 75% discount
+
+2. Convertiable reserved instance --- To change the capacity of instances at anytime.
+
+3. Schedule reserved instance --- Reserve it for fraction of a day,a week or a month.
+
+
+
+Spot Instances :-  
+-----------------
+
+---> Bidding, Auctioning
+
+---> Huge capacity instances for cheaper price.(Almost 90% discount)
+
+---> Huge work with limited time than choose spot instance.
+
+
+Savings Plan :-
+---------------
+
+---> It is somewhat related to reserved instance.
+
+
+Dedicated Host :-
+-----------------
+
+---> If any customer need dedicated physical machine than we use this dedicated host.
+
+
+
+EC2 Families or Instance Types :-
+---------------------------------
+
+---> Instance types are combinations of CPU, memory, storage, and networking capacity and give you the flexibility to choose the appropriate resources for your applications.
+
+ ---> There are many instances, we can choose based on your requirement.
+
+1. General Instances ---> For general purpose.
+
+2. Memory Instances ---> If we need more memory.
+
+3. CPU Instances ---> More CPU.
+
+4. Storage Instances ---> For More Storage.
+
+5. GPU instances ---> For graphics and heavy machines.
+
+
+* Every family has thier own different instance types.
+
+---> Scalability is acheived by changing the instance types.
+
+---> Anytime - ScaleUp --> No data lost.
+
+---> Anytime - ScaleDown --> No data lost.
+
+Qus. Is it possible to increase/decrease the instance type while EC2 is running ?
+
+Ans. No, First we have to stop EC2 instance and than increase/decrease the instance type.
+
+
+---> If we change the instance type, Data in the instance will not be lost. (Because for every EC2 instance we attach EBS volume, So data is inside the volume).
+
+
+Burstable Performance Instances :-
+----------------------------------
+
+---> Burstable mode gives you a high performance for limited time period only.
+
+---> It provides the CPU credits.
+
+---> It is just a check box, we need to enable it.
+
+---> It supports only t2 and t3 instances.
