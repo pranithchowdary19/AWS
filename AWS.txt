@@ -936,7 +936,7 @@ On-Demand Instances :-
 
 ---> Pay as you use. (Fixed Price - Hourly)
 
----> we have to pay for every 1 Hours.
+---> The bill is generated for  every 1 Hours.
 
 ---> No Commitments.
 
@@ -1033,3 +1033,163 @@ Burstable Performance Instances :-
 ---> It is just a check box, we need to enable it.
 
 ---> It supports only t2 and t3 instances.
+
+
+Volumes :-
+----------
+
+---> There are two types of volumes.
+
+1. EBS volume
+2. Instance Store Volume
+
+
+EBS Volume :-
+-------------
+
+---> EBS volume is perisistent storage / permanent storage.
+
+---> Perisistent = If we STOP and START the EC2 Instance, Data will not be lost.
+
+---> Reboot = No data lost.
+
+---> EBS volume max size is 16TB.
+
+---> EBS is chargable.
+
+
+Types of EBS Volumes :-
+-----------------------
+
+---> There are 5 types
+
+1. General Purpose
+2. Provisioned IOPS
+3. Throughput
+4. Cold
+5. Magnetic
+
+
+1. General purpose :- GP2,GP3 - SSD - General purpose (1GB-16TB)
+
+---> GP2 is the default volume.
+
+---> GP2 has default IOPS = 1:3(For 1GB we get 3 IOPS)
+
+---> For GP2 IOPS is not configurable.
+
+
+2. Provisioned IOPS :- IO1,IO2 - SSD - High performance (4GB - 16TB) - Expensive.
+
+---> IOPS - Input Output Per Second.
+
+---> IO1, IO2, GP3 are IOPS configurable.(We can input the IOPS values)
+
+
+3. Throughput :- ST1 - HDD - Frequently accessed data with cheaper price (500GB-16TB)
+
+
+4. Cold :- SC1 - HDD - Not frequently accessed data with cheaper price (500GB - 16TB)
+
+
+5. Magnetic :- Standard - HDD - Previous Generation(Old model) - (1GB - 1TB)
+
+
+---> Root volume supports these volume types GP2,GP3,IO1,IO2,Standard.
+
+---> Root volume does'nt support St1 and Sc1.
+
+---> Additional volumes supports all types of volumes.
+
+
+
+Instance Store Volume :-
+------------------------
+
+---> Instance store volume is not persistent storage / Temporary volumes.
+
+---> Not Persistent = If you STOP and START the EC2 Instance, Data is lost / deleted.
+
+---> Instance Store volumes are Free.
+
+---> Instance store volumes are also known as emphemeral storage.
+
+---> Reboot = data is Not LOST.
+
+
+* If you terminate the EC2 Instance, By default ROOT volume will also be deleted. Because "Delete on termination" option is enabled.
+
+* If you terminate the EC2 Instance, By default Addtional volumes will not be deleted. Because "Delete on termination" option is not enabled.
+
+
+Qus. In Instance store volume there is any option to select the storage size ?
+
+Ans. NO, Based on instance(T2,T3) type you select mostly big machines, You will get instance store volumes automatically attached by AWS.
+
+
+
+EBS :-
+
+---> Stop and start ---> Jump ---> No Data Lost.
+
+---> In EBS, if we stop the EC2 instance it jumps to another host.
+
+---> Reboot ---> No Jump ---> No data lost.
+
+---> Terminate ---> Data is Lost.
+
+
+Instance store Volume :-
+
+---> Stop and Start ---> jump ---> Data is Lost.
+
+---> In instance store volume, The local hardisk is attached to EC2 instance. If we stop EC2 instance then EC2 instance jumps but hardisk is not possible to jump.(Thats the reasons why data is lost in instance store volume).
+
+---> Reboot ---> No jump ---> No data lost.
+
+
+
+SNAPSHOTS :-
+------------
+
+---> Snapshot is a point in time copy of the volume.
+
+---> The backup of the volume is called snapshot.
+
+---> Is Snapshot is full backup or Incremental backups ? Incremental Backups.
+
+---> Snapshots are created from EBS volumes.
+
+---> EBS Volume ---> EBS Snapshot ---> EBS volume.
+
+---> You cannot attach snapshots directly to the EC2 instances, you have to create a volume out of snapshot first and then attach volume to EC2 instance.
+
+---> Is it possible to login or use snapshots directly ? No.
+
+---> Snapshots are stored in S3 (providers S3).
+
+---> Snapshots doesnt have any availablity zones.
+
+---> Snapshots are regional.
+
+---> By default snapshots are private, If required we can make it public.
+
+---> You can copy the snapshots from one region to another region in the same account.
+
+---> Snapshots can be shared from one AWS account to another AWS account by using AWS account ID (Private).
+
+---> EBS volumes are created from EBS snapshots. Instance store volumes are created from a template store in S3.
+
+---> To create a snapshots we no need to stop EC2 instance.
+
+---> By default volumes and snapshots are  not encrypted.
+
+1. Not encrypted - Not encrypted
+
+2. Encrypted - Encrypted
+
+3. Not encrypted - Encrpted (Copy option)
+
+---> All encryption keys are stored in KMS (Key management service).
+
+---> Encryption and decryption is completely managed by AWS.
