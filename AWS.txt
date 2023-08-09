@@ -54,7 +54,7 @@ Types of client server architecture :-
 
 
 Qus - How the application server and database server are communicate ?
-Ans - Devices communicate with each other in the network with IP ADDRESS and HOSTNAME.
+Ans - Devices can communicate with each other in the network with IP ADDRESS and HOSTNAME.
 
 ---> IP :- Internet protocol - IP is a unique identifier for device in the network.
 
@@ -1193,3 +1193,133 @@ SNAPSHOTS :-
 ---> All encryption keys are stored in KMS (Key management service).
 
 ---> Encryption and decryption is completely managed by AWS.
+
+
+Images :-
+---------
+
+---> Copy of the OS is called image.
+
+---> Image = AMI - Amazon Machine Image.
+
+---> The template of the OS is called AMI.
+
+* Snapshot - Copy of the volume. AMI - Copy of the entire EC2 instance  (including volumes).
+
+---> Copy of image includes all configurations that we did on original instances.
+
+---> EC2 Instance ---> Image(AMI) ---> EC2 Instance.
+
+---> One AMI, can be used multiple times to launch multiple EC2 instances.
+
+---> AMI's are re-usable.
+
+---> AMI doesnt have availablity zones.
+
+---> You cannot login directly to AMI, Instead of launch the EC2 instance from the image and login to EC2 instance.
+
+---> By default AMI's are private, If require you can make it public.
+
+---> AMI's regional.
+
+---> AMI's can be copied from one region to another region.
+
+---> AMI can be shared from one AWS account to another AWS account.
+
+---> All public images are located at AWS market place.
+
+---> If you customized the application on OS and then take the image is called custom AMI or Golden AMI.[Custom AMI- Manual, Golden AMI - Automatic].
+
+
+---> Any AMI which are automatically created by image builder is called golden AMI.(EC2 image builder Pipeline)
+
+---> There is a EC2 instance which has two volumes(Root volume and additional volume), When ever you taking the image from this EC2 instance then snapshot also crated automatically.(if we have two volume then we get two snapshots).
+
+---> We can also create a image from root volume snapshot.
+
+---> There is no need to stop EC2 instance to create a image.
+
+
+Cluster Networking instances :-
+-------------------------------
+
+---> Cluster - Group of EC2 instances, This group is called placement group.
+
+---> There are three types of groups.
+
+1. Cluster placement group.
+
+2. Spread placement group.
+
+3. Partition placement group.
+
+
+1. Cluster placement group :- Grouping the instances in same AZ's.
+
+---> High performance, But low High availability.
+
+2. Spread placement group :- Spread the EC2 instances across the multiple Az's.
+
+---> Low performance, But high availability.
+
+---> Per 1 Az = 7 Instances.
+
+3. Partition Placement group :- 1 partition can contains 100's of EC2 instances.
+
+---> Across multiple Az's. Max partitions are 7.
+
+
+---> Placement group recommeds to have homogenous(Same) instances.
+
+---> You can add instances to the placement group anytime.
+
+
+
+Key-Pair :-
+-----------
+
+---> key-pair is used to retrive the password of EC2 instance.
+
+---> Key-pair is combination of public key and private key.AWS has public key,customer has private key(PEM file).
+
+---> The default username for windows EC2 instance is "ADMINISTRATOR".
+
+---> The default username for linux EC2 instance is "EC2-user".
+
+---> We dont have any key-pair by default, We have to create it by overselves.
+
+---> Key-pair is also known as PEM file. key-pair extention is .pem.
+
+---> Whenever we create a EC2 instance, The console will ask you to create and attach the key-pair to EC2 instance.
+
+---> You can create multiple key-pairs.
+
+---> One key-pair can be attached to multiple EC2 instances at the same time.
+
+---> EC2 instance can have only one key-pair attached at any point.
+
+---> For every EC2 instance the password is unique.
+
+---> Everytime you retrive the password using PEM file, you will get the same password from EC2 instance.
+
+---> Once the PEM file is attached to EC2 instance,You cannot change the PEM file.
+
+---> Keep the PEM file safe and secure. Once its get lost we cannot retrive back.
+
+---> Windows instance ---> Adminstrator(username) / PEM file(Password).Protocol - RDP
+
+---> For windows, We use remote desktop protocol client.
+
+---> Linux instance ---> EC2-user(username) / PEM file(Password).Protocol - SSH.
+
+---> For Linux, We use Putty.
+
+---> Putty doesnt support PEM file. It supports PPK file. To get PPk file we use a tool called putty generator.
+
+
+* If we lost the PEM file ---> We have two EC2 instances 
+
+1. A-EC2 instance
+2. B-EC2 instance
+
+---> If we lost the PEM file A-Ec2 instance then detach the root volume of A-EC2 instance and attach it to B-EC2 instance as a additional volume. In that volume one parameter should be change in single file. After changing that file detach it from B-EC2 instance and again attach it to A-EC2 instance as root volume.
