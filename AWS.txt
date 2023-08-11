@@ -1195,7 +1195,7 @@ SNAPSHOTS :-
 ---> Encryption and decryption is completely managed by AWS.
 
 
-Images :-
+Images :-  Backup of complete EC2 instance.
 ---------
 
 ---> Copy of the OS is called image.
@@ -1323,3 +1323,133 @@ Key-Pair :-
 2. B-EC2 instance
 
 ---> If we lost the PEM file A-Ec2 instance then detach the root volume of A-EC2 instance and attach it to B-EC2 instance as a additional volume. In that volume one parameter should be change in single file. After changing that file detach it from B-EC2 instance and again attach it to A-EC2 instance as root volume.
+
+
+
+Security Groups :-
+------------------
+
+---> Firewall - Security group (Allow/Deny).
+
+---> Security group acts like a firewall to secure the EC2 instance.
+
+---> Security group stops the unauthorized access to EC2 instance.
+
+* AWS ---> Region ---> VPC ---> NACL ---> SG ---> EC2
+
+---> Security group has two types of rules.
+
+1. Inbound Rule.
+
+2. Outbound Rule.
+
+
+Inbound Rule :- Which allows the traffic towards the EC2 instance.
+
+---> By default inbound rules are deny.
+
+Outbound Rule :- Which sends the traffic outside the EC2 instance.
+
+---> By default outbound rules are allowed.
+
+Qus. Is it possible to deny protocols in security group  ? NO (Because by default inbound rules are deny).
+
+---> In security group, you can only allow protocols, But not deny.
+
+---> Every EC2 instance must have atleast 1 security group attached.
+
+---> You can create multiple security groups and you can attach it to single EC2 instance.
+
+---> AWS EC2 has default security group.
+
+* RDP(3389) :- It is used to login/connect remotely to windows EC2 instance.
+
+* SSH(443) :- It is used to login/connect remotely to linux EC2 instance.
+
+* Http / Https :- It is used to access the application.
+
+---> 1 EC2 instance can have multiple security groups attached.
+
+---> 1 Security group can be attached to multiple EC2 instances.
+
+Source - In source there are three types
+
+1. Custom - Cutomized
+
+2. Anywhere - For everyone
+
+3. Myip - Access only to you.
+
+---> If you allow any inbound rules, you no need to allow that on outbound rules, This is called Statefull (Security groups are statefull).
+
+---> If you allow any inbound rules, you have to allow that on outbound rules, This is called Stateless (NACL ---> stateless).
+
+
+NACL - Network Access Control List :-
+-------------------------------------
+
+---> Another layer of security for EC2 instance.
+
+---> If you want to tight the security than go with NACL
+
+---> Like security group, NACL also has inbound and outbound rules.
+
+---> NACL will hit first and then security group.
+
+---> 1 subnet cannot be in multiple AZ's at the same time.
+
+---> 1 AZ can have multiple subnets.
+
+---> Security group is EC2 instance level and NACL is subnet level.
+
+---> 1 subnet cannot be in multiple NACL's
+
+---> 1 NACL can have multiple subnets.
+
+
+
+Security groups VS NACL :-
+--------------------------
+
+Security group :-
+-----------------
+
+---> Inbound and outbound rules.
+
+---> Default security group.
+
+---> security group will hit after NACL.
+
+---> By default, Inbound rules are deny.
+
+---> You cannot deny on security group.
+
+---> Security groups are EC2 instance level.
+
+---> If you create any security group, Inbound rules are deny and outbound rules are allowed.
+
+---> Security group is statefull.
+
+---> If you allow any inbound rules no need to allow that on outbound rules.
+
+
+NACL :-
+-------
+
+---> Inbound and outbound rules.
+
+---> Default NACL.
+
+---> NACL will hit first and then security group.
+
+---> By default, Inbound and outbound rules are allowed.
+
+---> On NACL, you can deny and allow also.
+
+---> NACL are subnet level.
+
+---> If you create new NACL, all inbound and outbound rules are deny.
+
+---> NACL are stateless.
+
+---> If you allow any inbound rules, you must allow that on outbound rules.
