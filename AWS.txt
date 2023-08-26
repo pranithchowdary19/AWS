@@ -678,7 +678,7 @@ AWS Trusted Advisor :-
 Cloud Watch :-
 --------------
 
----> Cloud watch is used to monitor AWS resources (EC2,ELB,RDs,S3, ETC).
+---> Cloud watch is used to monitor AWS resources (EC2,ELB,RDS,S3, ETC).
 
 ---> Cloud watch monitors only performance.
 
@@ -724,7 +724,7 @@ Identity and Access Management (IAM) :-
 
 ---> Root User ---> Full Permissions.
 
----> IAM User ---> limited Permissions.
+---> IAM User ---> Limited Permissions.
 
 ---> Permissions ---> Policies.
 
@@ -1233,11 +1233,11 @@ Images :-  Backup of complete EC2 instance.
 
 ---> Any AMI which are automatically created by image builder is called golden AMI.(EC2 image builder Pipeline)
 
----> There is a EC2 instance which has two volumes(Root volume and additional volume), When ever you taking the image from this EC2 instance then snapshot also crated automatically.(if we have two volume then we get two snapshots).
+---> There is a EC2 instance which has two volumes(Root volume and additional volume), When ever you taking the image from this EC2 instance then snapshot also created automatically.(if we have two volume then we get two snapshots).
 
 ---> We can also create a image from root volume snapshot.
 
----> There is no need to stop EC2 instance to create a image.
+---> There is no need to stop EC2 instance to create an image.
 
 
 Cluster Networking instances :-
@@ -1296,7 +1296,7 @@ Key-Pair :-
 
 ---> One key-pair can be attached to multiple EC2 instances at the same time.
 
----> EC2 instance can have only one key-pair attached at any point.
+---> 1 EC2 instance can have only one key-pair attached at any point.
 
 ---> For every EC2 instance the password is unique.
 
@@ -1326,7 +1326,7 @@ Key-Pair :-
 
 
 
-Security Groups :-
+Security Groups :-  AWS ---> Region ---> VPC ---> NACL ---> SG ---> EC2
 ------------------
 
 ---> Firewall - Security group (Allow/Deny).
@@ -1453,3 +1453,240 @@ NACL :-
 ---> NACL are stateless.
 
 ---> If you allow any inbound rules, you must allow that on outbound rules.
+
+
+Auto Scaling :-
+---------------
+
+---> Scale out and scale in the EC2 instances based on workload.
+
+---> ELB has health checks.
+
+---> ELB does the health checks for the application.
+
+---> Cloud watch monitors the EC2 instance.
+
+---> Three types :-
+
+1. Maximum
+2. minimum
+3. Desire
+
+Maximum :-
+----------
+
+---> The maximum number of EC2 instances that the auto-scaling group should have. Eg:- Max - 6 EC2 instances.
+
+Minimum :-
+----------
+
+---> The minimum number of EC2 instances that the auto-scaling group should have. Eg:- Min - 2 EC2 instances.
+
+Desire Capacity :-
+------------------
+
+---> The number of EC2 instances that you wish or desire to launch initially.
+
+
+---> Threre are three types of scaling options.
+
+1. Manual Scaling
+2. Scheduled Scaling
+3. Dynamic Scaling
+
+
+---> Manual Scaling :- If you are manually modifying DC,Min,Max is called manual scaling.
+
+
+---> Scheduled Scaling :- Based on time period or a day. (If we have huge traffic on weekend than schedule it for that days. Eg:- Shopping app has offers on weekends).
+
+
+---> Dynamic Scaling :- Based on the work load. (CPU,Network,ELB request count) --> Metrics(Cloudwatch).
+
+
+* If we have huge traffic to servers, now scale out will happen one new EC2 instance will launch and automatically the application is in that newly created EC2 instance how is that possible? Image(AMI).
+
+
+Lauch Configurations :-
+-----------------------
+
+---> The launch configurations contains all seven steps to launch EC2 instance in a template form. (AMI(Application), Volumes, SG, Key-pair, Tags, instance types, ETC).
+
+
+
+Elastic Load Balancer :-
+------------------------
+
+---> It distributes the traffic accross the multiple Ec2 instances accross AZ's.
+
+---> ELB is completely managed by AWS.
+
+---> ELB is a service in AWS, It is not a server.
+
+---> ELB can be accessed via URL(DNS Name), You cannot login to the ELB.
+
+---> ELB has the IP address, But these are dynamic.
+
+---> AWS always recommended to use ELB DNS name not IP address.
+
+---> ELB has dynamic IP addresses, If you want static IP address contact AWS support.
+
+* Dynamic ---> Changes.
+
+* Static ---> Fixed.
+
+
+Types of Load Balancers :-
+--------------------------
+
+1. Application Load Balancer (ALB) :-
+
+---> Latest generation (Version)
+
+---> Supports HTTP and HTTPS.
+
+---> Default choose is ALB.
+
+2. Network Load Balancer (NLB) :-
+
+---> Latest generation (Version)
+
+---> Supports TCP
+
+---> Extreme High Performance 
+
+---> Network Level.
+
+---> Supports Static IP Addresses.
+
+3. Classic Load Balancer (CLB) :-
+
+---> Previous Version(Old)
+
+---> Supports HTTP,HTTPS and TCP.
+
+4. Gateway Load Balancer (GLB) :-
+
+---> Latest generation (Version)
+
+---> Security Level.
+
+
+---> In Application load balancer there are two Routing features.
+
+1. Host Based Routing
+
+2. Path Based Routing
+
+---> In ALB there is a feature called target group.
+
+---> We can create multiple target groups.
+
+---> Target group contains targets. Targets are nothing but a EC2 instances.
+
+Eg :- Target Group - boom-TG
+
+      Targets - EC2 Instances
+
+---> In ALB we have rules. there are host and path based routing rules.
+
+
+---> Host Based Routing :- Allows you to write rules that use the Host header to route traffic to the desired target group.
+
+---> Path Based Routing :- It will forward the requests to the specific targets based on the Rules configured in the load balancer.
+
+
+
+Types Of IP's :-
+----------------
+
+---> There are three types of IP'S
+
+1. Public IP (Dynamic)
+2. Private IP (Mandatory)
+3. EIP (Elastic IP)
+
+
+Public IP :-
+------------
+
+---> Which can be accessed from the internet.
+
+---> Public IP is optional.
+
+---> Public IP is dynamic, If STOP and START the EC2 instance public IP will be changed.
+
+---> AWS assigns public IP's to the instances.
+
+
+Private IP :-
+-------------
+
+---> Which cannot be accessed from internet.
+
+---> Private IP is mandatory.
+
+---> This is used within the VPC.
+
+
+Elastic IP :-
+-------------
+
+---> Same as public IP.
+ 
+---> But EIP is static, If you STOP and START the EC2 instance IP wont be changed.
+
+---> EIP are charged. 5 EIP's are free.
+
+---> EIP is assigned to EC2 instance not load balancer.
+
+---> EIP has to be associated to EC2 instances, If you not associate EIP to any instance, It will be charged. If those EIP's are even below 5 also, Dont keep it idle.
+
+---> Idle EIP's are charged.
+
+
+Instance Meta Data :-
+---------------------
+
+---> Information(data) about instance.
+
+---> From console, you can get the instance metadata from Description section.
+
+---> hhtp://169.254.169.254/latest/meta-data/ ---> CLI
+
+
+User-Data :- Boot Strap Scripting.
+
+---> The script which you provide will run at the boot time of EC2 instance.
+
+---> For linux ---> Shell Script
+
+---> For Windows ---> Powershell.
+
+---> The seven step to launch EC2 instance
+
+1. AMI
+2. Instance Type
+3. Configuration (Scripting)
+4. Storage
+5. Security Group
+6. Tags
+7. Review / Key-pair
+
+
+Global Accelerator :-
+---------------------
+
+---> It has two static IP's.
+
+---> It is completely managed by AWS.
+
+---> Global accelerator will not cache. 
+
+---> CDN will cache. 
+
+---> Customer ---> GA ---> ELB (We can connect ELB directly throught GA)
+
+---> Customer ---> Edgelocation ---> CDN ---> GA ---> ELB.
+
+---> It is charged.
