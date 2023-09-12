@@ -38,7 +38,7 @@ top right side. Select that option.
 ---> In Third step, It shows a review and permissions summary and tags. we can add tags if need. On right down side there is a option called create user, If we select that then user is created.
 
 
----> At last, We can download the user credentials in exexl format or we email that creditials to user.
+---> At last, We can download the user credentials in excel format or we email that creditials to user.
 
 
 2. How to disable the console access to IAM user ?
@@ -200,3 +200,372 @@ Roles :-
 ---> Maximum duration is 12 hours.
 
 ---> STS - Secure Token Service.
+
+
+
+EC2 Service :-
+--------------
+
+---> Login to console and search for EC2. Select EC2 and enter into EC2 Dashboard.
+
+---> There we see the launch Instance option select that option.
+
+---> There we have to give the configurations for everystep.
+
+1. Name and Tags
+
+---> This is the first step to launch the EC2 instance.
+
+---> Give the name and tag to EC2. Eg :- MyFirstInstance.
+
+
+2. Application and OS Images
+
+---> Here we find the number of instance types, we can choose based on your requirement.
+
+---> We choose t2 micro which is free tier (AMI).
+
+---> We choose OS as REDHAT Linux free tier.
+
+3. Key Pair
+
+---> If we did not have a key pair than create it and attach it.
+
+4. Network Settings
+
+---> VPC - Select the VPC default
+
+---> Subnet - Choose the AZ based on requirement. For 1A we 4091 IP addresses.
+
+---> Auto-Assign Public IP - Choose enable.
+
+--> Firewall (Security groups) :- Select the default security group.
+
+
+5. Configure Storage
+
+---> Select the volume size based on requirement.
+
+---> We can also add the additional volumes.
+
+
+6. Advance details
+
+
+Configure Instance Details :-
+-----------------------------
+
+---> Number Instance - We can launch the N number of instances at a time.
+
+---> Purchasing option -  Enable the request Spot Instances option. After enabling we can see the biding instances.
+
+---> Network - Here we can select the VPC. We have default VPC select that.
+
+---> Subnet - Here we can select the Availablity zone. AP-South-1a has 4091 ip addresses available.
+
+---> Auto-Assign Public IP - Select enable option (If you are on internet enable it, If you are sitting in company disable it)
+
+---> Hostname Type -
+
+---> DNS Hostname -
+
+---> Placement Group - If we want to attach instance to placement group than enable the option "Add instance to placement group".
+
+---> Capacity resevation - None
+
+---> Domain Joint Directory - Having multiple instances and adding all instances to single directory.(Directory Services)
+
+---> IAM Role - Attach the role to EC2 instance.
+
+---> Shutdown Behavior - Here we two options stop and terminate. Whenever we shutdown the EC2 instance the selected option will be the performed. (Chooses STOP option).
+
+---> Stop-Hibernate Behavior - It is nothing but a sleep mode.
+
+---> Enable Termination Protection - It is used to protect against the accidental termination.
+
+---> Monitoring - It enables the detailed monitoring. (Charged)
+
+---> Tenancy - Pricing models (Shared and dedicated). Enable the shared.
+
+---> Credit Specifications - Burstable performance instances.
+
+---> File System - EFS
+
+Network Interfaces :-
+---------------------
+
+---> Eth0 - Private IP
+
+---> Eth1 - Default Public IP. If we assign private IP then it is not possible to give public IP.
+
+Advanced Details :- 
+-------------------
+
+---> Enclave - It is related to nitro enclaves. If we process the highly sensitive data within the EC2 instance than enable the option.
+
+---> Metadata Accessible - We can Enable/Disable. We can see the metadata information if we enable it.
+
+---> Metadata Version - Keep it default.
+
+---> Metadata token response hop limit - Keep it default
+
+---> Allow tags in matadata -  Keep it default
+
+---> User data - Here we use scripting. (Boot Strap scripting)
+
+
+After launching the EC2 instance :-
+-----------------------------------
+
+---> After launching the EC2 it has six states.
+
+1. Pending - Running (launching)
+
+2. Stopping - Stoped (Stop)
+
+3. Shuting down - Terminated (Kill or Terminate)
+
+
+---> If we select the launched EC2 instance in below we get the description section. There we find all the metadata about instance.
+
+---> Instance ID, Instance type, VPC ID, Subnet ID, Public IP, Public DNS name, Private IP, Private DNS name, Elastic IP Address.
+
+
+---> If we stop and start the EC2 instance is public ip is change or not ? Yes
+
+* If we stop and start the EC2 instance, Public ip is changes and also public DNS name also changes along with it.
+
+
+Status Checks :-  There are two types of checks.
+
+1. System Status Check - It checks the hardware of the EC2 instance.
+
+2. Instance Status Check - It checks the software and network configurations.
+
+---> If any of status checks will fail we are unable to login to EC2 instance. we have to pass both status checks.
+
+---> If any check will fail, Just Stop and Start the EC2 instance.
+
+
+* If we reboot the EC2 instance instance state wont be changed. It shows running state only.
+
+
+---> Instance Actions :- Select the instance and right click on that instance we get some actions.
+
+---> Launch Instance from Template - We can launch the N number of instances with same configurations.
+
+---> Instance Settings ---> Attach to auto scaling group - If we have any auto scaling group we can attach EC2 instance to that group.
+
+---> Instance Settings ---> Change Termination Protection - It protects from acceidental termination of Ec2 instance.
+
+---> Instance Settings ---> Edit User Data - To edit user data first we have to stop the EC2 instance. (Scripting)
+
+---> User data only edited for one time or first time. Not again and again.
+
+---> Instance Settings ---> Change credit specifications - Burstable performance instance, we can enable cpu credits.
+
+---> Get Instance Screenshot - To know the condition of EC2 instance.
+
+* Is it possible to change the security groups while EC2 is running ? Yes...!
+
+---> If we change any rule in security group it will affect immediately.
+
+
+Process To Launch Windows EC2 Instance :-
+-----------------------------------------
+
+---> Open AWS console ---> Search for EC2 ---> There we see launch instance option ---> Fill all configurations and press launch instance.
+
+---> After launching the instance ---> Allow the RDP protocol on security groups ---> decrypt the keypair (Give a right click on instance than some options will appear goto to security ---> Get windows password ---> Here upload the private key file(Keypair) ---> Press Decrypt password than we get the password).
+
+---> Copy the public IP and paste it in remote desktop press connect ---> Give the credentials (UserName - Administrator / Password - Copy the password that we get) ---> Press connect (Now we're in windows EC2 instance).
+
+
+
+Process to launch Linux EC2 Instance :-
+---------------------------------------
+
+---> Open AWS console ---> Search for EC2 ---> There we see launch instance option ---> Fill all configurations and press launch instance.
+
+---> After launching the instance ---> Allow the SSH protocol on security groups --->  Open the putty generator and select load option ---> Select the keypair (PEM File converting to ppk file) ---> Select the save private key option (Give a name newly created ppk file and save it).
+
+---> Now open Putty and there we give IP address (Copy the public IP from linux instance from description section) ---> On putty we find SSH ---> Auth ---> Credentials (Upload the ppk file there and press open option)
+
+---> Now give the credentials (UserName - ec2-user / password will automatically taken) .
+
+
+Image :-
+--------
+
+---> Process to launch the EC2 instance from AMI(Image) :-
+
+--> How to create an Image ?
+
+---> Open AWS console ---> Search for EC2 ---> There we see launch instance option ---> Fill all configurations and press launch instance.
+
+
+---> After launching the EC2 instance goto actions ---> Image and Templates ---> Create Image.
+
+---> After selecting the create image than give the image name and fill the details.
+
+---> There we see No reboot option - if we enable that option --> while taking the image the instance wont get restart in middle.
+
+---> While creating an image, we can also add an additional volumes.
+
+
+Image Actions :-
+----------------
+
+---> Launch Instance from AMI - We can launch the new EC2 instance from this AMI.
+
+---> If we select this, This will take directly to 2nd step.
+
+---> Deregister AMI - Deleting the AMI.
+
+---> Copy AMI - We can encrypt the image that is not encrypted.
+
+---> We can copy the AMI from one region to another region.
+
+---> Edit AMI Permissions - We can share the AMI from one account to another account.
+
+---> By default AMI are private, We can make public here.
+
+---> Register instance store-backed AMI - If we are migrating the on-premises virtual machine to AWS.
+
+
+* Difference between launch template and image.
+
+---> Launch template - Template has all seven steps completed. It doesnt include data.
+
+---> Image - Image is one step. It includes data.
+
+
+Snapshot Actions :-
+-------------------
+
+---> While creating the image automatically snapshots also created.
+
+---> We find snapshots in snapshots section.
+
+---> Create a volume from snapshot - We can create a new volume from this snapshot.
+
+---> Create a image from snapshot - We can create a image a from root volume snapshot.
+
+---> Copy snapshot - Copy the snapshot from one region to another region
+
+---> Modify permissions - We can share the snapshot from one AWS account to Another AWS account.
+
+---> Mange fast snapshot restore - To restore a larger size snapshot quickly. And it is charged.
+
+---> If we have snapshot with 1TB and we want create volume out of it. So it will take so much time. To create volume quickly than we use this option.
+
+---> Archive Snapshot - 
+
+---> Restore Snapshot from archive - 
+
+
+* We cannot share the encrypted snapshot to others account. Because the encrypted keys are with us.
+
+
+Recycle Bin :- Recycle bin contains the retention rules.
+
+Retention rule - We can set the time period to delete the snapshots permenently.
+
+
+LifeCycle Manager :-
+--------------------
+
+---> We can create a EBS snapshot automatically by creating a policy.
+
+---> We need to give the tags to snapshots, Because we are identfying by using tags.
+
+---> Goto EC2 ---> On left side we find lifecycle manager in Elastic block storage section ---> There we find create new lifecycle policy option ---> Selet policy type and press next step.
+
+---> Select the target resource types (Volume/Instance) ---> Add the target resource tags ---> Give the description(Firstpolicy) ---> IAM role (Default) ---> Tags (Optional) ---> Policy Status (Enable). And press NEXT.
+
+---> Schedule details (Fill the details based on requirement) ---> Advanced settings (Optional)
+
+---> Tagging - Here we can give same tags or new tags to snapshot.
+
+---> Fast Snapshot Restore - we can restore the larger size snapshot very quickly.
+
+---> Cross Region Copy - We can copy across the multiple regions.
+
+---> Cross Account Sharing - We share across the multiple accounts.
+
+
+EC2 Image Builder :-
+--------------------
+
+---> Creating a image automatically with some softwares are installed.
+
+
+Creating the Pipeline :- There are 5 steps.
+
+1. Specify pipeline details
+
+---> Pipeline Name - Give a name to pipeline.
+
+---> Description - Give a description about pipeline
+
+---> Build Schedule - Here we have three types.
+
+1. Schedule Builder - We can specify a time to run a pipeline.
+
+2. CRON expression - We use this linux instances.
+
+3. Manual - The pipeline will run when we initiate it.
+
+2. Choose recipe
+
+---> Recipe means nothing but a software.
+
+---> Use existing recipe - If we have any recipes available than we choose from there.
+
+---> Create new recipe - If we dont have any recipes than we have to select.
+
+
+3. Define infrastructure configuration
+
+---> In third step we have 3 types.
+
+1.Creating infrastructure configuration using service defaults - It will create its own suitable configuration.
+
+2. Use Existing infrastructure configuration - If we have any existing configurations than go with them.
+
+3. Create new infrastructure configuration - If we want create your own stuff then go with third option.
+
+
+4. Define distribution settings
+
+---> In fourth step we have 3 steps
+
+1. Create distribution settings using service defaults
+2. Use Existing distribution settings
+3. Create new distribution settings.
+
+5. Review
+
+---> After review click on create pipeline. Now pipeline will be created. Goto actions and run the pipeline. (Automatically EC2 instance will launch and install automatically).
+
+
+Volumes Actions :-
+------------------
+---> Modify Volume - To increase the size of volume (Root) without adding any additional volume.
+
+---> We can change the volume type while increasing the volume size.
+
+---> It changes in console but it wont allocated immediately in remote connection. So we have do small configuration inside the machine.
+
+---> Goto disk management ---> Give a right click on allocated memory (Make sure that dont click on unallocated memory) ---> Extend volume ---> Next and next finish it.
+
+---> Create Snapshot - Select the particular volume and go and click on create snapshot than we get the backup of the volume (Snapshot).
+
+---> Delete Volume - We use this option to delete the volume. First we have to detach the volume from EC2 instance and then delete it.
+
+---> Attach volume - Newly created volume need to attach to Ec2 instance at that time we use this option.
+
+---> Detach Volume - To detach the volume from EC2 instance. Make sure that first we have to stop the EC2 instance to detach the root volume.
+
+
+** Lauching a EC2 instance from AMI - Firstly we launch the one EC2 (Windows1) instance and then take an AMI from that Ec2 instance (Windows1), From that AMI we launch the another EC2 instance (Windows2)  and how you login to that windows2 Ec2 instance ? We should use windows1 EC2 instance password to login to windows2 Ec2 insytance.

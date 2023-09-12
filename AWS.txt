@@ -144,6 +144,7 @@ Protocols :-
 1. HTTP  - Hyper text transfer protocol(80)
 2. HTTPS - Hyper text transfer protocol secure(443)
 3. SSH   - Secure Shell(22)
+4. RDP   - Remote desktop protocol (3389)
 
 Eg :- http://google.com ---> Protocol://domainname:port
 
@@ -825,12 +826,6 @@ IAM Roles :-
 
 ---> IAM user is used to login/access to AWS console not server/EC2 instances.
 
----> If you dont configure the keys on linux machine, you cannot access the AWS services.
-
----> If you configure keys on linux machine, keys are stored locally on the machine, which is not safe.
-
----> If we use roles, there is no need to configure keys on machine.
-
 ---> 1 EC2 instances can have only 1 role attached at the same time.
 
 ---> 1 role can be attached to multiple EC2 instances at the same time.
@@ -1290,7 +1285,7 @@ Key-Pair :-
 
 ---> Key-pair is also known as PEM file. key-pair extention is .pem.
 
----> Whenever we create a EC2 instance, The console will ask you to create and attach the key-pair to EC2 instance.
+---> Whenever we launch a EC2 instance, The console will ask you to create and attach the key-pair to EC2 instance.
 
 ---> You can create multiple key-pairs.
 
@@ -1315,6 +1310,8 @@ Key-Pair :-
 ---> For Linux, We use Putty.
 
 ---> Putty doesnt support PEM file. It supports PPK file. To get PPk file we use a tool called putty generator.
+
+---> From PEM file we generate the ppk file using putty generator, After generating the ppk file attach that ppk file in putty.
 
 
 * If we lost the PEM file ---> We have two EC2 instances 
@@ -1458,13 +1455,7 @@ NACL :-
 Auto Scaling :-
 ---------------
 
----> Scale out and scale in the EC2 instances based on workload.
-
----> ELB has health checks.
-
----> ELB does the health checks for the application.
-
----> Cloud watch monitors the EC2 instance.
+---> Scale out and scaleIn the EC2 instances based on workload.
 
 ---> Three types :-
 
@@ -1522,6 +1513,12 @@ Elastic Load Balancer :-
 ---> ELB is completely managed by AWS.
 
 ---> ELB is a service in AWS, It is not a server.
+
+---> ELB has health checks.
+
+---> ELB does the health checks for the application.
+
+---> Cloud watch monitors the EC2 instance.
 
 ---> ELB can be accessed via URL(DNS Name), You cannot login to the ELB.
 
@@ -1652,7 +1649,7 @@ Instance Meta Data :-
 
 ---> From console, you can get the instance metadata from Description section.
 
----> hhtp://169.254.169.254/latest/meta-data/ ---> CLI
+---> http://169.254.169.254/latest/meta-data/ ---> CLI
 
 
 User-Data :- Boot Strap Scripting.
@@ -1669,13 +1666,15 @@ User-Data :- Boot Strap Scripting.
 2. Instance Type
 3. Configuration (Scripting)
 4. Storage
-5. Security Group
-6. Tags
+5. Tags
+6. Security Group
 7. Review / Key-pair
 
 
 Global Accelerator :-
 ---------------------
+
+---> Global accelerator is networking service that helps you to improve availability, performance and security of your public applications.
 
 ---> It has two static IP's.
 
