@@ -455,7 +455,7 @@ Snapshot Actions :-
 
 ---> Modify permissions - We can share the snapshot from one AWS account to Another AWS account.
 
----> Mange fast snapshot restore - To restore a larger size snapshot quickly. And it is charged.
+---> Manage fast snapshot restore - To restore a larger size snapshot quickly. And it is charged.
 
 ---> If we have snapshot with 1TB and we want create volume out of it. So it will take so much time. To create volume quickly than we use this option.
 
@@ -568,4 +568,132 @@ Volumes Actions :-
 ---> Detach Volume - To detach the volume from EC2 instance. Make sure that first we have to stop the EC2 instance to detach the root volume.
 
 
-** Lauching a EC2 instance from AMI - Firstly we launch the one EC2 (Windows1) instance and then take an AMI from that Ec2 instance (Windows1), From that AMI we launch the another EC2 instance (Windows2)  and how you login to that windows2 Ec2 instance ? We should use windows1 EC2 instance password to login to windows2 Ec2 insytance.
+** Lauching a EC2 instance from AMI - Firstly we launch the one EC2 (Windows1) instance and then take an AMI from that Ec2 instance (Windows1), From that AMI we launch the another EC2 instance (Windows2)  and how you login to that windows2 Ec2 instance ? We should use windows1 EC2 instance password to login to windows2 Ec2 instance.
+
+
+Load Balancer :-
+----------------
+
+To create a load balancer first we do these steps :-
+
+1. Launch 2 EC2 instances with userdata (Shell Script).
+2. Access the created file (index.html) using EC2 instance public IP on browser.
+3. Make sure application is working.
+4. Create ELB(ALB) with target groups.
+5. Register the EC2 instances to target group.
+6. Access the ELB through DNS name.
+
+Shell Script :-
+---------------
+
+#!/bin/bash
+yum install httpd -y
+service httpd start
+chkconfig httpd on
+mkdir/var/www/html
+echo 'Yo...! This is Pranith's first website.'>/var/www/html/index.html
+
+
+Types of shells :-
+------------------
+
+1. /bin/sh ---> Bourne Shell
+2. /bin/ksh
+3. /bin/csh
+4. /bin/bash ---> Bourne again shell (Bash shell)
+
+---> $ - Normal User (Limited Permissions)
+
+---> # - Root User (Full Permissions)
+
+
+---> Linux is two types 
+
+1. RPM Based (RHEL, CentOS)
+2. Debain Based (Ubuntu, SuSE)
+
+
+---> To install any package in linux we use (yum install) command.(RHEL, CentOS).
+
+---> To install any package in linux we use (apt-get) command.(Ubuntu, SuSE).
+
+* ACM - Amazon Certificate Manager - We can purchase the certificate of your website. 
+
+
+---> Launch 2 EC2 instances, In user data give shell script code ---> After launching instances check the website with public IP ---> create ALB 
+
+---> Create ALB Process - Give the name to ALB (FirstALB)
+
+---> Scheme - In schemes there are two types.
+
+1. Internet-facing - If you want  all users to access your application enable this option.
+
+2. Internal - If you want only few people to access your application enable this option.
+
+---> Network Mapping - VPC and AZ's
+
+---> VPC - Choose default
+
+---> Mappings - Choose the AZ's where your applications.
+
+---> Security groups - Choose default
+
+---> Listeners and routing - Here we choose the protocol and port. We have to create Target groups here.
+
+Create Target Groups - Here we have to a target type.(Instances)
+
+---> Target group name - Give the name to target group.
+
+---> Protocol Version - HTTP1
+
+---> Health Checks - Here we have to give path of your application.
+
+---> Advance Health Check Settings :-
+
+---> Healthy Threshold - It checks the application continuously. There we can mention the number.
+
+---> Unhealthy Threshold - It only checks mentions time if application didnt respond than it is unhealthy.
+
+---> Timeout -
+
+---> Interval - How many interval time to check the application.
+
+
+Register the target groups :- Here we have to register the targets.
+
+---> Create a target group and add the instances to target group.
+
+---> Open target group ---> select the instances ---> select the include as pending option ---> select register pending targets.
+
+
+* If we want to delete the Target group first we have to deregister the instances and listener rules in load balancer and than delete.
+
+---> Stickiness - If all the requests want to goes to one sever than enable that option.
+
+
+Auto-Scaling :-
+---------------
+
+Process to create ASG :-
+------------------------
+
+---> Create a load balancer with empty target group.
+
+---> Create a launch template.
+
+---> From that launch template create auto scaling.
+
+---> Create load balancer(Set everything as default) ---> Create Target groups ---> Create launch template (Give a name to template, Select the AMI,Select instance type,select the keypair,give the userdata).
+
+---> After creating the launch template select that and goto actions there we find create autoscaling group option, Select that option.
+
+---> After selecting that give name to ASG ---> Select the launch template ---> press next ---> Select VPC and AZ's and press next ---> choose the ELB type(Attach to an existing load balancer) ---> Select the min,max and desired capacities ---> Add notifications(SNS, And it is optional) ---> Add tags(Optional) ---> goto review and press create auto scaling group.
+
+
+---> In SNS we have Topic and subscription.
+
+---> Topic - Here can give the name (Aws)
+
+---> Subscription - Here we can give email.
+
+* It is not possible to edit launch configuration once it is created. If we wnat to edit create a new configuration.
