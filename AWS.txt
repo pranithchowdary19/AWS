@@ -779,7 +779,7 @@ IAM Groups :-
 
 ---> IAM group is collection of IAM users.
 
----> IAM groups are used to assign policies to bunch of IAM users at the same time.
+---> IAM groups are used to attach policies to bunch of IAM users at the same time.
 
 ---> One IAM user can be attached to multiple IAM groups at the same time.
 
@@ -989,7 +989,7 @@ EC2 Families or Instance Types :-
 
 ---> Instance types are combinations of CPU, memory, storage, and networking capacity and give you the flexibility to choose the appropriate resources for your applications.
 
- ---> There are many instances, we can choose based on your requirement.
+---> There are many instances, we can choose based on your requirement.
 
 1. General Instances ---> For general purpose.
 
@@ -1689,3 +1689,59 @@ Global Accelerator :-
 ---> Customer ---> Edgelocation ---> CDN ---> GA ---> ELB.
 
 ---> It is charged.
+
+
+Cloud Watch :-
+--------------
+
+---> Cloudwatch is used to monitors the performance.
+
+---> Cloudwatch can monitor all AWS services.
+
+---> Cloudwatch is all about Alarms,Events and Logs.
+
+Alarms :-
+---------
+
+---> Cloudwatch monitors only Host-level metrics. (Default Metrics)
+
+---> Host-level metrics contains
+
+1. CPU
+2. Network
+3. Disk
+4.Status Check
+
+
+---> Alarms can also do some actions. (Terminate,Stop and Reboot).
+
+---> Alarm has three states.
+
+1. In Alarm - If the cpu utilization is more than 90% than we use this.(Based on condition).
+2. Ok - If the cpu utilization is less than 90% than we use this.
+3. Insufficient - If EC2 instance is not reacheable than we use this mode.
+
+
+Events :-
+---------
+
+---> Event is also called as Event bridge.
+
+---> Events will route to target.
+
+---> Status ---> Event ---> Rule ---> Target
+
+
+Logs :-
+-------
+
+---> If we have multiple EC2 instances and we want all logs of all instances, First we install one agent in EC2 than all logs will reflected to cloudwatch logs.
+
+---> Cloudwatch can monitor applications also.(Micro services,docker,lambda,websites)
+
+
+
+LightSail :-
+------------
+
+---> In EC2 instance image means complete backup of EC2 instance. In lightsail complete backup is snapshot.
