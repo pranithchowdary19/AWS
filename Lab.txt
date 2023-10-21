@@ -652,7 +652,7 @@ Create Target Groups - Here we have to a target type.(Instances)
 
 ---> Healthy Threshold - It checks the application continuously. There we can mention the number.
 
----> Unhealthy Threshold - It only checks mentions time if application didnt respond than it is unhealthy.
+---> Unhealthy Threshold - It only checks mentioned time if application didnt respond than it is unhealthy.
 
 ---> Timeout -
 
@@ -697,3 +697,37 @@ Process to create ASG :-
 ---> Subscription - Here we can give email.
 
 * It is not possible to edit launch configuration once it is created. If we wnat to edit create a new configuration.
+
+
+
+LightSail :-
+------------
+
+---> If we want to setup and create a vitual private server than go with lightsail.
+
+---> LightSail contains containers, Databases, Networking, Storage, Domain & DNS, Snapshots.
+
+---> Containers :- If we want create a container services than go with this.
+
+---> Databases :- Lightsail supports only two database engines. 
+
+1. MySql
+2. PostgreSql
+
+---> If we want to create a database for your lightsail instance than go with this.
+
+---> Networking :- In Networking we have Static IP, Distribution and load balancer.
+
+---> Static IP :- Here we can create and assign the static IP for your lightsail instance.
+
+---> Distribution :- Cloud Front. It distributes the content to all edge locations.
+
+---> Load balancer :- Here we can create a load balancer for your lightsail instance. It is charged.
+
+---> Storage :- Here we can create the Bucket or a disk.
+
+---> Domain & DNS :- In this we can create a DNS name and domains.
+
+---> For domain first we have to register the domain name.
+
+---> Snapshots :- A snapshot is a backup of complete lightsail instance.

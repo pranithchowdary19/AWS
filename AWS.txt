@@ -208,7 +208,7 @@ Deployment Models(Types of cloud) :-
 1. Public Cloud :- The services which are accessed by everyone. Some public cloud providers are AWS,Azure,GCP.
 2. Private Cloud :- The services which are accessed within the organizations. Eg:- IBM
 3. hybrid Cloud :- The combination of public and private cloud.
-4. Community Cloud :- It is same a private cloud, but it can be accessable from few organizations.
+4. Community Cloud :- It is same as a private cloud, but it can be accessable from few organizations.
 
 Service models :-
 ----------------
@@ -1744,4 +1744,52 @@ Logs :-
 LightSail :-
 ------------
 
+---> Lightsail instance contains Containers, databases, networking, storage, domains & DNS and snapshots.
+
+---> It is free for first 3 months.
+
+---> Containers :- If we want create a container services than go with this.
+
+---> Databases :- Lightsail supports only two database engines. 
+
+1. MySql
+2. PostgreSql
+
+---> If we want to create a database for your lightsail instance than go with this.
+
+---> Networking :- In Networking we have Static IP, Distribution and load balancer.
+
+---> Static IP :- Here we can create and assign the static IP for your lightsail instance.
+
+---> Distribution :- Cloud Front. It distributes the content to all edge locations.
+
+---> Load balancer :- Here we can create a load balancer for your lightsail instance. It is charged.
+
+---> Storage :- Here we can create the Bucket or a disk.
+
+---> Domain & DNS :- In this we can create a DNS name and domains.
+
+---> For domain first we have to register the domain name.
+
+---> Snapshots :- A snapshot is a backup of complete lightsail instance.
+
 ---> In EC2 instance image means complete backup of EC2 instance. In lightsail complete backup is snapshot.
+
+
+Elastic BeanStalk :-
+--------------------
+
+---> Elastic Beanstalk is used for easy and quick deployment of application.
+
+---> In elastic beanstalk we have two types of presets :-
+
+1. Single EC2 Instance - Beanstalk launch only one EC2 instance with all given configurations.
+
+2. High Availability - In HA, Beanstalk launches the load balancer and multiple EC2 instance with all given configurations.
+
+---> In elastic beanstalk we have deployment options 
+
+1. All at once
+2. Rolling
+3. Rolling with additional batches
+4. Immutable.
