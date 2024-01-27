@@ -73,7 +73,7 @@ Networking :-
 ---> Whenever you open a browser and search for google.com, Firstly browser needs two things IP address and hostname. If you give the hostname but you dont know the ip address then it search in Local DNS.
 
 
----> DNS (Domain Name Server) - It Keeps Track of all hostnames and IP addresses.
+---> DNS (Domain Name Server) - It Keeps Track of all IP addresses and hostnames.
 
 ---> DNS will convert host to ip and ip to host.
 
@@ -617,7 +617,7 @@ Glacier :-
 ---> Edge Locations :-
 ----------------------
 
----> Edge locations are AWS data centers designed to deliver services with the lowest latency.
+---> Edge locations are AWS data centers designed to deliver the services with the lowest latency.
 
 ---> Edge locations are completely managed by AWS.
 
@@ -696,7 +696,7 @@ Cloud Watch :-
 
 Eg:- 10:00 - 10:05 - 10:10 - 10:15
 
----> Detailed Monitoring :- You will gat the data points for every 1min. It is charged.
+---> Detailed Monitoring :- You will get the data points for every 1min. It is charged.
 
 Eg:- 10:01 - 10:02 - 10:03 - 10:04
 
@@ -704,7 +704,7 @@ Eg:- 10:01 - 10:02 - 10:03 - 10:04
 Cloud Trail :-
 ---------------
 
----> Cloud trail monitors entire AWS environment.(Records,Monitor,Track,Audit,Logs).
+---> Cloud trail monitors entire AWS environment. (Records,Monitor,Track,Audit,Logs).
 
 ---> Config :- It monitors the changes in AWS resources.
 
@@ -733,7 +733,7 @@ Identity and Access Management (IAM) :-
 
 ---> For IAM user, You can attach and detach the policies/permissions at anytime.
 
----> Dont share your email amd password to others anytime. we can share root account by creating the IAM user.
+---> Dont share your email and password to others anytime. we can share root account by creating the IAM user.
 
 --> It is not recommended to use root account for daily activities or work, Instead of that use IAM user.
 
@@ -750,7 +750,7 @@ Identity and Access Management (IAM) :-
 
 1. Console Access (Website)
 
-2. Programmatical Access (CLI, SDK,s, Developer Tools)
+2. Programmatical Access (CLI, SDK's, Developer Tools)
 
 
 ---> In console access we can login through Email and password(Root) or username and password(IAM).
@@ -790,6 +790,9 @@ IAM Groups :-
 ---> You can attach and detach the policies to IAM users and groups at anytime.
 
 ---> If we attach any user to the group, The individual policies will remains same and new policies will be inherited to IAM users.
+
+Policies :-
+-----------
 
 ---> Policies ---> Policy documents ---> Policy document contains Permissions.
 
@@ -987,7 +990,7 @@ Dedicated Host :-
 EC2 Families or Instance Types :-
 ---------------------------------
 
----> Instance types are combinations of CPU, memory, storage, and networking capacity and give you the flexibility to choose the appropriate resources for your applications.
+---> Instance types are combinations of CPU, memory, storage, and networking capacity and gives you the flexibility to choose the appropriate resources for your applications.
 
 ---> There are many instances, we can choose based on your requirement.
 
@@ -1613,7 +1616,7 @@ Public IP :-
 
 ---> Public IP is dynamic, If STOP and START the EC2 instance public IP will be changed.
 
----> AWS assigns public IP's to the instances.
+---> AWS assigns the public IP's to the instances.
 
 
 Private IP :-
@@ -1698,7 +1701,7 @@ Cloud Watch :-
 
 ---> Cloudwatch can monitor all AWS services.
 
----> Cloudwatch is all about Alarms,Events and Logs.
+---> Cloudwatch is all about Alarms,Events and Logs. (AEL)
 
 Alarms :-
 ---------
@@ -1710,7 +1713,7 @@ Alarms :-
 1. CPU
 2. Network
 3. Disk
-4.Status Check
+4. Status Check
 
 
 ---> Alarms can also do some actions. (Terminate,Stop and Reboot).
@@ -1767,7 +1770,7 @@ LightSail :-
 
 ---> Storage :- Here we can create the Bucket or a disk.
 
----> Domain & DNS :- In this we can create a DNS name and domains.
+---> Domain & DNS(Route53) :- In this we can create a DNS name and domains.
 
 ---> For domain first we have to register the domain name.
 
@@ -1781,15 +1784,196 @@ Elastic BeanStalk :-
 
 ---> Elastic Beanstalk is used for easy and quick deployment of application.
 
----> In elastic beanstalk we have two types of presets :-
+---> In elastic beanstalk we have three types of presets (Deployment Modes) :-
 
 1. Single EC2 Instance - Beanstalk launch only one EC2 instance with all given configurations.
 
 2. High Availability - In HA, Beanstalk launches the load balancer and multiple EC2 instance with all given configurations.
+
+3. Custom Preset :- If we want choose our own VPC,SG,KEYPAIR ETC then go with custom preset.
+
+Elastic Beanstalk Architecture :-
+---------------------------------
+
+---> Whenever we open a beanstalk directly we can see a option that we need to create an application.
+
+---> In that application we have to create a environment. Inside the environment we can have EC2 instance. (Any Preset)
+
+---> Once the environment is up(Online) than it generates the URL. From that URL we can access our application.
+
+---> We can have multiple environments in single application.
 
 ---> In elastic beanstalk we have deployment options 
 
 1. All at once
 2. Rolling
 3. Rolling with additional batches
-4. Immutable.
+4. Immutable
+5. Traffic Splitting.
+
+All at once :-
+--------------
+
+---> Fast deployment
+
+---> Application has downtime
+
+---> Great for quick iterations in development environment
+
+---> No additional cost.
+
+Rolling :-
+----------
+
+---> Application is running below capacity.
+
+---> We can set the bucket size. Bucket size(It is nothing bt we can select how many EC2 instance can update at once)
+
+---> Application at some point of time running both versions simultaneously.
+
+---> No additional cost.
+
+Rolling with additional batches :-
+----------------------------------
+
+---> If we have 4 EC2 instances with version 1 it wont touch those 4 instance it will launch 2 new instances with version 2. if it is sucessful than it can update the rest of EC2 instances based on bucket size.
+
+---> Additional batch is removed at the end of deployment.
+
+---> Longer deployment and good for production.
+
+---> Small additional cost.
+
+Immutable :-
+------------
+
+---> Zero downtime.
+
+---> New version is deployed to new instances, on temp auto scaling group.
+
+---> Longest deployment.
+
+---> Quick roll back incase of failure.
+
+---> Good for production.
+
+Blue green deployment model :-
+------------------------------
+
+---> In this model we are swaping the URL.
+
+* Blue environmnet (Actual)
+* Green environmnet (New)
+
+
+
+S3 - Simple Storage Service :-
+---------------------------------
+
+---> S3 provides the unlimited storage by AWS.
+
+---> S3 is used to just to store the files.
+
+---> S3 can store all flat files. (Flat files ---> Any type of file or All files).
+
+---> With S3, you can upload,dowload and access files,but cannot execute files.
+
+---> S3 is a object based storage.
+
+---> Is it possible to install OS in S3 ? ---> NO
+
+---> Is it possible to install DB in S3 ? ---> NO
+
+---> Is it possible to run java, python in S3 ? ---> No
+
+---> S3 is serverless.
+
+---> S3 (Storage)
+
+---> Bucket (Folder)
+
+---> Objects (Files)
+
+---> Name of file(A.txt) ---> Key
+
+---> Bucket is a container for objects.(Bucket is folder)
+
+---> Object is file.
+
+---> Key is the filename/Name of the object.
+
+---> S3 is global, Bucket is regional.
+
+---> S3 supports static website hosting(HTML Files)[Create a bucket, upload all files, enable static website hosting].
+
+---> You cannot attach S3 to the EC2 instance, But you can access from EC2 instance.
+
+---> S3 is cheaper than EC2.
+
+---> S3 is WORM model. (WORM - Write once and read many)
+
+Buckets :-
+----------
+
+---> Bucket is regional.
+
+---> Bucket names should be universal or unique.
+
+---> Bucket under bucket is not possible to create.
+
+---> You can create multiple buckets in different regions.
+
+---> By default buckets are private, If require we can make it public.
+
+---> To access any object we have an URL. (http://11ambucket.s3.ap-south-1.amazonaws.com/phptos/puppy.jpg)
+
+---> In URL - 11ambucket - It is a bucket name.
+
+---> In URL - ap-south-1 - Region
+
+---> In URL - Photos - Pre-Fix (Sub Folder)
+
+---> In URL - .jpg - Sufix
+
+---> In URL - Puppy - Object.
+
+
+S3 Versioning :-
+----------------
+
+---> Versioning is like a backup tool.
+
+---> Versioning is enabled on bucket level but applied on object level.
+
+---> By default, versioning is not enabled on your bucket.
+
+---> Whenever new version is created that version has unique ID. Version ID is always unique.
+
+---> Version files can be downloaded anytime.
+
+---> Whenever your original object got deleted, For your latest version marker is applied. That Marker is called Delete marker.
+
+---> If you delete the original object, delete marker is applied on the latest version.
+
+---> If you want the object to be restored, delete the delete marker and your object got restored.
+
+---> Once you have enabled the versioning, you cannot disable it. You can only suspend it.
+
+---> AWS charges for versioning, becareful while you enable versioning for huge files.
+
+---> If you upload a object after the versioning is suspended, the latest version will be created as usual but, if you update the original file, versioning files are not created.
+
+---> If you delete the original object, Delete marker will be applied, if you delete the delete marker, The object will not be restored.
+
+---> In suspended state, existing versioning files will not have any changes. (Versioning concept still continues even though versioning is suspended state).
+
+
+---> Minimum object size - 0 bytes, Maximum object size - 5TB.
+
+---> You can have unlimited number of objects having 5TB each.
+
+---> For single PUT, you can upload max 5GB.
+
+---> Multi part upload (MPU).
+
+---> AWS recommends if you have greater than 100MB use MPU.
