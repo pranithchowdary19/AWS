@@ -1896,7 +1896,7 @@ S3 - Simple Storage Service :-
 
 ---> Name of file(A.txt) ---> Key
 
----> Bucket is a container for objects.(Bucket is folder)
+---> Bucket is a container for objects.(Bucket is a folder)
 
 ---> Object is file.
 
@@ -1917,6 +1917,8 @@ Buckets :-
 
 ---> Bucket is regional.
 
+---> Bucket is container for the objects.
+
 ---> Bucket names should be universal or unique.
 
 ---> Bucket under bucket is not possible to create.
@@ -1925,7 +1927,7 @@ Buckets :-
 
 ---> By default buckets are private, If require we can make it public.
 
----> To access any object we have an URL. (http://11ambucket.s3.ap-south-1.amazonaws.com/phptos/puppy.jpg)
+---> To access any object we have an URL. (http://11ambucket.s3.ap-south-1.amazonaws.com/photos/puppy.jpg)
 
 ---> In URL - 11ambucket - It is a bucket name.
 
@@ -1977,3 +1979,232 @@ S3 Versioning :-
 ---> Multi part upload (MPU).
 
 ---> AWS recommends if you have greater than 100MB use MPU.
+
+
+Storage Classes :-
+------------------
+
+---> While uploading the objects into S3, selecting storage class is mandatory.
+
+---> There are 6 different storage classes :-
+
+1. Standard Frequently Access (FA).
+
+2. Standarrd Infrequently Access (IA).
+
+3. Reduced Redundancy Storage (RRS).
+
+4. One Zone Infrequently Access.
+
+5. Intelligent Tiering.
+
+6. Glacier.
+
+Standard Frequently Access (FA) :-
+----------------------------------
+
+---> This is used for frequently access data.
+
+---> It is default storage class.
+
+---> For regular purpose.
+
+---> No retrival charges.
+
+---> Availability - 99.99%
+
+---> Durability - 11 9's
+
+---> Minimum object size  - 0 Bytes.
+
+Standard Infrequently Access (IA) :-
+------------------------------------
+
+---> This is used for infrequently access data.
+
+---> Cheaper than Standard Frequently access.
+
+---> Retrival charges are applied.
+
+---> Demand rapid access.
+
+---> Availability - 99.9%
+
+---> Durability - 11 9's
+
+---> Minimum Object size - 128kb
+
+---> Minimun Duration - 30 days (If we want to change the storage class, the objects will stay in current storage class for 30 days)
+
+Reduced Redundency Storage :-
+-----------------------------
+
+---> Frequently access but not critical.
+
+---> No retrival charges.
+
+---> AWS doesnt recommend to use this storage class.
+
+---> Cheaper than other classes.
+
+---> Availablity - 99.99%
+
+---> Durability - 99.99%
+
+One Zone IA :-
+--------------
+
+---> Infrequently access data but not critical.
+
+---> Retrival charges are applied.
+
+---> Availability - 99.5%
+
+---> Durability - 11 9's
+
+---> Minimum object size - 128kb
+
+---> Minimum Duration - 30days.
+
+Intelligent Tiering :-
+----------------------
+
+---> If the customer dont know which storage class to select than choose this.
+
+---> Unknown access patterns.
+
+---> Availablity - 99.9%
+
+---> Durability - 11 9's.
+
+---> Minimum duration  - 30 days.
+
+Glacier :-
+----------
+
+---> Infrequently access data.
+
+---> Archiving Purpose.
+
+---> Vault :- Container for archives.
+
+---> Archive - Objects (One archive can have 40TB) In one vault we can have unlimited number of archives.
+
+---> We can create only 1000 Vaults.
+
+---> Retrival charges are applied.
+
+---> Glacier has retrival options :-
+
+1. Expedited - 1 to 5 Mins (If we want to retrive the data in 1 to 5 min we can use this.)
+
+2. Standard - 3 to 5 hours.
+
+3. Bulk - 5 to 12 hours (For huge data)
+
+---> Availability - 99.99%
+
+---> Durability - 11 9's
+
+---> Minimum Duration - 90 days
+
+---> For deep glacier minimum duration is  180 days.
+
+Life cycle management (LCM):-
+-----------------------------
+
+---> Here we have life cycle rules.
+
+---> It is possible to move the objects from one storage class to another storage class automatically.
+
+---> We can create rule for entire bucket or only for prefix.
+
+---> Eg rule :- FA ---> IA(30 days) ---> Glacier (60 days) ---> Moving from one class to another class is called TRANSISTION.
+
+---> Delete after 365 days ---> This is called Expiration.
+
+---> Rules can be applied for both current and previous versions.
+
+S3 Option :-
+------------
+
+---> Object Lock :- We can lock the objects for certain period or permanently. If the object is in lock state we cannot do any actions.
+
+--->  Server access logs :- It shows the information about who is accessing your bucket.
+
+---> Server access logs are bucket level logs.
+
+---> Object level logs - Cloud trail.
+
+---> Athena :- It is a aws service, It is used to analyze the logs directly from S3.
+
+---> CORS - Cross Origin Resource Sharing :- You need it for authorized resource sharing with external third parties.
+
+---> If we want share the resources amoung the two different origins we have enable the CORS.
+
+* Origin - Bucket Name in the URL.
+
+---> By default CORS is not enabled.
+
+---> CRR - Cross Region Replication :- If we want to replicate the object in different region.
+
+---> We have to create a CRR Rule. CRR is not enabled by default.
+
+---> CRR is enabled on bucket level.
+
+---> Versioning is mandatory to have CRR.
+
+---> CRR can be done cross region and cross account also.
+
+---> SRR - Same Region Replication :- If we want to replicate the object in same region.
+
+Encryption :-
+-------------
+
+---> Encryption can be done in 2 ways.
+
+1. In-Transit
+
+2. Data at Rest
+
+---> In-Transit :- Encryption while data is moving. Eg:- HTTPS.
+
+---> Data at Rest :- Encryption while data is at rest.
+
+---> Amazon Certificate Manager (ACM) :- Here we can generate HTTPS certificates.
+
+---> Amazon s3 has 3 types of encryptions :-
+
+1. Server Side Encryption (SSE)
+
+---> SSE - S3 (AWS managed key)
+
+---> SSE - KMS (AWS KMS key)
+
+---> SSE - C (Customer Provided Key)
+
+* AWS uses the AES 256 algorithm for encryption. (AES - Advance Encryption Standard).
+
+2. Client Side Encryption (CSE)
+
+---> It should be handled by customer.
+
+3. In-Transit Encryption
+
+---> Encryption while data is moving. Eg:- HTTPS.
+
+S3 Data Consistency Models :- 
+-----------------------------
+
+---> There are 2 types :-
+
+1. Read after write consistency for PUTS of new objects.
+
+2. Eventually consistency for overwrites of Puts and deletes.
+
+
+* Endpoint is vaild for certain period of time only.
+
+---> You can upload objects from hyderabad to mumbai bucket, ireland bucket, sydney bucket etc. If you want to upload it faster we can use TRANSFER ACCELERATOR.
+
+---> If we use transfer accelerator it will upload through CDN.
