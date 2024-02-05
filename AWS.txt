@@ -2203,8 +2203,20 @@ S3 Data Consistency Models :-
 2. Eventually consistency for overwrites of Puts and deletes.
 
 
-* Endpoint is vaild for certain period of time only.
+* Presigned URL is vaild for certain period of time only.
 
 ---> You can upload objects from hyderabad to mumbai bucket, ireland bucket, sydney bucket etc. If you want to upload it faster we can use TRANSFER ACCELERATOR.
 
 ---> If we use transfer accelerator it will upload through CDN.
+
+Qus. How to delete the bucket ?
+
+Ans. Open bucket ---> goto permissions ---> there we delete the bucket policy and save ---> come back and empty the bucket and save ---> come back to bucket section and delete the bucket.
+
+---> ACL - Access Control List.
+
+** If your bucket is private than your objects is also private. If your bucket is public than also your objects are private.
+
+** Objects are always private.
+
+** Object Lock can only 
