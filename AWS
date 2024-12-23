@@ -1,0 +1,2935 @@
+AWS 
+
+CLIENT SERVER ARCHITECTURE :-
+----------------------------
+
+Client :- Which requests a resource from server.(ASKING)
+
+Server :- Which responds to the request from client.(GIVING)
+
+
+Types of client server architecture :-
+
+1. 1-Tier 
+2. 2-Tier
+3. 3-Tier
+
+
+1-Tier Architecture :-
+---------------------
+
+---> In 1-tier architecture there is only one component.
+
+---> In 1-tier architecture client and server in same component.
+
+
+2-Tier Architecture :-
+----------------------
+
+---> There is two layers
+
+1. Client Layer
+2. Server Layer
+
+---> In 2-Tier architecture we keep application and database in the same system.
+
+---> If application and database are in the same machine then, It became slow, crash, hang and bad performance.
+
+---> It is less secure.
+
+
+3-Tier Architecture :-
+----------------------
+
+---> There is three layers
+
+1. Client Layer (Presentation Layer)
+2. Application Layer (Business Logic layer)
+3. Database Layer (Data Layer)
+
+
+---> Application Server :- The server which has application hosted is called application server.
+
+---> Database Server :- The Server which has databases installed, The server which stored the data is called database server.
+
+
+Qus - How the application server and database server can communicate ?
+Ans - Devices can communicate with each other in the network with IP ADDRESS and HOSTNAME.
+
+---> IP :- Internet protocol - IP is a unique identifier for device in the network.
+
+---> Hostname :- It is nothing but name of the server.
+
+---> Application Layer and Database layer should be in private.
+
+
+---> Webserver :- It takes the request from client and redirects to the application server.
+
+
+
+Networking :-
+-------------
+
+---> Whenever you open a browser and search for google.com, Firstly browser needs two things IP address and hostname. If you give the hostname but you don't know the ip address then it search in Local DNS.
+
+
+---> DNS (Domain Name Server) - It Keeps Track of all IP addresses and hostnames.
+
+---> DNS will convert host to ip and ip to host.
+
+---> Every device has local DNS (ETC/hosts).
+
+
+Point - 1 ---> Open browser and search for anything, It requires both IP and Hostname.
+
+Point - 2 ---> If you know the IP then It's fine. If not then it searches in local DNS.
+
+Point - 3 ---> If local DNS have IP then it gives to browser. If not then local DNS reaches to RNS (Root Name Server).
+
+Point - 4 ---> RNS always identifies the domains like .com, .org, .in, .edu, So on...
+
+Point - 5 ---> Then RNS reaches to Top level Domain
+
+Top level Domain - .com, .org, .in, .edu, So on...
+
+Point - 6 ---> Then Top level domain reaches the NAME SERVER.
+
+Name Server ---> Which identify the domain request.
+
+Point - 7 ---> Then Name Server reaches the SOA.
+
+SOA - Start of Authority ---> Which has IP Address. 
+
+Point - 8 ---> Then SOA sends backs to where it came from.
+
+---> Now we get IP address. After getting IP address now sending request to google server.
+
+---> When request reaches to google server than googles firewall stops request and checks the protocols.
+
+---> Firewall :- Which stops the unauthorized access to network.
+
+---> The request is send in the form of data packets. The data packets contains information like Source, destination, port, protocol, hostname. 
+
+Protocols ---> HTTP, HTTPS, SSH, RDP
+
+---> For every protocol there will be a port number.
+
+Port Number ---> HTTP  - 80
+	    ---> HTTPS - 443
+	    ---> SSH   - 22
+	    ---> RDP   - 3389
+
+---> If google firewall accepts your request then your request goes to load balancer.
+
+---> Load Balancer :- It distributes the traffic across multiple servers.
+
+---> Load balancer follows the round robin method.
+
+---> Command to find IP address - nslookup
+
+
+---> Whole process :-
+---------------------
+
+1. Browser ---> Local DNS ---> RNS ---> Top level domain ---> Name server ---> SOA
+(Fetching the IP from SOA and it comes back to browser)
+
+2. Browser ---> Firewall ---> Load balancer ---> web Server ---> Application Server ---> Database Server.
+(From Db Server to It came back to browser)
+
+
+Protocols :-
+------------
+
+1. HTTP  - Hyper text transfer protocol(80)
+2. HTTPS - Hyper text transfer protocol secure(443)
+3. SSH   - Secure Shell(22)
+4. RDP   - Remote desktop protocol (3389)
+
+Eg :- http://google.com ---> Protocol://domainname:port
+
+1. http ---> Protocol
+2. Google.com ---> Domain Name
+
+
+HTTP :- It transfer the data to and fro from the browser to server.
+
+---> It is not secure.
+
+---> HTTPS is more secure than HTTP
+
+Status Codes :-
+---------------
+
+1. 404 - Page not found
+2. 503 - Service unavailable
+3. 401 - Unauthorized
+4. 500 - Internal server error
+5. 200 - Success code
+
+TCP :- Transmission Control Protocol
+
+---> TCP - It establish the connection between the hosts.
+
+---> It acts like a bridge.
+
+
+OSI Layers :-
+-------------
+
+---> There are 7 layers
+
+1. Physical Layer
+2. Data Link Layer
+3. Network Layer
+4. Transport Layer
+5. Session Layer
+6. Presentation Layer
+7. Application Layer
+
+AWS :- Amazon web services. It is a public cloud provider, which provides the infrastructure as a service.
+
+---> AWS uses the XEN Technology
+
+---> AWS has global infrastructure.
+
+---> AWS provides the infrastructure as service.
+
+---> AWS has data centres in USA, Mumbai etc...
+
+---> Cloud is present in remote location (Remote location ---> Data Centre)
+
+---> We need internet to connect with cloud.
+
+Evolve ---> Physical Data centres ---> Virtualization ---> Cloud [AWS--->Remote location---> Data centres]
+
+Deployment Models(Types of cloud) :-
+------------------------------------
+
+1. Public Cloud :- The services which are accessed by everyone. Some public cloud providers are AWS, Azure, GCP.
+
+2. Private Cloud :- The services which are accessed within the organizations. Eg:- IBM
+
+3. hybrid Cloud :- The combination of public and private cloud.
+
+4. Community Cloud :- It is same as a private cloud, but it can be accessible from few organizations.
+
+Service models :-
+----------------
+
+1. Infrastructure as a service (IAAS)
+2. Platform as a service (PAAS)
+3. Software as a service (SAAS)
+
+
+1. Infrastructure as a service (IAAS)
+-------------------------------------
+
+---> In IAAS, Provider is responsible for Network, data centres and virtualization.
+
+---> In IAAS customers are responsible for OS, Data, Application.
+
+---> AWS doesn't have any access inside your virtual machines.
+
+* Virtual Machine = Server.
+
+---> To create a virtual machine in AWS we use EC2 Service.
+
+---> EC2 ---> Elastic compute cloud. EC2 Instances.
+
+---> EC2 Instances :- It is a service to create a virtual machines.
+
+---> In AWS there is a service which acts as PAAS, That service is called ELASTIC BEAN STALK.
+
+---> ELASTICBEANSTALK ---> Easy and quick deployment of application in AWS.
+
+2. Platform as a service (PAAS)
+-------------------------------
+
+---> In PAAS provider is responsible for Network, data centres, virtualization and OS.
+
+---> In PAAS customers are responsible for data and application.
+
+---> In PAAS no need to worry about the servers, No control on the servers.
+
+3. Software as a service (SAAS)
+-------------------------------
+
+---> In SAAS every thing is providers responsibility.
+
+---> Some Eg of SAAS are Gmail, WhatsApp, zoom.
+
+
+
+3T's ---> Elasticity, Scalability, High Availability
+--------------------------------------------------
+
+1. Elasticity :-
+---------------
+
+---> Increasing and decreasing the number of servers(Instances) based on work load.
+
+---> Elasticity is short term.
+
+---> Elasticity is achieved in AWS using Auto-Scaling.
+
+---> Auto-Scaling = Scale out (Adding or increasing) and Scale In (Removing or Decreasing).
+
+---> Elasticity is also called as horizontal scaling.
+
+
+2. Scalability :- 
+-----------------
+
+---> Increasing the capacity of instances is called scalability.
+
+---> Scalability is long term.
+
+---> Scalability = Scale Up (Increasing) and Scale Down (Decreasing).
+
+---> Scalability is also called as vertical scaling.
+
+
+3. High Availability :-
+-----------------------
+
+---> The period of time the service is available to the customer is called high availability. If it is not available then it is called downtime.
+
+
+Redundancy ---> Keeping the same application on multiple servers.
+
+Monitoring ---> Load balancer is monitoring the application which has health checks.
+
+---> Lb always monitor the application not server.
+
+Failover ---> It transfer the workload from primary server to secondary server in the event of failure on primary server.
+
+---> High Availability is combination of redundancy, monitoring and failover(RMF).
+
+
+
+Regions and Availability Zone :-
+--------------------------------
+
+Region :- It is geo-graphical area. Eg :- AWS ---> Region ---> Mumbai
+
+---> Region is a place where AWS has its own infrastructure(data centre).
+
+---> A region has multiple data centres.
+
+Availability Zone :- It is simply a data center.
+
+* Availability Zone = Data center.
+
+---> A region has multiple availability zones.
+
+---> infrastructure is placed inside the Az's.
+
+---> For each and every region and availability zone has a code.
+
+---> Mumbai ---> AP-south-1 (AP - Asia Pacific)
+
+---> There are three AZ's in Mumbai.
+
+1. AP-south-1a
+2. AP-south-1b
+3. AP-south-1c
+
+---> Regions and Availability zones are managed by AWS.
+
+---> The Three Az's can communicate with each other by default.
+
+---> Az's are in sync with each other(network), but not with data.
+
+---> Az's = Group of Data centers.
+
+---> Low Latency ---> Good
+
+---> High Latency ---> Bad
+
+---> Regions cannot communicate with each other by default, If require yes.
+
+
+Virtual Private Cloud (VPC) :-
+------------------------------
+
+---> It gives you full control over your virtual networking environment, including resource placement, connectivity, and security.
+
+---> One region can have multiple VPCs.
+
+---> Maximum we can have 5 VPCs.
+
+---> AWS ---> region ---> VPC ---> Availability zones ---> EC2 Instances.
+
+---> VPC is regional.
+
+* Every services in AWS is regional or global.
+
+
+AWS Services :-
+---------------
+
+1. EC2 - Elastic compute cloud.
+
+---> In EC2 Service, We can launch EC2 Instances.
+
+---> Server = Instances(EC2 instances(VM's)).
+
+* Any service which available throughout all the regions is called global.
+
+* The service which is available only in particular regions is called regional.
+
+---> EC2 is regional.
+
+
+2. Elastic Load balancer(ELB) :- 
+--------------------------------
+
+---> It distributes the traffic across the multiple EC2 instances across multiple Az's (Availability Zones).
+
+---> ELB is completely managed by AWS.
+
+---> ELB is not a server it is a service.
+
+---> ELB doesn't have AZ's, It is created at regional level.
+
+
+3. Elastic Bean Stalk :-
+------------------------
+
+---> Easy and quick deployment of application in AWS.
+
+---> In AWS Beanstalk you have full control on the EC2 Instances launched by beanstalk.
+
+---> Bean Stalk handles the EC2 instances(OS) behalf of us.
+
+
+4. Light Sail :-
+----------------
+
+---> If you want to setup and create a virtual private server which already has everything installed. Eg:- Git Lab, node.js, Django Etc.
+
+
+5. Lambda :-
+------------
+
+---> Lambda is service which works on a function.
+
+---> Lambda is Serverless.
+
+---> It is for automation purpose
+
+Function - Set of instruction and reuse multiple times.
+
+
+6. S3 - Simple Storage Service :-
+---------------------------------
+
+---> S3 provides the unlimited storage by AWS.
+
+---> S3 is used to just to store the files.
+
+---> S3 can store all flat files. (Flat files ---> Any type of file or All files).
+
+---> With S3, you can upload, download and access files, but cannot execute files.
+
+---> S3 is a object based storage.
+
+---> Is it possible to install OS in S3 ? ---> NO
+
+---> Is it possible to install DB in S3 ? ---> NO
+
+---> Is it possible to run java, python in S3 ? ---> No
+
+---> S3 is serverless.
+
+* In AWS, all services will start with simple and ends with service.
+
+---> SNS ---> Simple Notification Service.
+
+---> SES ---> Simple Email Service.
+
+---> S3 (Storage)
+
+---> Bucket (Folder)
+
+---> Objects (Files)
+
+---> Name of file(A.txt) ---> Key
+
+---> Bucket is a container for objects.(Bucket is folder)
+
+---> Object is file.
+
+---> Key is the filename/Name of the object.
+
+---> S3 is global, Bucket is regional.
+
+---> S3 supports static website hosting(HTML Files)[Create a bucket, upload all files, enable static website hosting].
+
+
+7. Elastic Block Storage (EBS) :-
+---------------------------------
+
+---> In AWS, we call hard disk as EBS Volume.
+
+---> EBS is a block based storage.
+
+---> In AWS, First we have to create a volume in EBS and then attach to EC2 instance.
+
+---> Volumes can be attached and detached.
+
+---> We can attach multiple volumes to EC2 instances.
+
+---> EC2 instance have default volume and that volume is called ROOT VOLUME.
+
+---> The Root volume always contains OS (Windows, Linux, MAC).
+
+---> EC2 supports only sever side OS not client side OS.
+
+---> EC2 instance can only have 1 Root volume.
+
+---> EC2 instance can have multiple additional volumes.
+
+---> What is the name of Root Volume ? ---> /dev/sda1 or /dev/xvda (Root volume always attached or mounted to /dev/sda1)
+
+---> What is the name of additional volumes ? ---> /dev/sdb, d, e, etc or /dev/xvdf, g, h and ETC.
+
+---> Maximum size of each EBS volume is 16TB
+
+---> We cannot attach a one volume to multiple EC2 instances at same time.
+
+---> Volume size can be increased on FLY (No need to stop the EC2 Instance).
+
+---> Volume size cannot be decreased.(We can only increase the size of volume but it is not possible to decrease).
+
+QUS :- Is it possible to detach the ROOT volume while EC2 instance is running ?
+
+ANS :- No. First stop the EC2 Instance and detach the ROOT volume.
+
+QUS :- Is it possible to detach the additional volume while EC2 instance is running ?
+
+Ans :- Yes. But it is not recommended to detach while EC2 is running. Stop first and than detach.
+
+---> EC2 instance and volume should be in same AZ's.
+
+---> We cannot attach 1a volume to 1b EC2 instance.
+
+---> We can attach 1a volume to 1a EC2 instance.
+
+Elastic File System (EFS) :-
+---------------------------------
+
+---> If we have multiple EC2 instance and we want to share same file to all instances then we use this service.
+
+---> EFS is unlimited storage.
+
+---> EFS is completely managed by AWS.
+
+---> EFS is only for Linux EC2 instances.
+
+---> FSX is for windows EC2 instances.
+
+---> EFS works with NFSv4 protocol.(NFS - Network File System, V4 - Version 4).
+
+---> EFS is file based storage.
+
+---> EFS can be mounted to multiple EC2 instances at the same time across Az's.
+
+Qus :- Is it possible to attach single volume to multiple EC2 instances at the same time ?
+
+Ans :- No, but we can use EFS.
+
+Snow Family :-
+-------------------
+
+---> Snow Family is used to transfer the huge data from On-premises to AWS and vice versa.
+
+1. Snow Cone ---> 8TB
+2. Snow Ball Edge ---> 100TB
+3. Snow Mobile ---> PB's (Truck)
+
+---> Snow Family is physical transfer.
+
+Glacier :-
+----------
+
+---> Glacier is only for archive purpose.
+
+---> It is cheaper than S3.
+
+
+8. Relational Database Service (RDS) :-
+---------------------------------------
+
+---> It is a service where we go and setup a databases.
+
+---> RDS supports only RDBMS Databases.
+
+---> RDS is not a database, It is a database service.
+
+---> RDS provides 6 database engines.
+
+1. MySQL ---> Open Source
+2. Oracle ---> Oracle
+3. MSSQL ---> Microsoft
+4. PostgreSQL ---> Open Source
+5. MariaDB ---> Community
+6. Aurora ---> AWS
+
+* Short cut MOMPMA
+
+---> DynamoDB - NoSQL Database Service (It is used by developers).
+
+---> Database :- It is used to store the data.
+
+---> Data warehouse :- It is used to store huge data.
+
+---> Red Shift = data warehouse in AWS.
+
+---> Elastic Cache :- The frequently accessed data is stored in cache memory (In Memory Database Caching Service).
+
+---> It is database service.
+
+---> Elastic Cache has two engines.
+
+1. Redis
+2. MemcacheD
+
+
+---> Route 53 (R53) :- R53 is DNS Service in AWS.
+
+---> DNS port Number is 53.
+
+---> Direct Connect :- It is a network service that provides an alternative to using the internet to utilize AWS services.
+
+---> it enables customers to have low latency, secure and private connections.
+
+
+9. CloudFront :-
+----------------
+
+---> It is a web service that speeds up distribution of your static and dynamic web content.
+
+---> CloudFront shares your content through a worldwide network of data centres is called edge locations.
+
+---> We need to configure edge locations using CloudFront.
+
+---> CloudFront has edge locations and EL's are connected with CDN.
+
+
+---> Edge Locations :-
+----------------------
+
+---> Edge locations are AWS data centers designed to deliver the services with the lowest latency.
+
+---> Edge locations are completely managed by AWS.
+
+---> It Cache the data.
+
+Qus. How many edge locations are there in India ?
+
+Ans. Bangalore, Chennai, Delhi, Hyderabad, Mumbai.
+
+---> Content Delivery Network (CDN) :- It speed up the delivery of web content by bringing it closer to where users are.
+
+---> Time To Live (TTL) :- We have application and that presents in all edge locations, Now we did a change in application, is it updated in all edge locations ? No. It takes some time is called TTL.
+
+---> If we want to reflect the changes immediately in all edge locations we need to do invalidate the cache (Delete and reload from origin).
+
+
+Root Account :- It is a main account.(Super User - SU).
+
+---> In root account we have complete access to all AWS services and resources.
+
+---> Whenever we login with Email / Password it is root account.
+
+---> Whenever we login with Username / Password it is IAM user.
+
+* The person who provides the card details to create account is called root user, The  users who are created from that root account they are called IAM users.
+
+---> In AWS there a service called organizations. It is used to create multiple Root accounts.
+
+---> The multiple root accounts can be managed by one main root account.
+
+---> All multiple root accounts are called member accounts.
+
+---> In organizations concept we can manage multiple root accounts and can control root account permissions by using Service Control Policy (SCP).
+
+
+---> Identity and Access Management (IAM) :-
+-------------------------------------------
+
+---> In this service we can go and create user. This users is called IAM users.
+
+---> IAM users has limited permissions.
+
+* You can control the entire AWS using IAM by giving proper permissions to IAM users.
+
+
+
+AWS INSPECTOR :-
+----------------
+
+---> AWS inspector enables you to analyze the behavior of your AWS resources and help you to identify potential security issues.
+
+
+AWS Trusted Advisor :-
+----------------------
+
+---> It reduces the cost, Increase the performance and improve security.
+
+
+Cloud Watch :-
+--------------
+
+---> Cloud watch is used to monitor AWS resources (EC2,ELB,RDS,S3, ETC).
+
+---> Cloud watch monitors only performance.
+
+---> It has alarms.
+
+---> We have two types of monitoring's
+
+1. Basic Monitoring.
+
+2. Detailed Monitoring.
+
+
+---> Basic Monitoring :- You will get the data points for every 5 mins. It is free.(Default)
+
+Eg:- 10:00 - 10:05 - 10:10 - 10:15
+
+---> Detailed Monitoring :- You will get the data points for every 1min. It is charged.
+
+Eg:- 10:01 - 10:02 - 10:03 - 10:04
+
+
+Cloud Trail :-
+---------------
+
+---> Cloud trail monitors entire AWS environment. (Records, Monitor, Track, Audit, Logs).
+
+---> Config :- It monitors the changes in AWS resources.
+
+
+AWS Support :-
+--------------
+
+1. Basic Support ---> Free
+2. Developer Support ---> 100 Dollars
+3. Business Support
+4. Enterprise Support ---> 15000 Dollars.
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+
+Identity and Access Management (IAM) :-
+---------------------------------------
+
+---> Root User ---> Full Permissions.
+
+---> IAM User ---> Limited Permissions.
+
+---> Permissions ---> Policies.
+
+---> IAM is free and it is global.
+
+---> For IAM user, You can attach and detach the policies/permissions at anytime.
+
+---> Don't share your email and password to others anytime. we can share root account by creating the IAM user.
+
+--> It is not recommended to use root account for daily activities or work, Instead of that use IAM user.
+
+---> MFA ---> Multi Factor Authentication (Download Google Authenticator).[It is used for secure login].
+
+---> MFA is highly recommended for Root account and IAM users as well.
+
+---> We need to setup MFA for every individual IAM user.
+
+---> Open AWS page ---> Login with email and password ---> MFA Code ---> Login to AWS Console.
+
+
+---> There is two ways to access AWS.
+
+1. Console Access (Website)
+
+2. Programmatical Access (CLI, SDK's, Developer Tools)
+
+
+---> In console access we can login through Email and password(Root) or username and password(IAM).
+
+
+---> In programmatical access we can login by using keys. There are two keys.
+
+1. Access Key (Username)
+
+2. Secret Key (Password)
+
+
+---> Keys are user Specific, Every individual IAM user have their own keys.
+
+---> It is not recommended to share keys with anyone.
+
+---> Every IAM user can have max 2 set of keys.
+
+---> Once keys are lost, It is lost. You cannot retrieve the same keys back, But we can re-generate the new keys N number of times.
+
+---> For every re-generation we get new keys. We cannot get the old keys back.
+
+
+IAM Groups :-
+-------------
+
+---> IAM group is collection of IAM users.
+
+---> IAM groups are used to attach policies to bunch of IAM users at the same time.
+
+---> One IAM user can be attached to multiple IAM groups at the same time.
+
+---> Group under groups are not possible to create.
+
+---> It is possible to attach multiple policies to IAM users and groups. MAX 10
+
+---> You can attach and detach the policies to IAM users and groups at anytime.
+
+---> If we attach any user to the group, The individual policies will remains same and new policies will be inherited to IAM users.
+
+Policies :-
+-----------
+
+---> Policies ---> Policy documents ---> Policy document contains Permissions.
+
+* Policies / Permissions are written in JSON format.
+
+---> There are two types of policies.
+
+1. Managed Policy
+
+2. Inline Policy
+
+
+---> Managed Policy :- It is created and managed by AWS (Default templates).
+
+---> In managed templates it provides two types of templates.
+
+1. Full Access
+2. Read only
+
+
+---> Inline policy :- It is created and managed by customer.
+
+* User based permissions - Managed policy
+
+* Resource level permission - Inline policy (Customized Permissions)
+
+---> ARN - Amazon Resource Name.
+
+
+IAM Roles :-
+------------
+
+---> Temporary access without credentials.
+
+---> IAM user is used to login/access to AWS console not server/EC2 instances.
+
+---> 1 EC2 instances can have only 1 role attached at the same time.
+
+---> 1 role can be attached to multiple EC2 instances at the same time.
+
+
+Identity Provider / Federation :-
+---------------------------------
+
+---> Single Sign On (SSO)
+
+---> All user are created in Domain Controller , Active Directory, LDAP (Server).
+
+
+
+IAM TAGS :-
+-----------
+
+---> Tags are key & Value pair, and it contains information.
+
+---> Tags are used for identification purpose.
+
+---> Tags used to manage AWS resources.
+
+---> Per Resource = 50 Tags
+
+---> Tags are optional.
+
+
+---> https://pranithcloud19.signin.aws.amazon.com/console ---> IAM user sign in link.
+
+
+
+Overview On DevOps :-
+---------------------
+
+---> Git - Source code management(SCM) ---> In AWS, Code Commit.
+
+---> Maven, Ant, Gradle, Jenkins - Build ---> In AWS, Code Build.
+
+---> Selenium, Junit - Testing
+
+---> Jfrog, Nexus - Artifacts (Zip, War) ---> In AWS, S3,CodeArtifacts.
+
+---> Jenkins, Bamboo, Team city, Circle CI - Deployment ---> In, AWS, Code Deploy
+
+Qus. Where we do the deployment ? In Ec2 Instances, Physical Server. without these we can deploy it in docker or K8's.
+
+---> Docker  ---> In AWS, ECS - Elastic Container Service.
+
+* Handling the multiple containers is called cluster.
+
+* Managing the multiple clusters we use Dockers swarn Service.(Micro services)
+
+
+---> Kubernetes or K8's ---> It is new tech, That can easily handles the multiple clusters. In AWS, EKS - Elastic Kubernetes Service.
+
+
+---> CI/CD (Continuous Integration / Continuous Deployment)[Pipeline] ---> All the above process is CI/CD.
+
+
+---> IAAC (Infrastructure as a code) :- Here we use Terraform, CloudFormation.
+
+---> In IAAC, everything is through the code.
+
+
+---> Ansible, Chef, Puppet ---> Configuration Management
+
+* In Ansible we write the code in YAML that are called Playbooks.
+
+
+---> Nagios, Splunk, Datadog ---> Monitor.
+
+
+EC2 - Elastic Compute Cloud :-
+------------------------------
+
+---> EC2 is web service that provides resizable compute services in the cloud.
+
+---> Resizable - Scale Out/Scale In(Elasticity) or Scale up / Scale Down (Scalability).
+
+---> It is free for one year. 750 Hours/per month. 
+
+---> With EC2 instances we can
+
+1. Launch
+2. Running ---> Bill
+3. Stop ---> No Bill
+4. Start ---> Bill
+5. Reboot
+6. Terminate (Kill or Destroy) ---> No Bill
+
+
+Pricing Models In AWS :-
+-------------------------
+
+1. On-Demand Instances
+2. Reserved Instances
+3. Spot Instances
+4. Savings Plan
+
+On-Demand Instances :- 
+----------------------
+
+---> Pay as you use. (Fixed Price - Hourly)
+
+---> The bill is generated for  every 1 Hours.
+
+---> No Commitments.
+
+---> No Upfront Payment (No Advance Payment).
+
+---> No Predictable Usage.
+
+
+Reserved Instances :-
+---------------------
+
+---> Long Term Commitment. (1 to 3 years)
+
+---> Upfront Payment (We have to pay advance). we can pay full payment or partial(Half) payment.
+
+---> We can get 75% discount on hourly price.
+
+---> Predictable Usage.
+
+---> In reserved instance there are 3 types.
+
+1. Standard reserved instance  --- 75% discount
+
+2. Convertible reserved instance --- To change the capacity of instances at anytime.
+
+3. Schedule reserved instance --- Reserve it for fraction of a day, a week or a month.
+
+
+
+Spot Instances :-  
+-----------------
+
+---> Bidding, Auctioning
+
+---> Huge capacity instances for cheaper price.(Almost 90% discount)
+
+---> Huge work with limited time than choose spot instance.
+
+
+Savings Plan :-
+---------------
+
+---> It is somewhat related to reserved instance.
+
+
+Dedicated Host :-
+-----------------
+
+---> If any customer need dedicated physical machine than we use this dedicated host.
+
+
+
+EC2 Families or Instance Types :-
+---------------------------------
+
+---> Instance types are combinations of CPU, memory, storage, and networking capacity and gives you the flexibility to choose the appropriate resources for your applications.
+
+---> There are many instances, we can choose based on your requirement.
+
+1. General Instances ---> For general purpose.
+
+2. Memory Instances ---> If we need more memory.
+
+3. CPU Instances ---> More CPU.
+
+4. Storage Instances ---> For More Storage.
+
+5. GPU instances ---> For graphics and heavy machines.
+
+
+* Every family has their own different instance types.
+
+---> Scalability is achieved by changing the instance types.
+
+---> Anytime - Scaleup --> No data lost.
+
+---> Anytime - Scale Down --> No data lost.
+
+Qus. Is it possible to increase/decrease the instance type while EC2 is running ?
+
+Ans. No, First we have to stop EC2 instance and than increase/decrease the instance type.
+
+
+---> If we change the instance type, Data in the instance will not be lost. (Because for every EC2 instance we attach EBS volume, So data is inside the volume).
+
+
+Burstable Performance Instances :-
+----------------------------------
+
+---> Burstable mode gives you a high performance for limited time period only.
+
+---> It provides the CPU credits.
+
+---> It is just a check box, we need to enable it.
+
+---> It supports only t2 and t3 instances.
+
+
+Volumes :-
+----------
+
+---> There are two types of volumes.
+
+1. EBS volume
+2. Instance Store Volume
+
+
+EBS Volume :-
+-------------
+
+---> EBS volume is persistent storage / permanent storage.
+
+---> Persistent = If we STOP and START the EC2 Instance, Data will not be lost.
+
+---> Reboot = No data lost.
+
+---> EBS volume max size is 16TB.
+
+---> EBS is chargeable.
+
+
+Types of EBS Volumes :-
+-----------------------
+
+---> There are 5 types
+
+1. General Purpose
+2. Provisioned IOPS
+3. Throughput
+4. Cold
+5. Magnetic
+
+
+1. General purpose :- GP2,GP3 - SSD - General purpose (1GB-16TB)
+
+---> GP2 is the default volume.
+
+---> GP2 has default IOPS = 1:3(For 1GB we get 3 IOPS)
+
+---> For GP2 IOPS is not configurable.
+
+
+2. Provisioned IOPS :- IO1,IO2 - SSD - High performance (4GB - 16TB) - Expensive.
+
+---> IOPS - Input Output Per Second.
+
+---> IO1, IO2, GP3 are IOPS configurable.(We can input the IOPS values)
+
+
+3. Throughput :- ST1 - HDD - Frequently accessed data with cheaper price (500GB-16TB)
+
+
+4. Cold :- SC1 - HDD - Not frequently accessed data with cheaper price (500GB - 16TB)
+
+
+5. Magnetic :- Standard - HDD - Previous Generation(Old model) - (1GB - 1TB)
+
+
+---> Root volume supports these volume types GP2,GP3,IO1,IO2,Standard.
+
+---> Root volume doesn't support St1 and Sc1.
+
+---> Additional volumes supports all types of volumes.
+
+
+
+Instance Store Volume :-
+------------------------
+
+---> Instance store volume is not persistent storage / Temporary volumes.
+
+---> Not Persistent = If you STOP and START the EC2 Instance, Data is lost / deleted.
+
+---> Instance Store volumes are Free.
+
+---> Instance store volumes are also known as ephemeral storage.
+
+---> Reboot = data is Not LOST.
+
+
+* If you terminate the EC2 Instance, By default ROOT volume will also be deleted. Because "Delete on termination" option is enabled.
+
+* If you terminate the EC2 Instance, By default Additional volumes will not be deleted. Because "Delete on termination" option is not enabled.
+
+
+Qus. In Instance store volume there is any option to select the storage size ?
+
+Ans. NO, Based on instance(T2,T3) type you select mostly big machines, You will get instance store volumes automatically attached by AWS.
+
+
+
+EBS :-
+
+---> Stop and start ---> Jump ---> No Data Lost.
+
+---> In EBS, if we stop the EC2 instance it jumps to another host.
+
+---> Reboot ---> No Jump ---> No data lost.
+
+---> Terminate ---> Data is Lost.
+
+
+Instance store Volume :-
+
+---> Stop and Start ---> jump ---> Data is Lost.
+
+---> In instance store volume, The local hard disk is attached to EC2 instance. If we stop EC2 instance then EC2 instance jumps but hard disk is not possible to jump.(That's the reasons why data is lost in instance store volume).
+
+---> Reboot ---> No jump ---> No data lost.
+
+
+
+SNAPSHOTS :-
+------------
+
+---> Snapshot is a point in time copy of the volume.
+
+---> The backup of the volume is called snapshot.
+
+---> Is Snapshot is full backup or Incremental backups ? Incremental Backups.
+
+---> Snapshots are created from EBS volumes.
+
+---> EBS Volume ---> EBS Snapshot ---> EBS volume.
+
+---> You cannot attach snapshots directly to the EC2 instances, you have to create a volume out of snapshot first and then attach volume to EC2 instance.
+
+---> Is it possible to login or use snapshots directly ? No.
+
+---> Snapshots are stored in S3 (providers S3).
+
+---> Snapshots doesn't have any availability zones.
+
+---> Snapshots are regional.
+
+---> By default snapshots are private, If required we can make it public.
+
+---> You can copy the snapshots from one region to another region in the same account.
+
+---> Snapshots can be shared from one AWS account to another AWS account by using AWS account ID (Private).
+
+---> EBS volumes are created from EBS snapshots. Instance store volumes are created from a template store in S3.
+
+---> To create a snapshots we no need to stop EC2 instance.
+
+---> By default volumes and snapshots are  not encrypted.
+
+1. Not encrypted - Not encrypted
+
+2. Encrypted - Encrypted
+
+3. Not encrypted - Encrypted (Copy option)
+
+---> All encryption keys are stored in KMS (Key management service).
+
+---> Encryption and decryption is completely managed by AWS.
+
+
+Images :-  Backup of complete EC2 instance.
+---------
+
+---> Copy of the OS is called image.
+
+---> Image = AMI - Amazon Machine Image.
+
+---> The template of the OS is called AMI.
+
+* Snapshot - Copy of the volume. AMI - Copy of the entire EC2 instance  (including volumes).
+
+---> Copy of image includes all configurations that we did on original instances.
+
+---> EC2 Instance ---> Image(AMI) ---> EC2 Instance.
+
+---> One AMI, can be used multiple times to launch multiple EC2 instances.
+
+---> AMI's are re-usable.
+
+---> AMI doesn't have availability zones.
+
+---> AMI's regional.
+
+---> You cannot login directly to AMI, Instead of launch the EC2 instance from the image and login to EC2 instance.
+
+---> By default AMI's are private, If require you can make it public.
+
+---> AMI's can be copied from one region to another region.
+
+---> AMI can be shared from one AWS account to another AWS account.
+
+---> All public images are located at AWS market place.
+
+---> If you customized the application on OS and then take the image is called custom AMI or Golden AMI.[Custom AMI- Manual, Golden AMI - Automatic].
+
+
+---> Any AMI which are automatically created by image builder is called golden AMI.(EC2 image builder Pipeline)
+
+---> There is a EC2 instance which has two volumes(Root volume and additional volume), When ever you taking the image from this EC2 instance then snapshot also created automatically.(if we have two volume then we get two snapshots).
+
+---> We can also create a image from root volume snapshot.
+
+---> There is no need to stop EC2 instance to create an image.
+
+
+Cluster Networking instances :-
+-------------------------------
+
+---> Cluster - Group of EC2 instances, This group is called placement group.
+
+---> There are three types of groups.
+
+1. Cluster placement group.
+
+2. Spread placement group.
+
+3. Partition placement group.
+
+
+1. Cluster placement group :- Grouping the instances in same AZ's.
+
+---> High performance, But low High availability.
+
+2. Spread placement group :- Spread the EC2 instances across the multiple Az's.
+
+---> Low performance, But high availability.
+
+---> Per 1 Az = 7 Instances.
+
+3. Partition Placement group :- 1 partition can contains 100's of EC2 instances.
+
+---> Across multiple Az's. Max partitions are 7.
+
+
+---> Placement group recommends to have homogenous(Same) instances.
+
+---> You can add instances to the placement group anytime.
+
+
+
+Key-Pair :-
+-----------
+
+---> key-pair is used to retrieve the password of EC2 instance.
+
+---> Key-pair is combination of public key and private key. AWS has public key, customer has private key(PEM file).
+
+---> The default username for windows EC2 instance is "ADMINISTRATOR".
+
+---> The default username for Linux EC2 instance is "EC2-user".
+
+---> We don't have any key-pair by default, We have to create it by ourselves.
+
+---> Key-pair is also known as PEM file. key-pair extension is .pem.
+
+---> Whenever we launch a EC2 instance, The console will ask you to create and attach the key-pair to EC2 instance.
+
+---> You can create multiple key-pairs.
+
+---> One key-pair can be attached to multiple EC2 instances at the same time.
+
+---> 1 EC2 instance can have only one key-pair attached at any point.
+
+---> For every EC2 instance the password is unique.
+
+---> Every time you retrieve the password using PEM file, you will get the same password from EC2 instance.
+
+---> Once the PEM file is attached to EC2 instance, You cannot change the PEM file.
+
+---> Keep the PEM file safe and secure. Once its get lost we cannot retrieve back.
+
+---> Windows instance ---> Administrator(username) / PEM file(Password).Protocol - RDP
+
+---> For windows, We use remote desktop protocol client.
+
+---> Linux instance ---> EC2-user(username) / PEM file(Password).Protocol - SSH.
+
+---> For Linux, We use Putty.
+
+---> Putty doesn't support PEM file. It supports PPK file. To get PPK file we use a tool called putty generator.
+
+---> From PEM file we generate the PPK file using putty generator, After generating the PPK file attach that PPK file in putty.
+
+
+* If we lost the PEM file ---> We have two EC2 instances 
+
+1. A-EC2 instance
+2. B-EC2 instance
+
+---> If we lost the PEM file A-Ec2 instance then detach the root volume of A-EC2 instance and attach it to B-EC2 instance as a additional volume. In that volume one parameter should be change in single file. After changing that file detach it from B-EC2 instance and again attach it to A-EC2 instance as root volume.
+
+
+
+Security Groups :-  AWS ---> Region ---> VPC ---> NACL ---> SG ---> EC2
+------------------
+
+---> Firewall - Security group (Allow/Deny).
+
+---> Security group acts like a firewall to secure the EC2 instance.
+
+---> Security group stops the unauthorized access to EC2 instance.
+
+* AWS ---> Region ---> VPC ---> NACL ---> SG ---> EC2
+
+---> Security group has two types of rules.
+
+1. Inbound Rule.
+
+2. Outbound Rule.
+
+
+Inbound Rule :- Which allows the traffic towards the EC2 instance.
+
+---> By default inbound rules are deny.
+
+Outbound Rule :- Which sends the traffic outside the EC2 instance.
+
+---> By default outbound rules are allowed.
+
+QUS. Is it possible to deny protocols in security group  ? NO (Because by default inbound rules are deny).
+
+---> In security group, you can only allow protocols, But not deny.
+
+---> Every EC2 instance must have at least 1 security group attached.
+
+---> You can create multiple security groups and you can attach it to single EC2 instance.
+
+---> AWS EC2 has default security group.
+
+* RDP(3389) :- It is used to login/connect remotely to windows EC2 instance.
+
+* SSH(443) :- It is used to login/connect remotely to Linux EC2 instance.
+
+* Http / Https :- It is used to access the application.
+
+---> 1 EC2 instance can have multiple security groups attached.
+
+---> 1 Security group can be attached to multiple EC2 instances.
+
+Source - In source there are three types
+
+1. Custom - Customized
+
+2. Anywhere - For everyone
+
+3. Myip - Access only to you.
+
+---> If you allow any inbound rules, you no need to allow that on outbound rules, This is called Stateful (Security groups are stateful).
+
+---> If you allow any inbound rules, you have to allow that on outbound rules, This is called Stateless (NACL ---> stateless).
+
+
+NACL - Network Access Control List :-
+-------------------------------------
+
+---> Another layer of security for EC2 instance.
+
+---> If you want to tight the security than go with NACL
+
+---> Like security group, NACL also has inbound and outbound rules.
+
+---> NACL will hit first and then security group.
+
+---> 1 subnet cannot be in multiple AZ's at the same time.
+
+---> 1 AZ can have multiple subnets.
+
+---> Security group is EC2 instance level and NACL is subnet level.
+
+---> 1 subnet cannot be in multiple NACL's
+
+---> 1 NACL can have multiple subnets.
+
+
+
+Security groups VS NACL :-
+--------------------------
+
+Security group :-
+-----------------
+
+---> Inbound and outbound rules.
+
+---> Default security group.
+
+---> security group will hit after NACL.
+
+---> By default, Inbound rules are deny.
+
+---> You cannot deny on security group.
+
+---> Security groups are EC2 instance level.
+
+---> If you create any security group, Inbound rules are deny and outbound rules are allowed.
+
+---> Security group is stateful.
+
+---> If you allow any inbound rules no need to allow that on outbound rules.
+
+
+NACL :-
+-------
+
+---> Inbound and outbound rules.
+
+---> Default NACL.
+
+---> NACL will hit first and then security group.
+
+---> By default, Inbound and outbound rules are allowed.
+
+---> On NACL, you can deny and allow also.
+
+---> NACL are subnet level.
+
+---> If you create new NACL, all inbound and outbound rules are deny.
+
+---> NACL are stateless.
+
+---> If you allow any inbound rules, you must allow that on outbound rules.
+
+
+Auto Scaling :-
+---------------
+
+---> Scale out and scale In the EC2 instances based on workload.
+
+---> Three types :-
+
+1. Maximum
+2. minimum
+3. Desire
+
+Maximum :-
+----------
+
+---> The maximum number of EC2 instances that the auto-scaling group should have. Eg:- Max - 6 EC2 instances.
+
+Minimum :-
+----------
+
+---> The minimum number of EC2 instances that the auto-scaling group should have. Eg:- Min - 2 EC2 instances.
+
+Desire Capacity :-
+------------------
+
+---> The number of EC2 instances that you wish or desire to launch initially.
+
+
+---> There are three types of scaling options.
+
+1. Manual Scaling
+2. Scheduled Scaling
+3. Dynamic Scaling
+
+
+---> Manual Scaling :- If you are manually modifying DC, Min, Max is called manual scaling.
+
+
+---> Scheduled Scaling :- Based on time period or a day. (If we have huge traffic on weekend than schedule it for that days. Eg:- Shopping app has offers on weekends).
+
+
+---> Dynamic Scaling :- Based on the work load. (CPU, Network, ELB request count) --> Metrics(CloudWatch).
+
+
+* If we have huge traffic to servers, now scale out will happen one new EC2 instance will launch and automatically the application is in that newly created EC2 instance how is that possible? Image(AMI).
+
+
+Launch Configurations :-
+-----------------------
+
+---> The launch configurations contains all seven steps to launch EC2 instance in a template form. (AMI(Application), Volumes, SG, Key-pair, Tags, instance types, ETC).
+
+
+
+Elastic Load Balancer :-
+------------------------
+
+---> It distributes the traffic across the multiple Ec2 instances across AZ's.
+
+---> ELB is completely managed by AWS.
+
+---> ELB is a service in AWS, It is not a server.
+
+---> ELB has health checks.
+
+---> ELB does the health checks for the application.
+
+---> Cloud watch monitors the EC2 instance.
+
+---> ELB can be accessed via URL(DNS Name), You cannot login to the ELB.
+
+---> ELB has the IP address, But these are dynamic.
+
+---> AWS always recommended to use ELB DNS name not IP address.
+
+---> ELB has dynamic IP addresses, If you want static IP address contact AWS support.
+
+* Dynamic ---> Changes.
+
+* Static ---> Fixed.
+
+
+Types of Load Balancers :-
+--------------------------
+
+1. Application Load Balancer (ALB) :-
+
+---> Latest generation (Version)
+
+---> Supports HTTP and HTTPS.
+
+---> Default choose is ALB.
+
+2. Network Load Balancer (NLB) :-
+
+---> Latest generation (Version)
+
+---> Supports TCP
+
+---> Extreme High Performance 
+
+---> Network Level.
+
+---> Supports Static IP Addresses.
+
+3. Classic Load Balancer (CLB) :-
+
+---> Previous Version(Old)
+
+---> Supports HTTP,HTTPS and TCP.
+
+4. Gateway Load Balancer (GLB) :-
+
+---> Latest generation (Version)
+
+---> Security Level.
+
+
+---> In Application load balancer there are two Routing features.
+
+1. Host Based Routing
+
+2. Path Based Routing
+
+---> In ALB there is a feature called target group.
+
+---> We can create multiple target groups.
+
+---> Target group contains targets. Targets are nothing but a EC2 instances.
+
+Eg :- Target Group - boom-TG
+
+      Targets - EC2 Instances
+
+---> In ALB we have rules. there are host and path based routing rules.
+
+
+---> Host Based Routing :- Allows you to write rules that use the Host header to route traffic to the desired target group.
+
+---> Path Based Routing :- It will forward the requests to the specific targets based on the Rules configured in the load balancer.
+
+
+
+Types Of IP's :-
+----------------
+
+---> There are three types of IP'S
+
+1. Public IP (Dynamic)
+2. Private IP (Mandatory)
+3. EIP (Elastic IP)
+
+
+Public IP :-
+------------
+
+---> Which can be accessed from the internet.
+
+---> Public IP is optional.
+
+---> Public IP is dynamic, If STOP and START the EC2 instance public IP will be changed.
+
+---> AWS assigns the public IP's to the instances.
+
+
+Private IP :-
+-------------
+
+---> Which cannot be accessed from internet.
+
+---> Private IP is mandatory.
+
+---> This is used within the VPC.
+
+
+Elastic IP :-
+-------------
+
+---> Same as public IP.
+ 
+---> But EIP is static, If you STOP and START the EC2 instance IP wont be changed.
+
+---> EIP are charged. 5 EIP's are free.
+
+---> EIP is assigned to EC2 instance not load balancer.
+
+---> EIP has to be associated to EC2 instances, If you not associate EIP to any instance, It will be charged. If those EIP's are even below 5 also, Don't keep it idle.
+
+---> Idle EIP's are charged.
+
+
+Instance Meta Data :-
+---------------------
+
+---> Information(data) about instance.
+
+---> From console, you can get the instance metadata from Description section.
+
+---> http://169.254.169.254/latest/meta-data/ ---> CLI
+
+
+User-Data :- Boot Strap Scripting.
+
+---> The script which you provide will run at the boot time of EC2 instance.
+
+---> For Linux ---> Shell Script
+
+---> For Windows ---> PowerShell.
+
+---> The seven step to launch EC2 instance
+
+1. AMI
+2. Instance Type
+3. Configuration (Scripting)
+4. Storage
+5. Tags
+6. Security Group
+7. Review / Key-pair
+
+
+Global Accelerator :-
+---------------------
+
+---> Global accelerator is networking service that helps you to improve availability, performance and security of your public applications.
+
+---> It has two static IP's.
+
+---> It is completely managed by AWS.
+
+---> Global accelerator will not cache. 
+
+---> CDN will cache. 
+
+---> Customer ---> GA ---> ELB (We can connect ELB directly through GA)
+
+---> Customer ---> Edge location ---> CDN ---> GA ---> ELB.
+
+---> It is charged.
+
+
+Cloud Watch :-
+--------------
+
+---> CloudWatch is used to monitors the performance.
+
+---> CloudWatch can monitor all AWS services.
+
+---> CloudWatch is all about Alarms, Events and Logs. (AEL)
+
+Alarms :-
+---------
+
+---> CloudWatch monitors only Host-level metrics. (Default Metrics)
+
+---> Host-level metrics contains
+
+1. CPU
+2. Network
+3. Disk
+4. Status Check
+
+
+---> Alarms can also do some actions. (Terminate, Stop and Reboot).
+
+---> Alarm has three states.
+
+1. In Alarm - If the CPU utilization is more than 90% than we use this.(Based on condition).
+
+2. Ok - If the CPU utilization is less than 90% than we use this.
+
+3. Insufficient - If EC2 instance is not reachable than we use this mode.
+
+
+Events :-
+---------
+
+---> Event is also called as Event bridge.
+
+---> Events will route to target.
+
+---> Status ---> Event ---> Rule ---> Target
+
+
+Logs :-
+-------
+
+---> If we have multiple EC2 instances and we want all logs of all instances, First we install one agent in EC2 than all logs will reflected to CloudWatch logs.
+
+---> CloudWatch can monitor applications also.(Micro services, docker, lambda, websites)
+
+
+
+LightSail :-
+------------
+
+---> LightSail instance contains Containers, databases, networking, storage, domains & DNS and snapshots.
+
+---> It is free for first 3 months.
+
+---> Containers :- If we want create a container services than go with this.
+
+---> Databases :- LightSail supports only two database engines. 
+
+1. MySQL
+2. PostgreSQL
+
+---> If we want to create a database for your LightSail instance than go with this.
+
+---> Networking :- In Networking we have Static IP, Distribution and load balancer.
+
+---> Static IP :- Here we can create and assign the static IP for your LightSail instance.
+
+---> Distribution :- Cloud Front. It distributes the content to all edge locations.
+
+---> Load balancer :- Here we can create a load balancer for your LightSail instance. It is charged.
+
+---> Storage :- Here we can create the Bucket or a disk.
+
+---> Domain & DNS(Route53) :- In this we can create a DNS name and domains.
+
+---> For domain first we have to register the domain name.
+
+---> Snapshots :- A snapshot is a backup of complete LightSail instance.
+
+---> In EC2 instance image means complete backup of EC2 instance. In LightSail complete backup is snapshot.
+
+
+Elastic Beanstalk :-
+--------------------
+
+---> Elastic Beanstalk is used for easy and quick deployment of application.
+
+---> In elastic beanstalk we have three types of presets (Deployment Modes) :-
+
+1. Single EC2 Instance - Beanstalk launch only one EC2 instance with all given configurations.
+
+2. High Availability - In HA, Beanstalk launches the load balancer and multiple EC2 instance with all given configurations.
+
+3. Custom Preset :- If we want choose our own VPC,SG,KEYPAIR ETC then go with custom preset.
+
+Elastic Beanstalk Architecture :-
+---------------------------------
+
+---> Whenever we open a beanstalk directly we can see a option that we need to create an application.
+
+---> In that application we have to create an environment. Inside the environment we can have EC2 instance. (Any Preset)
+
+---> Once the environment is up(Online) than it generates the URL. From that URL we can access our application.
+
+---> We can have multiple environments in single application.
+
+---> In elastic beanstalk we have 5 deployment options 
+
+1. All at once
+2. Rolling
+3. Rolling with additional batches
+4. Immutable
+5. Traffic Splitting.
+
+All at once :-
+--------------
+
+---> Fast deployment
+
+---> Application has downtime
+
+---> Great for quick iterations in development environment
+
+---> No additional cost.
+
+Rolling :-
+----------
+
+---> Application is running below capacity.
+
+---> We can set the bucket size. Bucket size(It is nothing but we can select how many EC2 instance can update at once)
+
+---> Application at some point of time running both versions simultaneously.
+
+---> No additional cost.
+
+Rolling with additional batches :-
+----------------------------------
+
+---> If we have 4 EC2 instances with version 1 it wont touch those 4 instance it will launch 2 new instances with version 2. if it is successful than it can update the rest of EC2 instances based on bucket size.
+
+---> Additional batch is removed at the end of deployment.
+
+---> Longer deployment and good for production.
+
+---> Small additional cost.
+
+Immutable :-
+------------
+
+---> Zero downtime.
+
+---> New version is deployed to new instances, on temp auto scaling group.
+
+---> Quick roll back incase of failure.
+
+---> Longer deployment and good for production.
+
+
+Blue green deployment model :-
+------------------------------
+
+---> In this model we are swapping the URL.
+
+* Blue environment (Actual)
+* Green environment (New)
+
+
+
+S3 - Simple Storage Service :-
+---------------------------------
+
+---> S3 provides the unlimited storage by AWS.
+
+---> S3 is used to just to store the files.
+
+---> S3 can store all flat files. (Flat files ---> Any type of file or All files).
+
+---> With S3, you can upload, download and access files, but cannot execute files.
+
+---> S3 is a object based storage.
+
+---> Is it possible to install OS in S3 ? ---> NO
+
+---> Is it possible to install DB in S3 ? ---> NO
+
+---> Is it possible to run java, python in S3 ? ---> No
+
+---> S3 is serverless.
+
+---> S3 (Storage)
+
+---> Bucket (Folder)
+
+---> Objects (Files)
+
+---> Name of file(A.txt) ---> Key
+
+---> Bucket is a container for objects.(Bucket is a folder)
+
+---> Object is file.
+
+---> Key is the filename/Name of the object.
+
+---> S3 is global, Bucket is regional.
+
+---> S3 supports static website hosting(HTML Files)[Create a bucket, upload all files, enable static website hosting].
+
+---> You cannot attach S3 to the EC2 instance, But you can access from EC2 instance.
+
+---> S3 is cheaper than EC2.
+
+---> S3 is WORM model. (WORM - Write once and read many)
+
+Buckets :-
+----------
+
+---> Bucket is regional.
+
+---> Bucket is container for the objects.
+
+---> Bucket names should be universal or unique.
+
+---> Bucket under bucket is not possible to create.
+
+---> You can create multiple buckets in different regions.
+
+---> Max number of buckets you create in S3 is 100 (Soft Limit).
+
+---> By default buckets are private, If require we can make it public.
+
+---> To access any object we have an URL. (http://11ambucket.s3.ap-south-1.amazonaws.com/photos/puppy.jpg)
+
+---> In URL - 11ambucket - It is a bucket name.
+
+---> In URL - ap-south-1 - Region
+
+---> In URL - Photos - Pre-Fix (Sub Folder)
+
+---> In URL - .jpg - Suffix
+
+---> In URL - Puppy - Object.
+
+
+S3 Versioning :-
+----------------
+
+---> Versioning is like a backup tool.
+
+---> Versioning is enabled on bucket level but applied on object level.
+
+---> By default, versioning is not enabled on your bucket.
+
+---> Whenever new version is created that version has unique ID. Version ID is always unique.
+
+---> Version files can be downloaded anytime.
+
+---> Whenever your original object got deleted, For your latest version marker is applied. That Marker is called Delete marker.
+
+---> If you delete the original object, delete marker is applied on the latest version.
+
+---> If you want the object to be restored, delete the delete marker and your object got restored.
+
+---> Once you have enabled the versioning, you cannot disable it. You can only suspend it.
+
+---> AWS charges for versioning, be careful while you enable versioning for huge files.
+
+---> If you upload a object after the versioning is suspended, the latest version will be created as usual but, if you update the original file, versioning files are not created.
+
+---> If you delete the original object, Delete marker will be applied, if you delete the delete marker, The object will not be restored.
+
+---> In suspended state, existing versioning files will not have any changes. (Versioning concept still continues even though versioning is suspended state).
+
+
+---> Minimum object size - 0 bytes, Maximum object size - 5TB.
+
+---> You can have unlimited number of objects having 5TB each.
+
+---> For single PUT, you can upload max 5GB.
+
+---> Multi part upload (MPU).
+
+---> AWS recommends if you have greater than 100MB use MPU.
+
+
+Storage Classes :-
+------------------
+
+---> While uploading the objects into S3, selecting the storage class is mandatory.
+
+---> There are 6 different storage classes :-
+
+1. Standard Frequently Access (FA).
+
+2. Standard Infrequently Access (IA).
+
+3. Reduced Redundancy Storage (RRS).
+
+4. One Zone Infrequently Access.
+
+5. Intelligent Tiering.
+
+6. Glacier.
+
+Standard Frequently Access (FA) :-
+----------------------------------
+
+---> This is used for frequently access data.
+
+---> It is default storage class.
+
+---> For regular purpose.
+
+---> No retrieval charges.
+
+---> Availability - 99.99%
+
+---> Durability - 11 9's
+
+---> Minimum object size  - 0 Bytes.
+
+Standard Infrequently Access (IA) :-
+------------------------------------
+
+---> This is used for infrequently access data.
+
+---> Cheaper than Standard Frequently access.
+
+---> Retrieval charges are applied.
+
+---> Demand rapid access.
+
+---> Availability - 99.9%
+
+---> Durability - 11 9's
+
+---> Minimum Object size - 128kb
+
+---> Minimum Duration - 30 days (If we want to change the storage class, the objects will stay in current storage class for 30 days)
+
+Reduced Redundancy Storage :-
+-----------------------------
+
+---> Frequently access but not critical.
+
+---> No retrieval charges.
+
+---> AWS doesn't recommend to use this storage class.
+
+---> Cheaper than other classes.
+
+---> Availability - 99.99%
+
+---> Durability - 99.99%
+
+One Zone IA :-
+--------------
+
+---> Infrequently access data but not critical.
+
+---> Retrieval charges are applied.
+
+---> Availability - 99.5%
+
+---> Durability - 11 9's
+
+---> Minimum object size - 128kb
+
+---> Minimum Duration - 30days.
+
+Intelligent Tiering :-
+----------------------
+
+---> If the customer don't know which storage class to select than choose this.
+
+---> Unknown access patterns.
+
+---> Availability - 99.9%
+
+---> Durability - 11 9's.
+
+---> Minimum duration  - 30 days.
+
+Glacier :-
+----------
+
+---> Infrequently access data.
+
+---> Archiving Purpose.
+
+---> In S3 we have a folder and that is called bucket, Like that in glacier have a folder that is called vault.
+
+---> Vault :- Container for archives.
+
+---> Archive - Objects (One archive can have 40TB) In one vault we can have unlimited number of archives.
+
+---> We can create only 1000 Vaults.
+
+---> Retrieval charges are applied.
+
+
+Glacier has retrieval options :-
+
+1. Expedited - 1 to 5 Mins (If we want to retrieve the data in 1 to 5 min we can use this.)
+
+2. Standard - 3 to 5 hours.
+
+3. Bulk - 5 to 12 hours (For huge data)
+
+---> Availability - 99.99%
+
+---> Durability - 11 9's
+
+---> Minimum Duration - 90 days
+
+---> For deep glacier minimum duration is  180 days.
+
+Life cycle management (LCM):-
+-----------------------------
+
+---> Here we have life cycle rules.
+
+---> It is possible to move the objects from one storage class to another storage class automatically.
+
+---> We can create rule for entire bucket or only for prefix.
+
+---> Eg rule :- FA ---> IA(30 days) ---> Glacier (60 days) ---> Moving from one class to another class is called TRANSISTION.
+
+---> Delete after 365 days ---> This is called Expiration.
+
+---> Rules can be applied for both current and previous versions.
+
+S3 Options :-
+------------
+
+---> Object Lock :- We can lock the objects for certain period or permanently. If the object is in lock state we cannot do any actions.
+
+--->  Server access logs :- It shows the information about who is accessing your bucket.
+
+---> Server access logs are bucket level logs.
+
+---> Object level logs - Cloud trail.
+
+---> Athena :- It is a AWS service, It is used to analyze or customize the logs directly from S3.
+
+---> CORS - Cross Origin Resource Sharing :- You need it for authorized resource sharing with external third parties.
+
+---> If we want share the resources among the two different origins we have enable the CORS.
+
+* Origin - Bucket Name in the URL.
+
+---> By default CORS is not enabled.
+
+---> CRR - Cross Region Replication :- If we want to replicate the object in different region.
+
+---> We have to create a CRR Rule. CRR is not enabled by default.
+
+---> CRR is enabled on bucket level.
+
+---> Versioning is mandatory to have CRR.
+
+---> CRR can be done cross region and cross account also.
+
+---> SRR - Same Region Replication :- If we want to replicate the object in same region.
+
+Encryption :-
+-------------
+
+---> Encryption can be done in 2 ways.
+
+1. In-Transit
+
+2. Data at Rest
+
+---> In-Transit :- Encryption while data is moving. Eg:- HTTPS.
+
+---> Data at Rest :- Encryption while data is at rest.
+
+---> Amazon Certificate Manager (ACM) :- Here we can generate HTTPS certificates.
+
+---> Amazon S3 has 3 types of encryptions :-
+
+1. Server Side Encryption (SSE)
+
+---> SSE - S3 (AWS managed key)
+
+---> SSE - KMS (AWS KMS key)
+
+---> SSE - C (Customer Provided Key)
+
+* AWS uses the AES 256 algorithm for encryption. (AES - Advance Encryption Standard).
+
+2. Client Side Encryption (CSE)
+
+---> It should be handled by customer.
+
+3. In-Transit Encryption
+
+---> Encryption while data is moving. Eg:- HTTPS.
+
+S3 Data Consistency Models :- 
+-----------------------------
+
+---> There are 2 types :-
+
+1. Read after write consistency for PUTS of new objects. (PUTS - Upload)
+
+2. Eventually consistency for overwrites of Puts and deletes.
+
+
+* Pre-signed URL is valid for certain period of time only.
+
+---> You can upload objects from Hyderabad to Mumbai bucket, Ireland bucket, Sydney bucket etc. If you want to upload it faster we can use TRANSFER ACCELERATOR.
+
+---> If we use transfer accelerator it will upload through CDN.
+
+Qus. How to delete the bucket ?
+
+Ans. Open bucket ---> go to permissions ---> there we delete the bucket policy and save ---> come back and empty the bucket and save ---> come back to bucket section and delete the bucket.
+
+---> ACL - Access Control List.
+
+** If your bucket is private than your objects is also private. If your bucket is public than also your objects are private.
+
+** Objects are always private.
+
+** Object Lock can only be enabled at the time of creating the bucket.
+
+---> An additional layer of security that requires multi-factor authentication for changing Bucket Versioning settings and permanently deleting object versions. To modify MFA delete settings, use the AWS CLI, AWS SDK, or the Amazon S3 REST API.
+
+---> If we enable the MFA for versioning than it is not possible to suspend by anyone only authorized persons can do it. MFA is not possible to enable on console. we can enable that by using AWS CLI, AWS SDK, or the Amazon S3 REST API.
+
+
+Static Website Hosting :-
+-------------------------
+
+---> Create a public bucket, After creating bucket download the sample HTML Template and upload the all objects to that bucket. 
+
+---> After uploading the objects to bucket, Select all objects and make them public. (Make public using ACL).
+
+---> After that, Go to properties and edit and enable the static website hosting and specify the default page of the website. (Index.html) and save the changes.
+
+---> Now Static website hosting gives you a URL copy that URL and access it.
+
+
+CORS :-
+-------
+
+
+
+Creating Lifecycle Rules :-
+---------------------------
+
+---> First create a bucket and go to management section there we see the lifecycle rules. From there we can create a life cycle rules to objects.
+
+
+CRR (Cross Region Replication) :-
+---------------------------------
+
+---> Versioning is mandatory to have CRR.
+
+---> Create a two buckets (Source bucket and Destination bucket).
+
+---> Open source bucket and go to management there we see replication rules. There we are go and create replication rule.
+
+---> While creating the rule we see the destination option there we give the 2nd bucket(Destination bucket) and create new IAM role and save. Now CRR rule is created.
+
+
+
+AWS Access :- 
+-------------
+
+---> There is two ways to access AWS.
+
+1. Console Access (Website)
+
+2. Programmatical Access (CLI, SDK's, Developer Tools)
+
+
+---> In console access we can login through Email and password(Root) or username and password(IAM).
+
+
+---> In programmatical access we can login by using keys. There are two keys.
+
+1. Access Key (Username)
+
+2. Secret Key (Password)
+
+
+---> Keys are user Specific, Every individual IAM user have their own keys.
+
+---> It is not recommended to share keys with anyone.
+
+---> Every IAM user can have max 2 set of keys.
+
+---> Once keys are lost, It is lost. You cannot retrieve the same keys back, But we can re-generate the new keys N number of times.
+
+---> For every re-generation we get new keys. We cannot get the old keys back.
+
+
+CLI :-
+------
+
+---> To access the CLI, First we have to install the AWSCLI.msi file from google.(For Windows)
+
+---> After success installation check the version. (Command -> aws --version).
+
+---> While using CLI, firs we have to authenticate by access key and secret key.
+
+---> For that first we use this command -> aws configure. It asks the below details.
+
+---> AWS Access Key ID [None]: AKIAQEFWAXMHSTSQ7JMZ
+
+---> AWS Secret Access Key [None]: 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
+
+---> Default region name [None]: Global
+
+---> Default output format [None]: Table 
+
+---> In default out format there are 3 types, We can choose based on your requirement.
+
+1. Table
+
+2. Json
+
+3. XML
+
+QUS. What do we need to configure after installing the AWS CLI ?
+
+Ans. Keys.
+
+---> It is not a good to configure the keys, because keys are stored locally.
+
+---> Configuring the KEYS on the instance is bad way.
+
+---> For that we have to create and assign the IAM to EC2 instance. 
+
+---> Bad Way :- Launch EC2 instance and install AWS CLI, configure KEYS and execute few  sample CLI commands.
+
+---> Good Way :- Launch EC2 instance and install AWS CLI, attach the IAM ROLE and execute few sample commands.
+
+Process :-
+----------
+
+---> Launch the Linux EC2 instance and install python first in Linux instance.
+
+
+IIS :- Internet Information Services
+
+---> IIS is used for where we can host your windows applications.
+
+
+
+Elastic File System (EFS) :-
+----------------------------
+
+---> If we have multiple EC2 instance and we want to share same file to all instances then we use this service.
+
+---> EFS is unlimited storage.
+
+---> EFS is completely managed by AWS.
+
+---> EFS is only for Linux EC2 instances.
+
+---> FSX is for windows EC2 instances.
+
+---> EFS works with NFSv4 protocol.(NFS - Network File System, V4 - Version 4).
+
+---> EFS is file based storage.
+
+---> EFS can be mounted to multiple EC2 instances at the same time across Az's.
+
+Qus :- Is it possible to attach single volume to multiple EC2 instances at the same time ?
+
+Ans :- No, but we can use EFS.
+
+
+** We cannot enable the encryption after EFS got created.
+
+---> First launch the EFS and then launch the EC2 instances and attach the EFS to instances.
+
+*** We have to enable the NFS protocol in security group.
+
+---> Launch EC2 instance and connect with that instance in putty.
+
+---> Use this command to get all permissions to install packages.
+
+---> Command --> sudo -s
+
+---> In security groups we have to enable NFS protocol first.
+
+---> As we are using NFS protocol we have to execute some commands first in putty.
+
+1. yum install -y nfs-utils --> First we have to install the NFS utils package by using this command.
+
+2. mkdir efs --> After installing that make a new directory with any name.
+
+3. mount -t nfs4 filesystemid.efs.ap-south-1.amazonaws.com:/ efs/  --> Now mount the EFS to previously created directory. (Filesystem id means - Here we have to give EFS ID. To know that id go to EFS service and select the EFS, On top we can see the ID. Eg:- fs-07cc67802f992f370
+
+4. cd efs
+
+
+
+Storage Gateway :-
+------------------
+
+---> It is used to synchronize the data from On prem to AWS (S3, EBS, Glacier).
+
+---> There are different types of gateways
+
+1. File Gateway (S3)
+
+2. Volume Gateway (EBS)
+
+3. Tape Gateway (Glacier)
+
+4. FSX Gateway
+
+
+1. File Gateway (S3) --> If we want to store files in S3 than we choose file gateway.
+
+---> In file gateway it uses the NFS and SMB protocols (Security Group).
+
+2. Volume Gateway (EBS) --> If we want to store files in EBS then we choose volume gateway.
+
+---> In volume gateway there are two types.
+
+1. Store (Infrequently Access)
+
+2. Cached (Frequently Access)
+
+---> In volume gateway it uses the ISCSI protocol (Security Group)
+
+3. Tape Gateway (Glacier) --> If we want to store files in glacier than we choose tape gateway.
+
+---> In tape gateway it uses the ISCSI protocol (Security Group)
+
+Steps to setup storage gateway :-
+---------------------------------
+
+1. Create a storage gateway on EC2 (Choose Gateway)
+
+2. Launch EC2 instance with m4.xlarge having root volume 80GB and additional volume 100GB.
+
+3. Enable all traffic for default SG (Temporary)
+
+4. Connect to gateway : Provide EC2 instance public IP (In real time use EIP)
+
+5. Wait until to get the gateway active and allocate additional 100GB volume as cache.
+
+6. Create private bucket
+
+7. Create a file share from storage gateway console, and provide s3 bucket details allow clients 0.0.0.0/0
+
+8. Launch red hat EC2 instance t2.micro.
+
+---> Open that t2.micro instance and run these commands.
+
+1. sudo yum install nfs-utils-y
+
+2. mkdir file gateway
+
+3. mount -t nfs -o noclock,hard (storage gateway id):/730s3bkt file gateway/
+
+Eg :- mount -t nfs -o noclock,hard 172.31.24.211:/730s3bkt file gateway/
+
+4. cd file gateway
+
+5. Create any file in file gateway path by using touch pc.txt
+
+6. Now check in AWS S3.
+
+
+Relational Database Service (RDS) :-
+------------------------------------
+
+---> In RDS we have two main concepts.
+
+1. Read Replicas
+
+2. Multi-AZ
+
+---> In RDS we call instance as RDS DB instance.
+
+---> While creating a database instances, We have to create an engine first, inside that engine we can have n number of databases.
+
+---> One instance can have any number of DB's.
+
+QUS. If application want to connect with the database what pre-requisites are needed ?
+
+ANS. Host Name(IP), User Name, Password, Port Number.
+
+---> In RDS we call Host Name as End Point. 
+
+---> Whenever we setup a DB, Automatically End points are created.
+
+Read Replicas :-
+----------------
+
+---> Replication is completely managed by AWS.
+
+---> Copy of the whole instance will be created while replicating.
+
+---> This replication is asynchronies.
+
+---> Asynchronies means whatever your application is writing on the live DB will not immediately available on the read replicas machine.
+
+---> Read replicas can only used for read not possible to write.
+
+---> We can create the read replicas in any other regions.
+
+---> Read replicas are used to increase the performance.
+
+---> Each read replica has its own end point.
+
+---> No high availability in read replicas.
+
+---> Maximum we can create only 5 read replicas. 
+
+
+Multi-AZ :-
+-----------
+
+---> Multi-AZ is for high availability.
+
+---> Multi-Az is expensive.
+
+---> Multi-AZ is just a check box we have to enable it.
+
+---> In multi-AZ end points will not change after failover.
+
+---> You can enable multi-AZ for read replicas.
+
+---> For multi-AZ charges are doubled.
+
+---> RDP, SSH are not possible to connect the RDS DB instance.
+
+
+RDS Features :-
+----------------
+
+---> In RDS we call backups as snapshots.
+
+---> We can take snapshots manually or automatically (Schedule).
+
+---> Encryption
+
+---> Storage --> Volumes --> GP2, Io1 etc.
+
+---> Instance Type --> DB instance Type --> T2.xlarge
+
+---> Security Groups/VPC/Subnets
+
+---> Read Replicas/Multi-AZ
+
+---> It supports Performance insights (Dashboards)
+
+---> Retention Period --> Max 35 Days. We can have backups up to 35 days. Default is 7 days. Retention period is applicable for automatic backups.
+
+---> Manual backups has no retention period. We have to delete it manually.
+
+---> Snapshots can be exported to S3 and Restore it from S3 also.
+
+---> You can scale up the DB instance but not on FLY. (We need to stop the DB instance)
+
+---> Auto-scaling the storage is possible. we have to specify the max limit.
+
+Eg :- If we specify max limit as 1000GB, it increase until the data is reaching that limit. (We can do it in FLY)
+
+---> Parameters Group.
+
+
+
+Elastic Cache :-
+----------------
+
+---> Elastic cache is in memory database caching service.
+
+Cache :- All frequently accessed data stored in cache.
+
+---> Elastic cache have two engines
+
+1. Redis
+
+2. Mem cached
+
+
+Redis :-
+--------
+
+---> Supports HA, Failover
+
+---> We can take backups.
+
+---> Data is persistent.
+
+
+Memcached :-
+------------
+
+---> It doesn't support HA.
+
+---> No failover
+
+---> No backup
+
+---> Data is not persistent.
+
+---> Elastic cache is mostly used for read purpose.
+
+---> If you want to increase the performance choose Elastic cache.
+
+Developer Strategy :-
+--------------------
+
+---> In developer strategy we have two types :-
+
+1. Lazy Load
+
+2. Write Through
+
+
+---> Lazy Loading :- Load whenever necessary.
+
+---> Write Through :- Parallelly writing on both database and cache.
+
+
+Redis Architecture :-
+---------------------
+
+---> In Redis we have two types :-
+
+1. Cluster Mode Enabled.
+
+2. Cluster Mode Disabled.
+
+
+Shard :-
+--------
+
+---> Shard is nothing but a collection of nodes or servers.
+
+---> Cluster - Collection of shards is called cluster.
+
+---> Each shard has 6 nodes. One is primary node and another 5 is replica nodes.
+
+** If cluster mode is enabled we can have multiple shards.
+
+** If cluster mode is disabled we only have one shard.
+
+
+DynamoDB :-
+-----------
+
+
+Route 53 :-
+------------
+
+---> R53 is DNS Service in AWS.
+
+---> DNS port Number is 53.
+
+---> DNS (Domain Name Server) - It Keeps Track of all IP addresses and hostnames.
+
+---> DNS will convert host to IP and IP to host.
+
+---> Every device has local DNS (ETC/hosts).
+
+---> Route 53 is global.
+
+---> DNS is all about records.
+
+---> In route 53 first we have to create hosted zone.
+
+---> Hosted Zone --> Container of records.
+
+---> Hosted name should be same as domain name.
+
+
+Route 53 Features :-
+--------------------
+
+1. Domain Registration
+
+2. DNS Routing
+
+3. Health Checks
+
+4. Routing Policies
+
+** Hosted zone name should be same as domain name.
+
+---> In route 53 first we have to create hosted zone.
+
+---> There are two types of hosted zones
+
+1. Public Hosted Zone --> If the website is accessed by everyone it is called public hosted zone (Internet).
+
+2. Private Hosted Zone --> If the website is accessed within the VPC it is called private hosted zone (VPC).
+
+---> Route 53 ---> Hosted Zone ---> Records ---> ELB ---> Application server (EC2) ---> DB server.
+
+---> In public hosted zone there are two default records they are
+
+1. Name server Records --> It have pool (Multiple) of servers. It is managed by AWS.
+
+2. SOA Records --> Admin for hosted zone.
+
+---> Name server and SOA records are automatically created and handled by AWS.
+
+---> NS and SOA records are called default records.
+
+---> You cannot delete NS and SOA records.
+
+
+Route 53 Records :-
+-------------------
+
+---> There are different types of records :-
+
+1. A Record  --> URL to IPV4 (Boom.com --> EC2 instance IP)
+
+2. AAAA Record --> URL to IPV6
+
+3. CNAME Record --> URL to URL (Boom.com --> ELB DNS URL).
+
+4. Alias Record --> URL to Any Resource (Boom.com --> EC2 instance IP or ELB URL).
+
+---> CNAME is chargeable, Alias is free.
+
+---> Always choose Alias over CNAME.
+
+---> We can call Boom.com as Main domain, Naked Domain, Zone Apex Record.
+
+---> For naked domains, you cannot use CNAME record instead use Alias Record.
+
+5. MX Record
+
+6. PTR Record
+
+7. NS Record
+
+8. SOA Record
+
+
+Routing Policies :-
+-------------------
+
+1. Simple Routing Policy
+
+---> With simple routing, You typically route traffic to a single resource.
+
+---> There are No health checks.
+
+
+2. Failover Routing Policy
+
+---> Failover routing allows you to route traffic to a resource when the resource is healthy or to a different resource when the first resource is unhealthy.
+
+---> In this policy we have health checks.
+
+
+3. Geo-Location Routing Policy
+
+---> Use when you want to route traffic based on the location of users.
+
+---> Based on users location R53 will route to appropriate record.
+
+---> If we have 6 geo locations than we have to create 6 Records.
+
+
+4. Latency Routing Policy
+
+---> AWS Route 53 that routes user requests to the AWS region that provides the lowest possible latency.
+
+---> If we have 6 geo locations than we have to create 6 Records.
+
+
+5. Multi-Value Routing Policy
+
+---> It is same as simple routing policy but in multi value routing we has the health checks.
+
+
+6. Weighted Routing Policy
+
+---> Choose the amount of traffic routed for each resource.
+
+---> If we have three EC2 instances we can specify the how much traffic will go to each EC2 instance.
+
+---> 1st EC2 Instance - 25%
+
+---> 2nd EC2 Instance - 25%
+
+---> 3rd EC2 Instance - 50%
+
+
+
+Virtual Private Cloud (VPC) :-
+------------------------------
+
+---> It gives you full control over your virtual networking environment, including resource placement, connectivity, and security.
+
+---> VPC is like a virtual data centre on cloud.
+
+---> One region can have multiple VPCs.
+
+---> Maximum we can have 5 VPCs.
+
+---> AWS ---> region ---> VPC ---> Availability zones ---> EC2 Instances.
+
+---> VPC is regional.
+
+---> The five main concepts of VPC is 
+
+1. VPC
+
+2. Internet Gateway
+
+3. Public and Private Subnets
+
+4. NAT Gateway
+
+5. Router and Routing Tables
+
+
+Internet Gateway (IGW) :-
+------------------------
+
+---> It provides the internet to the VPC.
+
+Public Subnet :-
+----------------
+
+---> Which is exposed to the internet. It can be accessed by everyone.
+
+---> All the public subnet traffic is routed to internet gateway.
+
+Private Subnet :- 
+-----------------
+
+---> Which is not exposed to the internet. It cannot be accessed by everyone.
+
+---> We can access private subnet through NAT gateway.
+
+Network Address Translator (NAT) :-
+-----------------------------------
+
+---> NAT is used to provide the internet to private subnet.
+
+---> NAT converts private IP to public IP.
+
+---> NAT gateway should be in public subnet.
+
+Routing Table :-
+----------------
+
+---> In routing we have two types of tables
+
+1. Public Routing Table
+
+2. Private Routing Table
+
+
+Public Routing Table :-
+-----------------------
+
+---> Public routing table is routed to internet gateway.
+
+---> It is associated to public subnet.
+
+Private Routing Table :-
+------------------------
+
+---> Private routing table is routed to NAT gateway.
+
+---> It is associated to private subnet.
+
+
+Steps to Setup VPC :-
+---------------------
+
+1. Create VPC
+
+2. Create internet gateway (IGW) and attach it to the VPC
+
+3. Create public subnet (192.168.1.0/24)
+
+4. Create private subnet (192.168.2.0/24)
+
+5. Create NAT gateway in public subnet (EIP)
+
+6. Create public routing table --> 0.0.0.0/0 --> Routed to IGW --> Associate with public subnet
+
+7. Create private routing table --> 0.0.0.0/0 --> Routed to NAT --> Associated with private subnet
+
+8. Launch EC2 instance in public subnet (Bastion / jump server) and launch another EC2 instance in private subnet. Try to connect from bastion to private server.
+
+** NAT gateway and internet gateway are services not servers.
+
+
+VPC End Points :-
+-----------------
+
+---> It is used to access only AWS services without NAT.
+
+---> NAT = Full internet access.
+
+
+Classless Inter Domain Routing (CIDR) :-
+----------------------------------------
+
+---> Classless Inter-Domain Routing (CIDR) is an IP address allocation method that improves data routing efficiency on the internet.
+
+Eg :- 192.168.1.0/24, 192.168.2.0/24, 192.168.3.0/24
+
+---> Each subnet is associated to one availability zone.
+
+---> One AZ can have multiple subnets.
+
+---> 5 IP's are reserved for each subnet
+
+1. (.0) - Network
+
+2. (.1) - Router
+
+3. (.2) - DNS
+
+4. (.3) - Future Purpose
+
+5. (.255) - Broadcasting
