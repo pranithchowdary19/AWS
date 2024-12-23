@@ -1,5 +1,5 @@
 AWS
----
+
 
 CLIENT SERVER ARCHITECTURE :-
 ----------------------------
@@ -2934,3 +2934,57 @@ Eg :- 192.168.1.0/24, 192.168.2.0/24, 192.168.3.0/24
 4. (.3) - Future Purpose
 
 5. (.255) - Broadcasting
+
+
+Process To create VPC :-
+------------------------
+
+---> First open VPC service, Select create VPC ---> VPC Only ---> Give the Name(MumbaiVPC) ---> Select IPV4 CIDR manual input (192.168.0.0/16) --> Don't select IPV6 ---> Finally select create VPC.
+
+---> Create Internet gateway --> Give the name (MumbaiIGW) ---> Select create internet gateway.
+
+** One IGW for one VPC.
+
+---> After creating the IGW attach it to VPC.
+
+---> Create Subnets --> Associate VPC --> Give the subnet name (Public Subnet) --> Select the availability zone (1A) --> IPv4 subnet CIDR block (192.168.1.0/24) --> Like that create another subnet as private subnet.
+
+---> Create NAT Gateway ---> Select the subnet (NAT should be in public subnet) --> Associate the elastic IP.
+
+---> Create routing table ---> Name the routing table (Public-RT) --> Associate the VPC --> create route table. Like wise create Private routing table also.
+
+---> After creating the public and private routing tables, All traffic will route to public RT, So we have to open Public RT and go to routes option --> Edit Routes --> select add route option (0.0.0.0/0) --> Internet Gateway. Save the changes.
+
+---> Go to route tables --> Select Public RT --> Subnet Associations ---> Associate the public subnet --> Save the associations.
+
+---> Route tables --> Private RT --> Routes --> edit routes --> Add route --> all traffic routed to (0.0.0.0/0) --> NAT gateway --> Save changes.
+
+
+---> Route Tables ---> Private RT --> Subnet associations --> Edit subnet associations --> Private Subnet --> Save the associations.
+
+** When ever we create a new VPC a new routing table is also created automatically. That table is called default routing table.
+
+---> Now go to security groups and create our own security group.
+
+---> Select create security group option --> Give SG name (MyownSG) --> Select the VPC that we created (MumbaiVPC) --> If we want to launch Linux instance, In inbound rules we have to select SSH protocol and source is MYIP.
+
+---> For Best practice copy the security group ID and go to newly created SG and go to inbound rules --> edit inbound rules --> Add rule --> Select All Traffic --> paste the security group id there --> Save the rule.
+
+---> Now launch the two EC2 instances, one is Bastion instance (Public) and another instance in private subnet.
+
+---> For Bastion server we should select public subnet for public subnet we have to enable public IP. And we have to select our own VPC and security group.
+
+---> Now launch the private instance, we should select Private subnet for private subnet we need select the disable public IP option.
+
+---> After launching the two EC2 instances, First login to bastion server.
+
+---> Now we need to connect with private server, To connect with that private server first select that server and go to actions --> Select connect option --> go to SSH Client There we can see a command. Copy that command and paste it putty. It wont work because there is no PEM file in Private instance.
+
+---> To get that PEM file to private instance --> Open the PEM file in notepad copy the code and in putty create a file by use this command (vi filename - 4PMKEYPAIR.pem) --> Open file and paste the code and save.
+
+---> Now give the read permissions to created file. To do that we use this command - chmod 400 filename (chmod 400 4PMKEYPAIR.PEM)
+
+---> Now go to Private server --> Select that --> Actions --> Connect --> SSH Client --> copy the command and paste it in putty(Bastion server).
+
+
+---> Termination Process :- First terminate the 2 EC2 instances and delete the security group that we created, Go to VPC section and first delete the NAT gateway and delete the VPC and all got deleted and don't forgot to delete elastic IP.
