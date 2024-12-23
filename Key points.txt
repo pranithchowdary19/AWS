@@ -1,0 +1,5 @@
+---> While creating an image, we can also add an additional volumes.
+
+* We cannot share the encrypted snapshot to others account. Because the encrypted keys are with us.
+
+---> We can change the volume type while increasing the volume size.
