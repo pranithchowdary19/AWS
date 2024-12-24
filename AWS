@@ -2978,9 +2978,11 @@ Process To create VPC :-
 
 ---> After launching the two EC2 instances, First login to bastion server.
 
----> Now we need to connect with private server, To connect with that private server first select that server and go to actions --> Select connect option --> go to SSH Client There we can see a command. Copy that command and paste it putty. It wont work because there is no PEM file in Private instance.
+---> Now we need to connect with private server, To connect with that private server first select that server and go to actions --> Select connect option --> go to SSH Client There we can see a command. Copy that command and paste it putty. It wont work because there is no PEM file in bastion instance.
 
----> To get that PEM file to private instance --> Open the PEM file in notepad copy the code and in putty create a file by use this command (vi filename - 4PMKEYPAIR.pem) --> Open file and paste the code and save.
+---> While creating the Linux instance we have to create a PEM file not PPK file. From PEM file we have convert that PEM to PPK and login.
+
+---> To get that PEM file to private instance --> Open the PEM file in notepad copy the code and in putty create a file by using this command (vi filename - 4PMKEYPAIR.pem) --> Open file and paste the code and save.
 
 ---> Now give the read permissions to created file. To do that we use this command - chmod 400 filename (chmod 400 4PMKEYPAIR.PEM)
 
@@ -2988,3 +2990,131 @@ Process To create VPC :-
 
 
 ---> Termination Process :- First terminate the 2 EC2 instances and delete the security group that we created, Go to VPC section and first delete the NAT gateway and delete the VPC and all got deleted and don't forgot to delete elastic IP.
+
+
+VPC Peering  :-
+---------------
+
+---> A VPC peering is a networking connection between two VPCs that enables you to route traffic between them using private IPv4 addresses or IPv6 addresses.
+
+
+---> To connect with one VPC to another VPC,  The other VPC can be in same region or different region or can be in different account also.
+
+---> The CIDR should be unique.
+
+Eg :- Mumbai CIDR - 192.168.0.0/16
+
+Eg :- Ireland CIDR - 192.169.0.0/16
+
+VPG - Virtual Private Gateway.
+
+
+Process to connect one VPC to another VPC :-
+---------------------------------------------
+
+---> Create a VPC in Mumbai region.
+
+---> Go to VPC service --> Create VPC --> Name the VPC (MumbaiVPC) --> IPv4 CIDR (192.168.0.0/16) --> Select create VPC
+
+---> Create the internet gateway and Attach it to Mumbai VPC.
+
+---> Create the Public and Private subnets.
+
+---> Create Subnet --> Select the VPC (MumbaiVPC) --> Name the subnet (Public Subnet) --> Select the availability zone (1A) --> select the IPv4 subnet CIDR (192.168.1.0/24).
+
+---> Create Subnet --> Select the VPC (MumbaiVPC) --> Name the subnet (Private Subnet) --> Select the availability zone (1B) --> select the IPv4 subnet CIDR (192.168.2.0/24).
+
+---> Create the NAT Gateway
+
+---> Create NAT gateway --> Name the NAT gateway (MumbaiNAT) --> Select the subnet (NAT Gateway should be in public subnet, So select the public subnet) --> Allocate Elastic EIP --> Select create NAT gateway option.
+
+---> Create Public and private Route Tables
+
+---> Create Route table --> Name the route table (Public RT) --> Select the VPC (MumbaiVPC) --> Select create route table option.
+
+---> Create Route table --> Name the route table (Private RT) --> Select the VPC (MumbaiVPC) --> Select create route table option.
+
+---> After creating the route tables go and associate routes and subnet associations.
+
+---> Select the Public RT --> Routes --> edit routes --> Add route --> destination (0.0.0.0/0) --> Target (internet gateway) --> Select Save Changes.
+
+---> Select the public RT --> Subnet Associations --. Edit subnet associations --> Select Public subnet --> Select save associations.
+
+
+---> Select the Private RT --> Routes --> edit routes --> Add route --> destination (0.0.0.0/0) --> Target (NAT gateway) --> Select Save Changes.
+
+---> Select the Private RT --> Subnet Associations --. Edit subnet associations --> Select Private subnet --> Select save associations.
+
+---> Now go to security groups and create our own security group.
+
+---> Create security group --> Name the SG (MyownmumbaiSG) --> Select the VPC (MumbaiVPC) --> Add inbound rules --> Type (SSH - for Linux instance we select SSH protocol) --> Source (MYIP) --> Select create security group.
+
+---> After creating the own security group, Add new inbound rule.
+
+---> First copy the newly created security group ID --> inbound rules --> Edit inbound rules --> Add Rule --> Type (All traffic) --> Source (In source paste the security group ID) --> Save rules.
+
+---> Launch the two EC2 instances. Bastion Sever (Public) and private server.
+
+---> Launch instances --> Name the EC2 instance (Bastion Server) --> Select Linux instance --> Create new keypair with .PEM extension --> edit network settings --> Select the VPC (MumbaiVPC) --> Select the subnet (public subnet) --> Assign public IP (Enable) --> Select existing security group (MyownmumbaiSG) --> launch instance.
+
+
+Launch instances --> Name the EC2 instance (Private Server) --> Select Linux instance --> Attach the same keypair that we created before --> edit network settings --> Select the VPC (MumbaiVPC) --> Select the subnet (private subnet) --> No need to assign the public IP here because we selected private subnet --> Select existing security group (MyownmumbaiSG) --> launch instance.
+
+
+---> Now go to another region (Ireland)
+
+---> Do all the above steps in Ireland region. But remember the CIDR should be different. 
+
+---> VPC CIDR - (192.169.0.0/16)
+
+---> Public subnet CIDR - (192.169.1.0/24)
+
+---> Private subnet CIDR - (192.169.2.0/24)
+
+---> After creating the VPC and launches the new ec2instance in Ireland region. go to Mumbai region and login to bastion server.
+
+---> After logged in to bastion server first use this command (sudo -s)
+
+---> And create the PEM file in bastion server.
+
+---> open Vi editor in bastion server (vi 2PMMUMBAIKEYPAIR) --> opens the vi editor --> Press I to insert --> open the 2PMMUMBAIKEYPAIR in notepad and copy that code and paste it in vi editor --> after pasting press ESC key and wq! keys.
+
+---> Now keypair is created in bastion server. To check we use (ls) command.
+
+---> Now give full permissions to that keypair. To do that we use this command.
+
+Eg :- chmod 400 filename (chmod 400 2PMKEYPAIR)
+
+---> After giving the permission to that key pair go to AWS --> Private server (Mumbai region) --> Actions --> connect --> SSH Client --> copy the command and paste it in bastion server (putty).
+
+---> Now we connected from bastion server to private server in Mumbai region.
+
+---> Now we are in private server of Mumbai region.
+
+---> From Mumbai private server to we are gonna connect to Ireland private server.
+
+---> To connect with Ireland private server we have to save the Ireland PEM file first in Mumbai private server and enable the VPC peering.
+
+---> From where to we gonna connect, From Mumbai to Ireland. So we go to VPC peering in Mumbai region.
+
+---> Go to VPC service (Mumbai region) --> Peering connections --> Create peering connection --> Name the peering connection (Mumbaitoirelanpeering) --> Select VPC (MumbaiVPC) --> Select another VPC to peer (My account & Another Region) --> Select the region (Ireland region) --> VPC ID (Ireland VPC ID) --> Select create peering connection option.
+
+---> Once peering connection is happened than request is initiated. 
+
+---> To accept that request go to Ireland VPC peering --> Select that --> Actions --> Accept request.
+
+---> Once we accept the peering connection than peering connection got established.
+
+---> Now add the new route in Mumbai region and Ireland region.
+
+---> VPC Service (mumbai) --> Route tables --> Private RT --> Routes --> Edit Routes --> Add route --> Destination (192.169.0.0/16, In destination we have to give the Ireland VPC CIDR) --> target (Peering connection) --> Save changes.
+
+---> VPC Service (Ireland) --> Route tables --> Private RT --> Routes --> Edit Routes --> Add route --> Destination (192.168.0.0/16, In destination we have to give the Mumbai VPC CIDR) --> target (Peering connection) --> Save changes.
+
+---> Now go to security groups (Ireland) and we need to add another inbound rule (SSH).
+
+---> Security groups (Ireland) --> select SG (MyownirelandSG) --> Inbound rules --> edit inbound rules --> add rule --> Type (SSH) --> Source (Custom - 192.168.0.0/16) --> Save rules.
+
+---> After adding SG now go to private server --> select that --> Actions --> Connect --> SSH client --> copy the command and paste it in putty.
+
+---> Now you are in Ireland private server.
