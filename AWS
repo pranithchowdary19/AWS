@@ -2658,6 +2658,128 @@ Shard :-
 DynamoDB :-
 -----------
 
+---> DynamoDB is NoSQL database.
+
+---> NoSQL databases scale horizontally.
+
+---> DynamoDB supports Document model and Key-Value model.
+
+---> DynamoDB is serverless.
+
+---> In DynamoDB there are two types of reads
+
+1. Eventually consistent reads (ECR) - ECR is default one.
+
+2. Strongly consistent reads (SCR)
+
+---> ECR has slight lag in reads.
+
+---> SCR reads immediately.
+
+---> In DynamoDB we call columns as Attributes.
+
+---> In DynamoDB we call rows as Items. 
+
+---> In DynamoDB we call primary key as Partition Key.
+
+---> Primary Key or Partition Key :- The value should be always unique and not null.
+
+Eg :- Employee number (EmpNo)
+
+---> In DynamoDB, initially you can create a table with single column and that column should be primary key / partition key.
+
+---> Primary key is mandatory in DynamoDB.
+
+---> Composite Key - The composite key is the combination of primary key and sort key.
+
+---> Sort Key - Sort Key allows us to store multiple records with the same partition key value.
+
+---> Sort key is optional, Primary key is mandatory.
+
+---> If we have a primary key for single column - Duplicate values are not a allowed.
+
+---> If you have a primary key + sort key - Primary key duplicate values are allowed.
+
+---> Combination of primary key and sort key should be unique.
+
+---> Employee number - Primary Key / Hash Attribute
+
+---> Phone Number - Sort Key / Range Attribute
+
+---> In DynamoDB data is stored in JSON format.
+
+---> Table - It is a combination of attributes and items.
+
+Consistency Models :-
+---------------------
+
+---> There are two consistency models
+
+1. Read
+
+2. Write
+
+---> In Read we have two types
+
+1. Eventually consistency reads (ECR)
+
+2. Strongly consistency reads (SCR)
+
+
+DynamoDB Streams :-
+-------------------
+
+---> A DynamoDB Stream is a time-ordered sequence of events recording all the modifications for DynamoDB tables in near real-time.
+
+Kinesis Streams :-
+------------------
+
+---> Kinesis is an Amazon Web Service designed to process large-scale data streams from a multitude of services in real-time.
+
+
+Indexes :-
+----------
+
+---> Index is helps to increase the performance of a table. It retrieves the data quickly.
+
+---> In DynamoDB there are two types of indexes
+
+1. Local Secondary Index (LSI)
+
+2. Global Secondary Index (GSI)
+
+
+---> Local Secondary Index (LSI) :- We can create a index of Partition Key + Any column as Sort key.
+
+---> Global Secondary Index (GSI) :- In GSI any column as Partition key + Any column as Sort Key.
+
+---> LSI can be created only at the time of creating a table, Later we cannot modify or delete it.
+
+---> GSI can be created, modified and delete anytime.
+
+
+Provisioned Capacity Units :-
+-----------------------------
+
+---> There are two types of capacity units.
+
+1. Read Capacity Units (RCU)
+
+2. Write Capacity Units (WCU)
+
+---> AWS provides 5 RCU's and 5 WCU's.
+
+---> 1 RCU = 5.2 Million reads
+
+---> 1 WCU = 2.5 Million writes
+
+---> Formula For ECR - 1 RCU = 2 Reads per second for 4kb size
+
+---> Formula for SCR - 1 RCU = 1 Read per second for 4kb size
+
+---> 1 WCU = 1 Write per second for 1kb size.
+
+
 
 Route 53 :-
 ------------
