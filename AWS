@@ -742,6 +742,10 @@ Identity and Access Management (IAM) :-
 
 --> It is not recommended to use root account for daily activities or work, Instead of that use IAM user.
 
+--> IAM credentials is used to login into AWS console and access the services.
+
+--> With, IAM user credentials it is not possible to login into EC2 instances.
+
 ---> MFA ---> Multi Factor Authentication (Download Google Authenticator).[It is used for secure login].
 
 ---> MFA is highly recommended for Root account and IAM users as well.
@@ -824,6 +828,8 @@ Policies :-
 
 * Resource level permission - Inline policy (Customized Permissions)
 
+---> Policy generator and visual editor are the tools to write the policy in json language.
+
 ---> ARN - Amazon Resource Name.
 
 
@@ -838,13 +844,15 @@ IAM Roles :-
 
 ---> 1 role can be attached to multiple EC2 instances at the same time.
 
+---> Create a role and attach the policies to role and attach that role to EC2 instances.
 
-Identity Provider / Federation :-
+
+Identity Provider / Federation / IAM Identity Centre :-
 ---------------------------------
 
----> Single Sign On (SSO)
+---> Single Sign On (SSO) - With one account we can able to login into multiple environments like Test environment, dev environment, prod environment and UAT environment etc.
 
----> All user are created in Domain Controller , Active Directory, LDAP (Server).
+---> All user are created in Domain Controller , Active Directory (AD), LDAP (Server).
 
 
 
@@ -860,6 +868,20 @@ IAM TAGS :-
 ---> Per Resource = 50 Tags
 
 ---> Tags are optional.
+
+
+Access Advisor :-
+-----------------
+
+---> It shows the service permissions granted to the user and when those were last used.
+
+---> It is used to revise your policies to the user.
+
+
+Access Analyser :-
+-------------------
+
+---> It is used to analyze the access for all IAM users and take actions on the findings.
 
 
 ---> https://pranithcloud19.signin.aws.amazon.com/console ---> IAM user sign in link.
