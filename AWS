@@ -119,6 +119,10 @@ Port Number ---> HTTP  - 80
 	    ---> HTTPS - 443
 	    ---> SSH   - 22
 	    ---> RDP   - 3389
+		
+--> In HTTP protocol data is transfer in plain text. No encryption.
+
+--> In HTTPS protocol data is transfer in encrypted format. Fully encrypted.
 
 ---> If google firewall accepts your request then your request goes to load balancer.
 
@@ -153,7 +157,7 @@ Eg :- http://google.com ---> Protocol://domainname:port
 2. Google.com ---> Domain Name
 
 
-HTTP :- It transfer the data to and fro from the browser to server.
+HTTP :- It transfer the data to and fro from the browser to server and vice versa.
 
 ---> It is not secure.
 
@@ -362,7 +366,11 @@ Virtual Private Cloud (VPC) :-
 
 ---> AWS ---> region ---> VPC ---> Availability zones ---> EC2 Instances.
 
+---> 2 VPC's cannot communicate with each other by default, If required yes.
+
 ---> VPC is regional.
+
+---> Every region has default VPC. 
 
 * Every services in AWS is regional or global.
 
@@ -394,6 +402,8 @@ AWS Services :-
 
 ---> ELB doesn't have AZ's, It is created at regional level.
 
+---> ELB can be access by DNS name.
+
 
 3. Elastic Bean Stalk :-
 ------------------------
@@ -404,11 +414,15 @@ AWS Services :-
 
 ---> Bean Stalk handles the EC2 instances(OS) behalf of us.
 
+---> Elastic bean stalk is regional.
+
 
 4. Light Sail :-
 ----------------
 
 ---> If you want to setup and create a virtual private server which already has everything installed. Eg:- Git Lab, node.js, Django Etc.
+
+---> It doesn't support auto scaling.
 
 
 5. Lambda :-
@@ -421,6 +435,8 @@ AWS Services :-
 ---> It is for automation purpose
 
 Function - Set of instruction and reuse multiple times.
+
+---> Lambda is regional.
 
 
 6. S3 - Simple Storage Service :-
