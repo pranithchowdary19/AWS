@@ -200,13 +200,13 @@ AWS :- Amazon web services. It is a public cloud provider, which provides the in
 
 ---> AWS provides the infrastructure as service.
 
----> AWS has data centres in USA, Mumbai etc...
+---> AWS has data centers in USA, Mumbai etc...
 
 ---> Cloud is present in remote location (Remote location ---> Data Centre)
 
 ---> We need internet to connect with cloud.
 
-Evolve ---> Physical Data centres ---> Virtualization ---> Cloud [AWS--->Remote location---> Data centres]
+Evolve ---> Physical Data centers ---> Virtualization ---> Cloud [AWS--->Remote location---> Data centers]
 
 Deployment Models(Types of cloud) :-
 ------------------------------------
@@ -230,7 +230,7 @@ Service models :-
 1. Infrastructure as a service (IAAS)
 -------------------------------------
 
----> In IAAS, Provider is responsible for Network, data centres and virtualization.
+---> In IAAS, Provider is responsible for Network, data centers and virtualization.
 
 ---> In IAAS customers are responsible for OS, Data, Application.
 
@@ -251,7 +251,7 @@ Service models :-
 2. Platform as a service (PAAS)
 -------------------------------
 
----> In PAAS provider is responsible for Network, data centres, virtualization and OS.
+---> In PAAS provider is responsible for Network, data centers, virtualization and OS.
 
 ---> In PAAS customers are responsible for data and application.
 
@@ -318,9 +318,9 @@ Regions and Availability Zone :-
 
 Region :- It is geo-graphical area. Eg :- AWS ---> Region ---> Mumbai
 
----> Region is a place where AWS has its own infrastructure(data centre).
+---> Region is a place where AWS has its own infrastructure(data center).
 
----> A region has multiple data centres.
+---> A region has multiple data centers.
 
 Availability Zone :- It is simply a data center.
 
@@ -394,7 +394,7 @@ AWS Services :-
 2. Elastic Load balancer(ELB) :- 
 --------------------------------
 
----> It distributes the traffic across the multiple EC2 instances across multiple Az's (Availability Zones).
+---> It distributes the traffic to multiple EC2 instances across multiple Az's (Availability Zones).
 
 ---> ELB is completely managed by AWS.
 
@@ -417,12 +417,14 @@ AWS Services :-
 ---> Elastic bean stalk is regional.
 
 
-4. Light Sail :-
+4. Light Sail :-	
 ----------------
 
 ---> If you want to setup and create a virtual private server which already has everything installed. Eg:- Git Lab, node.js, Django Etc.
 
 ---> It doesn't support auto scaling.
+
+--> It is regional.
 
 
 5. Lambda :-
@@ -480,7 +482,7 @@ Function - Set of instruction and reuse multiple times.
 
 ---> Key is the filename/Name of the object.
 
----> S3 is global, Bucket is regional.
+---> S3 is regional and Bucket is also regional.
 
 ---> S3 supports static website hosting(HTML Files)[Create a bucket, upload all files, enable static website hosting].
 
@@ -534,7 +536,7 @@ Ans :- Yes. But it is not recommended to detach while EC2 is running. Stop first
 
 ---> We can attach 1a volume to 1a EC2 instance.
 
-Elastic File System (EFS) :-
+8. Elastic File System (EFS) :-
 ---------------------------------
 
 ---> If we have multiple EC2 instance and we want to share same file to all instances then we use this service.
@@ -557,7 +559,23 @@ Qus :- Is it possible to attach single volume to multiple EC2 instances at the s
 
 Ans :- No, but we can use EFS.
 
-Snow Family :-
+
+9. Storage Gateway :-
+
+--> It is hybrid cloud storage provided by AWS that connects your on-premises with AWS cloud storage.
+
+--> It is regional.
+
+--> There are three types of storage gateways :-
+
+1. File gateway
+
+2. Volume gateway
+
+3. Tape gateway.
+
+
+10. Snow Family :-
 -------------------
 
 ---> Snow Family is used to transfer the huge data from On-premises to AWS and vice versa.
@@ -568,7 +586,7 @@ Snow Family :-
 
 ---> Snow Family is physical transfer.
 
-Glacier :-
+11. Glacier :-
 ----------
 
 ---> Glacier is only for archive purpose.
@@ -576,7 +594,7 @@ Glacier :-
 ---> It is cheaper than S3.
 
 
-8. Relational Database Service (RDS) :-
+12. Relational Database Service (RDS) :-
 ---------------------------------------
 
 ---> It is a service where we go and setup a databases.
@@ -596,15 +614,15 @@ Glacier :-
 
 * Short cut MOMPMA
 
----> DynamoDB - NoSQL Database Service (It is used by developers).
+13. DynamoDB - NoSQL Database Service (It is used by developers).
 
 ---> Database :- It is used to store the data.
 
 ---> Data warehouse :- It is used to store huge data.
 
----> Red Shift = data warehouse in AWS.
+14. Red Shift = data warehouse in AWS.
 
----> Elastic Cache :- The frequently accessed data is stored in cache memory (In Memory Database Caching Service).
+15. Elastic Cache :- The frequently accessed data is stored in cache memory (In Memory Database Caching Service).
 
 ---> It is database service.
 
@@ -614,21 +632,33 @@ Glacier :-
 2. MemcacheD
 
 
----> Route 53 (R53) :- R53 is DNS Service in AWS.
+16. Route 53 (R53) :- R53 is DNS Service in AWS.
 
 ---> DNS port Number is 53.
 
----> Direct Connect :- It is a network service that provides an alternative to using the internet to utilize AWS services.
+--> In R53 we create the records.
+
+--> Record - From nasty URL to good URL
+
+Eg :- Nasty URL (Https://myelb.8787.ap-south-1-elb.amazon.com to Good URL (boom.com)
+
+--> R53 is global.
+
+
+17. Direct Connect :- It is a network service that provides an alternative to using the internet to utilize AWS services.
 
 ---> it enables customers to have low latency, secure and private connections.
 
 
-9. CloudFront :-
+18. Service Quota - It is AWS Feature where we can see the limits of AWS Resources.
+
+
+19. CloudFront :-
 ----------------
 
 ---> It is a web service that speeds up distribution of your static and dynamic web content.
 
----> CloudFront shares your content through a worldwide network of data centres is called edge locations.
+---> CloudFront shares your content through a worldwide network of data centers is called edge locations.
 
 ---> We need to configure edge locations using CloudFront.
 
@@ -652,6 +682,8 @@ Ans. Bangalore, Chennai, Delhi, Hyderabad, Mumbai.
 
 ---> Time To Live (TTL) :- We have application and that presents in all edge locations, Now we did a change in application, is it updated in all edge locations ? No. It takes some time is called TTL.
 
+--> TTL determines how long content stays in the cache.
+
 ---> If we want to reflect the changes immediately in all edge locations we need to do invalidate the cache (Delete and reload from origin).
 
 
@@ -667,14 +699,14 @@ Root Account :- It is a main account.(Super User - SU).
 
 ---> In AWS there a service called organizations. It is used to create multiple Root accounts.
 
----> The multiple root accounts can be managed by one main root account.
+---> The multiple root accounts can be managed by one main root account. (Management Account)
 
 ---> All multiple root accounts are called member accounts.
 
 ---> In organizations concept we can manage multiple root accounts and can control root account permissions by using Service Control Policy (SCP).
 
 
----> Identity and Access Management (IAM) :-
+20. Identity and Access Management (IAM) :-
 -------------------------------------------
 
 ---> In this service we can go and create user. This users is called IAM users.
@@ -685,19 +717,21 @@ Root Account :- It is a main account.(Super User - SU).
 
 
 
-AWS INSPECTOR :-
+21. AWS INSPECTOR :-
 ----------------
 
 ---> AWS inspector enables you to analyze the behavior of your AWS resources and help you to identify potential security issues.
 
 
-AWS Trusted Advisor :-
+22. AWS Trusted Advisor :-
 ----------------------
 
 ---> It reduces the cost, Increase the performance and improve security.
 
+--> 5 advises are free, After 5 AWS will charge.
 
-Cloud Watch :-
+
+23. Cloud Watch :-
 --------------
 
 ---> Cloud watch is used to monitor AWS resources (EC2,ELB,RDS,S3, ETC).
@@ -722,12 +756,70 @@ Eg:- 10:00 - 10:05 - 10:10 - 10:15
 Eg:- 10:01 - 10:02 - 10:03 - 10:04
 
 
-Cloud Trail :-
+24. Cloud Trail :-
 ---------------
 
 ---> Cloud trail monitors entire AWS environment. (Records, Monitor, Track, Audit, Logs).
 
 ---> Config :- It monitors the changes in AWS resources.
+
+
+Security Services :-
+
+25. Encryption in Transit :-
+-------------------------
+
+--> Encryption in Transit means protecting data while it is travelling from one location to another location over a network.
+
+--> Protect the data while moving.
+
+--> To protect the data while moving we use protocols like HTTPS,SSL and TLS.
+
+--> We have to buy these certificates (HTTPS and SSL and TLS) for security.
+
+--> In AWS we have a service to buy the security certificates. That service is ACM - Amazon certificate manager.
+
+
+26. Encryption at Rest :-
+----------------------
+
+--> Encryption at Rest means protecting the data when it is stored in a database, storage service.
+
+--> Protect the data is at rest.
+
+--> To protect the data at rest we use the encryption keys.
+
+--> In AWS we have service to create a encrypted keys that is KMS - Key Management Service.
+
+
+27. Secret Manager :-
+------------------
+
+--> It is a AWS service, Used to store the credentials, sensitive information and Etc.
+
+
+28. AWS Backup :-
+--------------
+
+--> It is a backup service provided by AWS, Centrally manage and automate backups across AWS services.
+
+
+29. AWS WAF :-
+-----------
+
+--> WAF - Web Application Firewall
+
+--> It is used to protect your web application from common web attacks.
+
+
+30. AWS Shield :-
+--------------
+
+--> It protects the application from DDoS attacks.
+
+--> DDoS - Distributed Denial of Service
+
+
 
 
 AWS Support :-
